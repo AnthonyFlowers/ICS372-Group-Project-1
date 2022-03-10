@@ -6,9 +6,10 @@ package group5.ics372.pa1;
  * ClothAppliance, KitchenRange and Dishwasher will extend/implement this class
  */
 public abstract class Appliance {
+	private static long nextId = 1;
 	// Protected or public?
 	// Probably protected - Vontha
-	protected String id;
+	protected long id;
 	protected String brandName;
 	protected String modelType;
 	protected double price;
@@ -23,12 +24,16 @@ public abstract class Appliance {
 	 * @param price
 	 * @param stock
 	 */
-	public Appliance(String id, String brandName, String modelType, double price, int stock) {
-		this.id = id;
+	public Appliance(String brandName, String modelType, double price, int stock) {
+		addId();
 		this.brandName = brandName;
 		this.modelType = modelType;
 		this.price = price;
 		this.stock = stock;
+	}
+
+	private void addId() {
+		this.id = nextId++;
 	}
 
 	public double getPrice() {

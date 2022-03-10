@@ -3,9 +3,12 @@ package group5.ics372.pa1;
 import java.util.Scanner;
 
 public class Interface {
+	private final static String[] applianceOptions = { "Furnace", "Refrigerator" };
+	private final static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		Scanner scnr = new Scanner(System.in);
+		Company company = new Company();
+//		Scanner scnr = new Scanner(System.in);
 		int menuSelection = -1;
 
 		do {
@@ -14,7 +17,6 @@ public class Interface {
 					// wait for // valid selection
 
 				try {
-
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
 					System.out.println("1 : Add a single model");
@@ -33,12 +35,12 @@ public class Interface {
 					System.out.println("14 : Save data to disk");
 					System.out.println("15 : Help");
 
-					menuSelection = scnr.nextInt();
-					scnr.nextLine();
+					menuSelection = scanner.nextInt();
+					scanner.nextLine();
 
 				} catch (Exception e) {
 					System.out.println("Error encountered");
-					scnr.close();
+					scanner.close();
 					e.printStackTrace();
 					System.exit(0);
 				}
@@ -48,11 +50,15 @@ public class Interface {
 				switch (menuSelection) {
 				case 0:
 					System.out.println("Exiting");
-					scnr.close();
+					scanner.close();
 					System.exit(0);
 
 				case 1:
 					System.out.println("To be implemented");
+					// get appliance to add
+					Appliance appliance = getApplianceInfo();
+					// get information for model
+					// add to catalog
 					break;
 
 				case 2:
@@ -114,11 +120,31 @@ public class Interface {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+			} finally {
+				scanner.close();
 			}
-
 		} while (menuSelection != 0);
+		scanner.close();
+	}
 
-		scnr.close();
+	private static Appliance getApplianceInfo() {
+		// what type of appliance?
+
+		// get specific appliance info
+		return null;
+	}
+
+	private static String getApplianceOption() {
+		System.out.println("---select an appliance---");
+		int option = -1;
+		do {
+			for (int index = 0; index < applianceOptions.length; index++) {
+				System.out.println(String.format("%d : %s", index + 1, applianceOptions[index]));
+			}
+			option = scanner.nextInt();
+		} while (0 < option && option < applianceOptions.length + 1);
+
+		return "";
 
 	}
 

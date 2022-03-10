@@ -1,8 +1,5 @@
 package group5.ics372.pa1;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * This class holds each business process the company can perform
  * 
@@ -11,20 +8,20 @@ import java.util.List;
  */
 public class Company {
 
-	private final List<Appliance> applianceList;
+	
+	private final Catalog catalog;
 	private final CustomerList customerList;
 
 	public Company() {
-		this.applianceList = new ArrayList<>();
+		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
 	}
 
-	public boolean addCustomer() {
-		return false;
+	public void addCustomer() {
+
 	}
 
-	
 	public void addAppliance(String brandName, String modelName) {
-//		applianceList.add()
+		
 	}
 }
