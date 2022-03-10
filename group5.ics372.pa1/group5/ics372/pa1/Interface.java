@@ -120,8 +120,6 @@ public class Interface {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-			} finally {
-				scanner.close();
 			}
 		} while (menuSelection != 0);
 		scanner.close();
