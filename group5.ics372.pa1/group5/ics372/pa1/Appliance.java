@@ -7,6 +7,7 @@ package group5.ics372.pa1;
  */
 public abstract class Appliance {
 	// Protected or public?
+	// Probably protected - Vontha
 	protected String id;
 	protected String brandName;
 	protected String modelType;
@@ -84,6 +85,7 @@ public abstract class Appliance {
 	 * Left blank for now. Need to review project guidelines on what the toString
 	 * should do again
 	 */
+	@Override
 	public String toString() {
 		return null;
 	}
