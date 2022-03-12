@@ -36,7 +36,7 @@ public class Interface {
 					System.out.println("15 : Help");
 
 					menuSelection = scanner.nextInt();
-					scanner.nextLine();
+					//scanner.nextLine();
 
 				} catch (Exception e) {
 					System.out.println("Error encountered");
@@ -53,22 +53,33 @@ public class Interface {
 					scanner.close();
 					System.exit(0);
 			//----------------------------------------------------------------------------------
+				//add a single model
 				case 1: //I'll do this one - Chatchai
 					int applianceSelect = -1;
+					String brandName;
+					String modelType;
+					
 					System.out.println("Which Appliance would you like to add?");
 					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
 					try{
 						applianceSelect += scanner.nextInt();
-						scanner.close();
+						//scanner.close();
 					} catch(Exception e) {
 						System.out.println("Case 1 Error");
 					}
+					scanner.nextLine(); //use to consume \n
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
+					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s brand name.");
+					brandName = scanner.nextLine();
 					
-					//Appliance appliance = getApplianceInfo();
+					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s model type.");
+					modelType = scanner.nextLine();
+					
 					// get information for model
 					// add to catalog
 					
+					System.out.println("The Brand Name is: " + brandName);
+					System.out.println("The Model Type is: " + modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					System.exit(0);
 			//----------------------------------------------------------------------------------
