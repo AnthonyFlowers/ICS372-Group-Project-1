@@ -77,7 +77,7 @@ public abstract class Appliance {
 	}
 
 	/**
-	 * !!NEEDS TO ME CODED!! Left blank, perferably whoever did this seqence diagram
+	 * !!NEEDS TO BE CODED!! Left blank, perferably whoever did this seqence diagram
 	 * code this.
 	 * 
 	 * @return

@@ -7,8 +7,8 @@ package group5.ics372.pa1;
  *
  */
 public class Company {
-
 	
+
 	private final Catalog catalog;
 	private final CustomerList customerList;
 
@@ -16,11 +16,12 @@ public class Company {
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
 	}
+	
 
 	public void addCustomer() {
 
 	}
-
+	
 	public void addAppliance(String brandName, String modelName) {
 		
 	}

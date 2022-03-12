@@ -10,7 +10,7 @@ public class Customer {
 	private List<Appliance> repairPlans;
 
 	public Customer(int customerID, String name, String address, String phoneNumber) {
-		super();
+		super(); //<-----What super is this calling? -Chatchai
 		this.customerID = customerID;
 		this.name = name;
 		this.address = address;
