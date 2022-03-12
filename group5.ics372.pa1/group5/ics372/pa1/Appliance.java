@@ -14,22 +14,20 @@ public abstract class Appliance {
 	protected String modelType;
 	protected double price;
 	protected int stock;
+	// Zero repairPlans = no repair plans
+	protected double repairPlan = 0; // added
 
 	/**
 	 * Generic Constructor
-	 * 
-	 * @param id
-	 * @param brandName
-	 * @param modelType
-	 * @param price
-	 * @param stock
 	 */
-	public Appliance(String brandName, String modelType, double price, int stock) {
+	public Appliance(String brandName, String modelType, double price, int stock, double repairPlan) {
 		addId();
 		this.brandName = brandName;
 		this.modelType = modelType;
 		this.price = price;
 		this.stock = stock;
+		this.repairPlan = repairPlan; // recently added
+
 	}
 
 	private void addId() {
@@ -42,6 +40,14 @@ public abstract class Appliance {
 
 	public int getStock() {
 		return stock;
+	}
+
+	public boolean hasRepairPlan() {
+		if (this.repairPlan <= 0) {
+			return false;
+		}
+
+		return true;
 	}
 
 	/**
