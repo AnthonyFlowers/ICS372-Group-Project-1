@@ -23,23 +23,18 @@ public class Company {
 	}
 
 	public void addAppliance(String brandName, String modelName) {
-
+		
 	}
 
 	// WIP - Chatchai
-	// I could probably make this code smaller or do this entirely in customer
-	/**
-	 * #1 First loop: Itterates through customerList #2 Second Loop: itterates
-	 * throught the customer's repairPlans List. #2 Second Loop: add repairPlan cost
-	 * to total returning repairCosts. No repair plans will be represented by 0.
-	 * 
-	 */
+	// First loop iterates through all customer
+	// Second loop done in customer, it iterates through all repairPlans and returns the charge
+    // the method finally returns the total charge
 	public double chargeRepairAll() {
 		double totalRepairCharges = 0;
-		// #1
 		Iterator<Customer> customer = customerList.getCustomerList().iterator();
 		while (customer.hasNext()) {
-			totalRepairCharges += customer.next().chargeAllRepairs();
+			totalRepairCharges += customer.next().chargeAllRepairs();  //This is done in Customer.java
 		}
 		return totalRepairCharges;
 	}

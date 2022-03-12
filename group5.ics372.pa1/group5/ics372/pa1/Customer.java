@@ -55,6 +55,8 @@ public class Customer {
 
 	}
 
+	//WIP
+	//TODO implement removing charges after add the total charges
 	public double chargeAllRepairs() {
 		Iterator<Appliance> repairs = repairPlans.iterator();
 		double totalRepairCosts = 0;

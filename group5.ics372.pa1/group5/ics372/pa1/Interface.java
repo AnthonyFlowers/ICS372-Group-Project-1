@@ -3,7 +3,7 @@ package group5.ics372.pa1;
 import java.util.Scanner;
 
 public class Interface {
-	private final static String[] applianceOptions = { "Furnace", "Refrigerator" };
+	private final static String[] applianceOptions = { "ClothWashers","ClothDryers","KitchenRanges","DishWashers","Refrigerator","Furnace"};
 	private final static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String[] args) {
@@ -53,10 +53,10 @@ public class Interface {
 					scanner.close();
 					System.exit(0);
 
-				case 1:
-					System.out.println("To be implemented");
-					// get appliance to add
-					Appliance appliance = getApplianceInfo();
+				case 1: //I'll do this one - Chatchai
+					System.out.println("Which Appliance would you like to add?");
+					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerators|6:Furnaces|");
+					//Appliance appliance = getApplianceInfo();
 					// get information for model
 					// add to catalog
 					break;
