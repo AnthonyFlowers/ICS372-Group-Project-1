@@ -51,6 +51,18 @@ public abstract class Appliance {
 	}
 
 	/**
+	 * Returns the cost of the repairPlan if it has one else the cost is zero.
+	 * 
+	 * @return
+	 */
+	public double getRepairPlan() {
+		if (this.hasRepairPlan())
+			return this.repairPlan;
+		else
+			return 0;
+	}
+
+	/**
 	 * addStock() *Note*for future improvements, only allow positive
 	 * addAmounts*Note*
 	 * 

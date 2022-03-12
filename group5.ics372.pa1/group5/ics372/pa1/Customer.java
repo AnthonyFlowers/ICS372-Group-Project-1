@@ -1,5 +1,6 @@
 package group5.ics372.pa1;
 
+import java.util.Iterator;
 import java.util.List;
 
 public class Customer {
@@ -52,5 +53,14 @@ public class Customer {
 	public void addRepairPlan(Appliance appliance) {
 		this.repairPlans.add(appliance);
 
+	}
+
+	public double chargeAllRepairs() {
+		Iterator<Appliance> repairs = repairPlans.iterator();
+		double totalRepairCosts = 0;
+		while (repairs.hasNext()) {
+			totalRepairCosts = totalRepairCosts + repairs.next().getRepairPlan();
+		}
+		return totalRepairCosts;
 	}
 }
