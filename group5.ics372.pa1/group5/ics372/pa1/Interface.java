@@ -52,7 +52,10 @@ public class Interface {
 					scanner.close();
 					System.exit(0);
 			//----------------------------------------------------------------------------------
-				//add a single model
+				//add a single model into the Catalog's list
+			    //1) The interface will determine the, Class Name, BrandName, and ModelType
+				//2) Those three variables will be passed into Company, which will create a class depending on the interface inputs
+				//3) Catalog will then insert the newly created object into it's list pass from Company
 				case 1: //I'll do this one - Chatchai
 					int applianceSelect = -1;
 					String brandName;
