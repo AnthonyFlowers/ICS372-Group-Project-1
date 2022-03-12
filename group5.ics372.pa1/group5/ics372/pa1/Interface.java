@@ -44,7 +44,7 @@ public class Interface {
 					e.printStackTrace();
 					System.exit(0);
 				}
-			} while (menuSelection < 0 || menuSelection > 16);
+			} while (menuSelection < 0 || menuSelection > 15);
 
 			try {
 				switch (menuSelection) {
