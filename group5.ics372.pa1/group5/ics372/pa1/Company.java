@@ -22,8 +22,10 @@ public class Company {
 
 	}
 
-	public void addAppliance(String brandName, String modelName) {
-		
+	//possibly change to boolean - chatchai
+	public void addAppliance(String className, String brandName, String modelName) {
+		Appliance newApp = createClass(className, brandName, modelName);
+		catalog.insertAppliance(newApp);
 	}
 
 	// WIP - Chatchai
@@ -37,5 +39,30 @@ public class Company {
 			totalRepairCharges += customer.next().chargeAllRepairs();  //This is done in Customer.java
 		}
 		return totalRepairCharges;
+	}
+	
+	//This will be used in Company.java to create the appropriate classes
+	//Give this method the name of the class you want and it'd return the appropriate class
+	private Appliance createClass(String className, String brandName, String modelName) {
+		if(className.toUpperCase() == "ClothWashers".toUpperCase()){ 
+			return new ClothWashers(brandName, modelName);
+		}
+		else if(className.toUpperCase() == "ClothDryers".toUpperCase()) {
+			return new ClothDryers(brandName, modelName);
+		}
+		else if(className.toUpperCase() == "KitchenRanges".toUpperCase()) {
+			return new KitchenRanges(brandName, modelName);
+		}
+		else if(className.toUpperCase() == "DishWashers".toUpperCase()) {
+			return new DishWashers(brandName, modelName);
+		}
+		else if(className.toUpperCase() == "Furnaces".toUpperCase()) {
+			return new Furnaces(brandName, modelName);
+		}
+		//else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
+		//	return new Refrigerator(brandName, modelName);
+		//}
+		return null;
+		
 	}
 }

@@ -22,7 +22,7 @@ public class Catalog {
 	//TODO
 	public boolean insertAppliance(Appliance appliance) {
 		
-		if(doesApplianceExist(appliancesList, appliance)) {
+		if(!doesApplianceExist(appliancesList, appliance)) {
 			appliancesList.add(appliance);
 			return true;
 		}
@@ -41,7 +41,7 @@ public class Catalog {
 	private boolean doesApplianceExist(List<Appliance> appliancesList2, Appliance appliance) {
 		Iterator<Appliance> i = appliancesList2.iterator();
 		for(Appliance e : appliancesList) {
-			if (e.getBrand().toUpperCase() == appliance.getBrand().toUpperCase() && e.getType().toUpperCase() == appliance.getType(.toUpperCase())) {
+			if (e.getBrand().toUpperCase() == appliance.getBrand().toUpperCase() && e.getType().toUpperCase() == appliance.getType().toUpperCase()) {
 				return true;
 			}
 		}

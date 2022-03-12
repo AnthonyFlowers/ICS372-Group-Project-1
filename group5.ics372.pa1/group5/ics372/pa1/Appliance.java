@@ -19,11 +19,10 @@ public abstract class Appliance {
 	/**
 	 * Generic Constructor
 	 */
-	public Appliance(String brandName, String modelType, double price) {
+	public Appliance(String brandName, String modelType) {
 		addId();
 		this.brandName = brandName;
 		this.modelType = modelType;
-		this.price = price;
 		//this.stock = stock;           //initialize to methods below, not in constructor
 		//this.repairPlan = repairPlan; //initialize to methods below, not in constructor
 
@@ -33,12 +32,15 @@ public abstract class Appliance {
 		this.id = nextId++;
 	}
 	//aka addRepairPlan()
-	private void addRepairCharges(double newRepairCharges) {
+	public void addRepairCharges(double newRepairCharges) {
 		this.repairPlan = newRepairCharges;
 	}
 	 //Adds to stock, aka "inventory"
 	public void addStock(int addAmount) {
 		this.stock += addAmount;
+	}
+	public void setPrine(double price) {
+		this.price = price;
 	}
 	public double getPrice() {
 		return price;
@@ -52,6 +54,7 @@ public abstract class Appliance {
 	public int getStock() {
 		return stock;
 	}
+	
 
 	public boolean hasRepairPlan() {
 		if (this.repairPlan <= 0) {
@@ -60,7 +63,7 @@ public abstract class Appliance {
 
 		return true;
 	}
-
+	
 	
 	// Returns the cost of the repairPlan if it has one else the cost is zero
 	public double getRepairPlan() {

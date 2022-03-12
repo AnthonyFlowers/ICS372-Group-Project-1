@@ -5,7 +5,6 @@ import java.util.Scanner;
 public class Interface {
 	private final static String[] applianceOptions = { "ClothWashers","ClothDryers","KitchenRanges","DishWashers","Refrigerator","Furnace"};
 	private final static Scanner scanner = new Scanner(System.in);
-
 	public static void main(String[] args) {
 		Company company = new Company();
 //		Scanner scnr = new Scanner(System.in);
@@ -75,11 +74,11 @@ public class Interface {
 					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s model type.");
 					modelType = scanner.nextLine();
 					
-					// get information for model
 					// add to catalog
 					
 					System.out.println("The Brand Name is: " + brandName);
 					System.out.println("The Model Type is: " + modelType);
+					company.addAppliance(applianceOptions[applianceSelect],brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					System.exit(0);
 			//----------------------------------------------------------------------------------
