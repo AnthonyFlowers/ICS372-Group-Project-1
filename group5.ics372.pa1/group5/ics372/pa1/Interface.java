@@ -52,15 +52,26 @@ public class Interface {
 					System.out.println("Exiting");
 					scanner.close();
 					System.exit(0);
-
+			//----------------------------------------------------------------------------------
 				case 1: //I'll do this one - Chatchai
+					int applianceSelect = -1;
 					System.out.println("Which Appliance would you like to add?");
-					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerators|6:Furnaces|");
+					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
+					try{
+						applianceSelect += scanner.nextInt();
+						scanner.close();
+					} catch(Exception e) {
+						System.out.println("Case 1 Error");
+					}
+					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
+					
 					//Appliance appliance = getApplianceInfo();
 					// get information for model
 					// add to catalog
-					break;
-
+					
+					System.out.println("Case 1 ran success. System Successfully closed.");
+					System.exit(0);
+			//----------------------------------------------------------------------------------
 				case 2:
 					System.out.println("To be implemented");
 					break;
