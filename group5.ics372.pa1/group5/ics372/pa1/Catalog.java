@@ -23,10 +23,9 @@ public class Catalog implements Serializable {
 	}
 
 	public void addAppliance(Appliance appliance) {
-		if (!applianceAlreadyIn(appliance)) {
-			System.out.println("HERERE");
-			applianceList.add(appliance);
-		}
+//		if (!applianceAlreadyIn(appliance)) {
+		applianceList.add(appliance);
+//		}
 
 	}
 
@@ -43,6 +42,7 @@ public class Catalog implements Serializable {
 	}
 
 	public List<Appliance> getApplianceList() {
+		System.out.println("Getting to Catalog");
 		return applianceList;
 	}
 

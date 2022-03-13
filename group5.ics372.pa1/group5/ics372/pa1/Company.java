@@ -78,9 +78,11 @@ public class Company {
 	// Give this method the name of the class you want and it'd return the
 	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName) {
+		System.out.println("Created class");
 		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
 			return new ClothWashers(nextApplianceId++, brandName, modelName);
-		} else if (className.toUpperCase() == "ClothDryers".toUpperCase()) {
+		} else if (className.toUpperCase().toString() == "ClothDryers".toUpperCase().toString()) {
+			System.out.println("Created dryer");
 			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
 		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
 			return new KitchenRanges(nextApplianceId++, brandName, modelName);
@@ -92,6 +94,7 @@ public class Company {
 		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
 		// return new Refrigerator(brandName, modelName);
 		// }
+		System.out.println("Failed to create class");
 		return null;
 	}
 
@@ -145,5 +148,9 @@ public class Company {
 
 	public List<Customer> getCustomers() {
 		return customerList.getCustomerList();
+	}
+
+	public List<Appliance> getAppliances() {
+		return catalog.getApplianceList();
 	}
 }

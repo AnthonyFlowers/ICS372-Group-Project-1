@@ -118,6 +118,7 @@ public class Interface {
 					break;
 
 				case 4:
+					// Purchase one+ model for a customer.
 					System.out.println("To be implemented");
 					break;
 

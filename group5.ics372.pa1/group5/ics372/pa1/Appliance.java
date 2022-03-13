@@ -10,10 +10,10 @@ import java.io.Serializable;
 public abstract class Appliance implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
-	
+
 	// Protected or public?
 	// Probably protected - Vontha
-	protected long id;
+	protected long applianceID;
 	private String brandName;
 	private String modelType;
 	protected double price;
@@ -27,7 +27,7 @@ public abstract class Appliance implements Serializable {
 	 * @param String modelType - the model of this appliance
 	 */
 	public Appliance(long id, String brandName, String modelType) {
-		this.id = id;
+		this.applianceID = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
 		// this.stock = stock; //initialize to methods below, not in constructor
@@ -114,6 +114,10 @@ public abstract class Appliance implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return null;
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(String.format("ID: %s | BrandName: %s | ModelName: %s", this.applianceID, this.brandName,
+				this.modelType));
+		System.out.println("Getting to appliance");
+		return stringBuilder.toString();
 	}
 }
