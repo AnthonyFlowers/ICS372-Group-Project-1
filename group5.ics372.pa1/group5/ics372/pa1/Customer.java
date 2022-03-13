@@ -1,11 +1,15 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Objects;
 
-public class Customer {
-	private static int nextId = 1;
-	private int customerID;
+public class Customer implements Serializable{
+
+	private static final long serialVersionUID = 2022_03_12L;
+
+	private final int customerID;
 	private String name;
 	private String address;
 	private String phoneNumber;
@@ -17,10 +21,6 @@ public class Customer {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-	}
-
-	public Customer(String customerName, String customerAddress, String customerPhoneNumber) {
-		this(nextId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
 	public int getCustomerID() {
@@ -70,4 +70,34 @@ public class Customer {
 		}
 		return totalRepairCosts;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(String.format("ID: %s | Name: %s", this.customerID, this.name));
+		stringBuilder.append("\nAddress: " + this.address);
+		stringBuilder.append("\nPhone Number: " + this.phoneNumber);
+		return stringBuilder.toString();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(address, customerID, name, phoneNumber, repairPlans);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		return Objects.equals(address, other.address) && customerID == other.customerID
+				&& Objects.equals(name, other.name) && Objects.equals(phoneNumber, other.phoneNumber)
+				&& Objects.equals(repairPlans, other.repairPlans);
+	}
+
+	
 }

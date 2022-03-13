@@ -1,7 +1,14 @@
 package group5.ics372.pa1;
 
-import java.io.Serializable;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * This class holds each business process the company can perform
@@ -9,17 +16,17 @@ import java.util.Iterator;
  * @author Group 5
  *
  */
-public class Company implements Serializable {
+public class Company {
 
-	private static final long serialVersionUID = 2022_03_12L;
-
-	private final Catalog catalog;
-	private final CustomerList customerList;
+	private int nextCustomerId;
+	private Catalog catalog;
+	private CustomerList customerList;
 
 	/**
 	 * Initialize a company with a new default Catalog and CustomerList
 	 */
 	public Company() {
+		this.nextCustomerId = 1;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
 	}
@@ -32,7 +39,7 @@ public class Company implements Serializable {
 	 * @param String customerPhoneNumber - the phone number of the customer
 	 */
 	public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
-		customerList.addCustomer(customerName, customerAddress, customerPhoneNumber);
+		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
 	// possibly change to boolean - chatchai
@@ -81,5 +88,57 @@ public class Company implements Serializable {
 		// return new Refrigerator(brandName, modelName);
 		// }
 		return null;
+	}
+
+	/**
+	 * Load this companies data from a saved file
+	 * 
+	 * @param String ataFile - the path to the file to load from
+	 */
+	public void loadData(String dataFile) {
+		try (FileInputStream fin = new FileInputStream(new File(dataFile));
+				ObjectInputStream oin = new ObjectInputStream(fin)) {
+			this.catalog = (Catalog) oin.readObject();
+			this.customerList = (CustomerList) oin.readObject();
+			this.nextCustomerId = (int) oin.readObject();
+		} catch (FileNotFoundException e) {
+			System.out.println("Could not find the data file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("Failed to load the data file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			System.out.println("There was a problem loading the data from the file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Save this companies data to a data file
+	 * 
+	 * @param String dataFile - the path to the file to save to
+	 */
+	public void saveData(String dataFile) {
+		try (FileOutputStream fos = new FileOutputStream(new File(dataFile));
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(this.catalog);
+			oos.writeObject(this.customerList);
+			oos.writeObject(this.nextCustomerId);
+		} catch (FileNotFoundException e) {
+			System.out.println("The data file was not found...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("There was a problem writing the data file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		}
+	}
+
+	public List<Customer> getCustomers() {
+		return customerList.getCustomerList();
 	}
 }

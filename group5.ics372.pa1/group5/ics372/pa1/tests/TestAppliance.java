@@ -3,6 +3,12 @@ package group5.ics372.pa1.tests;
 import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.ClothDryers;
 
+/**
+ * Class for testing the Appliance classes
+ * 
+ * @author Group 5
+ *
+ */
 public class TestAppliance {
 
 	public static void main(String[] args) {

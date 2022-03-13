@@ -182,17 +182,7 @@ public class Interface {
 	 */
 	private static void saveData() {
 		System.out.println("Saving the current data!");
-		try (FileOutputStream fos = new FileOutputStream(new File(DATA_FILE));
-				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
-			oos.writeObject(company);
-		} catch (FileNotFoundException e) {
-			System.out.println("The data file was not found...");
-			System.out.println(e.getStackTrace()[0]);
-		} catch (IOException e) {
-			System.out.println("There was a problem writing the data file...");
-			System.out.println(e.getStackTrace()[0]);
-			e.printStackTrace();
-		}
+		company.saveData(DATA_FILE);
 	}
 
 	/**
@@ -203,20 +193,7 @@ public class Interface {
 		System.out.print("Y|N");
 		String answer = scanner.nextLine();
 		if (answer.toLowerCase().equals("Y")) {
-			System.out.println("File found loading data...");
-			try (FileInputStream fin = new FileInputStream(new File(DATA_FILE));
-					ObjectInputStream oin = new ObjectInputStream(fin)) {
-				company = (Company) oin.readObject();
-			} catch (FileNotFoundException e) {
-				System.out.println("Could not find the data file...");
-				System.out.println(e.getStackTrace()[0]);
-			} catch (IOException e) {
-				System.out.println("Failed to load the data file...");
-				System.out.println(e.getStackTrace()[0]);
-			} catch (ClassNotFoundException e) {
-				System.out.println("There was a problem loading the data from the file...");
-				System.out.println(e.getStackTrace()[0]);
-			}
+			company.loadData(DATA_FILE);
 		}
 	}
 
