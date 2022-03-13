@@ -24,9 +24,9 @@ public class TestAppliance {
 			assert (appliance.getBrandName().equals(brandName));
 			assert (appliance.getModelType().equals(modelType));
 			assert (appliance.getMonthlyPayment().equals(monthlyPayment));
-			System.out.println("Success: ClothDryer information was added and is correct.");
+			System.out.println("Success: Appliance information was added and is correct.");
 		} catch (AssertionError e) {
-			System.out.println("Failed: ClothDryer information was not added correctly.");
+			System.out.println("Failed: Appliance information was not added correctly.");
 			System.out.println(e.getStackTrace()[0]);
 		}
 	}

@@ -1,5 +1,6 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,7 +12,10 @@ import java.util.List;
  * @author Group 5
  *
  */
-public class Catalog {
+public class Catalog implements Serializable {
+
+	private static final long serialVersionUID = 2022_03_12L;
+
 	// bases off of sequence diagram 1
 	// Interface Case1: "Add a single Model" will input new appliances to this list
 	private final List<Appliance> applianceList;

@@ -1,12 +1,23 @@
 package group5.ics372.pa1;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Interface {
-	private final static String[] applianceOptions = { "ClothWashers","ClothDryers","KitchenRanges","DishWashers","Refrigerator","Furnace"};
+	private final static String DATA_FILE = "company.dat";
 	private final static Scanner scanner = new Scanner(System.in);
+	private final static String[] applianceOptions = { "ClothWashers", "ClothDryers", "KitchenRanges", "DishWashers",
+			"Refrigerator", "Furnace" };
+	private static Company company;
+
 	public static void main(String[] args) {
-		Company company = new Company();
+		company = new Company();
 //		Scanner scnr = new Scanner(System.in);
 		int menuSelection = -1;
 
@@ -16,6 +27,7 @@ public class Interface {
 					// wait for // valid selection
 
 				try {
+					loadData();
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
 					System.out.println("1 : Add a single model");
@@ -35,7 +47,7 @@ public class Interface {
 					System.out.println("15 : Help");
 
 					menuSelection = scanner.nextInt();
-					//scanner.nextLine();
+					// scanner.nextLine();
 
 				} catch (Exception e) {
 					System.out.println("Error encountered");
@@ -51,46 +63,51 @@ public class Interface {
 					System.out.println("Exiting");
 					scanner.close();
 					System.exit(0);
-			//----------------------------------------------------------------------------------
-				//add a single model into the Catalog's list
-			    //1) The interface will determine the, Class Name, BrandName, and ModelType
-				//2) Those three variables will be passed into Company, which will create a class depending on the interface inputs
-				//3) Catalog will then insert the newly created object into it's list pass from Company
-				case 1: //I'll do this one - Chatchai
+					// ----------------------------------------------------------------------------------
+					// add a single model into the Catalog's list
+					// 1) The interface will determine the, Class Name, BrandName, and ModelType
+					// 2) Those three variables will be passed into Company, which will create a
+					// class depending on the interface inputs
+					// 3) Catalog will then insert the newly created object into it's list pass from
+					// Company
+				case 1: // I'll do this one - Chatchai
 					int applianceSelect = -1;
 					String brandName;
 					String modelType;
-					
+
 					System.out.println("Which Appliance would you like to add?");
-					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
-					try{
+					System.out.println(
+							"|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
+					try {
 						applianceSelect += scanner.nextInt();
-						//scanner.close();
-					} catch(Exception e) {
+						// scanner.close();
+					} catch (Exception e) {
 						System.out.println("Case 1 Error");
 					}
-					scanner.nextLine(); //use to consume \n
+					scanner.nextLine(); // use to consume \n
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s brand name.");
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
 					brandName = scanner.nextLine();
-					
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s model type.");
+
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine();
-					
+
 					// add to catalog
-					
+
 					System.out.println("The Brand Name is: " + brandName);
 					System.out.println("The Model Type is: " + modelType);
-					company.addAppliance(applianceOptions[applianceSelect],brandName, modelType);
+					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					System.exit(0);
-			//----------------------------------------------------------------------------------
-				// add a single customer to the customer list
-				// 1) The interface will ask for the customers Name, Address, and phone number
-				// 2) The three variables will be used to create a new customer object
-				// 3) The data is passed to the customer and added to the customer list
+					// ----------------------------------------------------------------------------------
+					// add a single customer to the customer list
+					// 1) The interface will ask for the customers Name, Address, and phone number
+					// 2) The three variables will be used to create a new customer object
+					// 3) The data is passed to the customer and added to the customer list
 				case 2: // -Anthony
-					System.out.println("Enter the customers information.");
+					System.out.println("Adding a new customer.");
 					System.out.print("Enter the customers name: ");
 					String customerName = scanner.nextLine().strip();
 					System.out.print("Enter the customers address: ");
@@ -98,8 +115,7 @@ public class Interface {
 					System.out.print("Enter the customers phone number: ");
 					String customerPhoneNumber = scanner.next().strip();
 					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
-					System.out.println("Case 2 ran successfully. System exiting...");
-					System.exit(0);
+					System.out.println("Customer added successfully!");
 
 				case 3:
 					System.out.println("To be implemented");
@@ -145,8 +161,8 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
-				case 14:
-					System.out.println("To be implemented");
+				case 14: // -Anthony
+					saveData();
 					break;
 
 				case 15:
@@ -159,6 +175,49 @@ public class Interface {
 			}
 		} while (menuSelection != 0);
 		scanner.close();
+	}
+
+	/**
+	 * Method to save the current company data to stable storage -Anthony
+	 */
+	private static void saveData() {
+		System.out.println("Saving the current data!");
+		try (FileOutputStream fos = new FileOutputStream(new File(DATA_FILE));
+				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+			oos.writeObject(company);
+		} catch (FileNotFoundException e) {
+			System.out.println("The data file was not found...");
+			System.out.println(e.getStackTrace()[0]);
+		} catch (IOException e) {
+			System.out.println("There was a problem writing the data file...");
+			System.out.println(e.getStackTrace()[0]);
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * Method to load previously saved data from stable storage -Anthony
+	 */
+	private static void loadData() {
+		System.out.println("Would you like to try to load a data file from stable storage?");
+		System.out.print("Y|N");
+		String answer = scanner.nextLine();
+		if (answer.toLowerCase().equals("Y")) {
+			System.out.println("File found loading data...");
+			try (FileInputStream fin = new FileInputStream(new File(DATA_FILE));
+					ObjectInputStream oin = new ObjectInputStream(fin)) {
+				company = (Company) oin.readObject();
+			} catch (FileNotFoundException e) {
+				System.out.println("Could not find the data file...");
+				System.out.println(e.getStackTrace()[0]);
+			} catch (IOException e) {
+				System.out.println("Failed to load the data file...");
+				System.out.println(e.getStackTrace()[0]);
+			} catch (ClassNotFoundException e) {
+				System.out.println("There was a problem loading the data from the file...");
+				System.out.println(e.getStackTrace()[0]);
+			}
+		}
 	}
 
 	private static Appliance getApplianceInfo() {

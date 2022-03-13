@@ -1,11 +1,16 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
+
 /**
  * 
  * Should we make this abstract or an interface? Furnace, Refrigerator,
  * ClothAppliance, KitchenRange and Dishwasher will extend/implement this class
  */
-public abstract class Appliance {
+public abstract class Appliance implements Serializable {
+
+	private static final long serialVersionUID = 2022_03_12L;
+
 	private static long nextId = 1;
 	// Protected or public?
 	// Probably protected - Vontha

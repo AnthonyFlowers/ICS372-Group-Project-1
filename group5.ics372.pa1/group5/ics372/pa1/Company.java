@@ -1,5 +1,6 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
 import java.util.Iterator;
 
 /**
@@ -8,7 +9,9 @@ import java.util.Iterator;
  * @author Group 5
  *
  */
-public class Company {
+public class Company implements Serializable {
+
+	private static final long serialVersionUID = 2022_03_12L;
 
 	private final Catalog catalog;
 	private final CustomerList customerList;
