@@ -4,10 +4,13 @@ import group5.ics372.pa1.Customer;
 
 public class TestCustomer {
 	public static void main(String[] args) {
+		testAll();
+	}
+
+	public static void testAll() {
 		testCreateCustomer();
 		testReadCustomerData();
 		testUpdateCustomerData();
-
 	}
 
 	// Test updating a customers data
@@ -30,6 +33,7 @@ public class TestCustomer {
 		}
 
 	}
+
 	// Test reading a customers data
 	private static void testReadCustomerData() {
 		try {
@@ -46,6 +50,7 @@ public class TestCustomer {
 			System.out.println(e.getStackTrace()[0]);
 		}
 	}
+
 	// Test creating a customer
 	private static void testCreateCustomer() {
 		try {

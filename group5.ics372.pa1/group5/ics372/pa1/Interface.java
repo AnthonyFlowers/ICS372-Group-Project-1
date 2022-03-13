@@ -92,9 +92,9 @@ public class Interface {
 				case 2: // -Anthony
 					System.out.println("Enter the customers information.");
 					System.out.print("Enter the customers name: ");
-					String customerName = scanner.next().strip();
+					String customerName = scanner.nextLine().strip();
 					System.out.print("Enter the customers address: ");
-					String customerAddress = scanner.next().strip();
+					String customerAddress = scanner.nextLine().strip();
 					System.out.print("Enter the customers phone number: ");
 					String customerPhoneNumber = scanner.next().strip();
 					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
