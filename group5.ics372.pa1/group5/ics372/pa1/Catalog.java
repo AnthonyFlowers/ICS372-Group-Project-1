@@ -15,43 +15,31 @@ public class Catalog {
 	private static List<Appliance> applianceList;
 
 	public Catalog() {
-		// not sure what to put in here - Chatchai
-		applianceList = new ArrayList<>(); // experimenting with linked
+		applianceList = new ArrayList<>();
 	}
 
-	// TODO
-	/**
-	 * Add an appliance to this catalog
-	 * 
-	 * @param Appliance appliance - the appliance to add
-	 * @return boolean - true if the appliance was added successfully false
-	 *         otherwise
-	 */
-	public boolean addAppliance(Appliance appliance) {
-		if (applianceList.isEmpty()) {
+	public void addAppliance(Appliance appliance) {
+		if (!applianceAlreadyIn(appliance)) {
+			System.out.println("HERERE");
 			applianceList.add(appliance);
-			return true;
-		} else if (!doesApplianceExist(appliance)) {
-			applianceList.add(appliance);
-			return true;
-		} else {
-			System.out.println("Appliance with Brand:\"" + appliance.getBrandName() + "\" and Model Type: \""
-					+ appliance.getModelType() + "\" already exist in the Catalog List.");
-			return false;
 		}
 
+	}
+
+	public boolean applianceAlreadyIn(Appliance appliance) {
+		for (Appliance e : applianceList) {
+			if (e.getBrand().toUpperCase().equals(appliance.getBrand().toUpperCase())
+					&& e.getType().toUpperCase().equals(appliance.getType().toUpperCase())) {
+				// System.out.println("THIS APPLIANCE MODEL IS ALREADY IN THE CATALOG!");
+				return true;
+			}
+		}
+		// System.out.println("THIS APPLIANCE MODEL IS NOT IN THE CATALOG!");
+		return false;
 	}
 
 	public List<Appliance> getApplianceList() {
 		return applianceList;
 	}
 
-	// Checks applianceList to see if the second argument is already in the List
-	// if it is return true
-	// else return false
-	// not working keeps saying reference is null
-	private boolean doesApplianceExist(Appliance appliance) {
-		System.out.println("appList size:" + applianceList.size()); // troubleeshooting this
-		return false;
-	}
 }

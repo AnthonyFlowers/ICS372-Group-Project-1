@@ -85,9 +85,10 @@ public class Interface {
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
 
-					System.out.println("The Brand Name is: " + brandName);
-					System.out.println("The Model Type is: " + modelType);
-					// Item is added to Catalog
+					// System.out.println("The Brand Name is: " + brandName);
+					// System.out.println("The Model Type is: " + modelType);
+					// System.out.println("applianceOptions: " + applianceOptions[applianceSelect]);
+					// System.out.println("applianceSelect: " + applianceOptions[applianceSelect]);
 					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;

@@ -21,8 +21,8 @@ public class TestAppliance {
 			String modelType = "ClothDryers";
 			Double monthlyPayment = 15.0;
 			ClothDryers appliance = new ClothDryers(brandName, modelType, monthlyPayment);
-			assert (appliance.getBrandName().equals(brandName));
-			assert (appliance.getModelType().equals(modelType));
+			assert (appliance.getBrand().equals(brandName));
+			assert (appliance.getType().equals(modelType));
 			assert (appliance.getMonthlyPayment().equals(monthlyPayment));
 			System.out.println("Success: ClothDryer information was added and is correct.");
 		} catch (AssertionError e) {

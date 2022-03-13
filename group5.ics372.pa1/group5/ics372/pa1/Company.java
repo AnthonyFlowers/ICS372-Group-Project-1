@@ -1,6 +1,7 @@
 package group5.ics372.pa1;
 
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * This class holds each business process the company can perform
@@ -32,27 +33,33 @@ public class Company {
 		customerList.addCustomer(customerName, customerAddress, customerPhoneNumber);
 	}
 
-	// possibly change to boolean - chatchai
-	/**
-	 * Add an appliance to the companies catalog
-	 * 
-	 * @param String className - the name of the appliance
-	 * @param String brandName - the brand of the appliance
-	 * @param String modelName - the model of the appliance
-	 */
+	// Used in: Case 1.
+	// Add an appliance to the companies catalog
+	//
+	// 2) else inputs are not null. The inputs will be used to create the
+	// appropriate class, brandname and modeltype object.
+	// 3) The return object will be added to the company's catalog applianceList
 	public void addAppliance(String className, String brandName, String modelName) {
 		if (className == null || brandName == null || modelName == null)
 			System.out.println("No null inputs in adding model");
 		else {
-			Appliance newApp = createClass(className, brandName, modelName);
-			catalog.addAppliance(newApp);
+			Appliance newAppliance = createClass(className, brandName, modelName);
+			List<Appliance> catalogApplianceList = catalog.getApplianceList();
+			if (!catalog.applianceAlreadyIn(newAppliance)) {
+				catalogApplianceList.add(newAppliance);
+			} else {
+				System.out.println("Class: " + newAppliance.getType() + "Brand: " + newAppliance.getBrand() + "Type: "
+						+ newAppliance.getType());
+				System.out.println("APPLIANCE ALREADY IN CATALOG! NOT ADDING TO CATALOG");
+			}
 		}
 	}
 
-	// First loop iterates through all customer
-	// Second loop done in customer, it iterates through all repairPlans and returns
-	// the charge
-	// the method finally returns the total charge
+	/**
+	 * WIP - chatchai xiong
+	 * 
+	 * @return
+	 */
 	public double chargeRepairAll() {
 		double totalRepairCharges = 0;
 		Iterator<Customer> customer = customerList.getCustomerList().iterator();
@@ -62,24 +69,25 @@ public class Company {
 		return totalRepairCharges;
 	}
 
-	// This will be used in Company.java to create the appropriate classes
-	// Give this method the name of the class you want and it'd return the
-	// appropriate class
+	// Used in: Case 1.
+	// Creates an Appliance Object with the appropriate actual Class type.
+	// 1)Compares the input String className with the Appliance sub Class Names
+	// 2)If match create and return an object with the appropriate Class Type with
+	// brandNames and ModelType
 	private Appliance createClass(String className, String brandName, String modelName) {
-		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
+		if (className.toUpperCase().equals("ClothWashers".toUpperCase())) {
 			return new ClothWashers(brandName, modelName);
-		} else if (className.toUpperCase() == "ClothDryers".toUpperCase()) {
+		} else if (className.toUpperCase().equals("ClothDryers".toUpperCase())) {
 			return new ClothDryers(brandName, modelName, 0.0);
-		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
+		} else if (className.toUpperCase().equals("KitchenRanges".toUpperCase())) {
 			return new KitchenRanges(brandName, modelName);
-		} else if (className.toUpperCase() == "DishWashers".toUpperCase()) {
+		} else if (className.toUpperCase().equals("DishWashers".toUpperCase())) {
 			return new DishWashers(brandName, modelName);
-		} else if (className.toUpperCase() == "Furnaces".toUpperCase()) {
+		} else if (className.toUpperCase().equals("Furnaces".toUpperCase())) {
 			return new Furnaces(brandName, modelName);
+		} else if (className.toUpperCase().equals("Refrigerators".toUpperCase())) { // Needs work because Refrigerators
+			return new Refrigerator(brandName, modelName, 0.0);
 		}
-		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
-		// return new Refrigerator(brandName, modelName);
-		// }
 		return null;
 	}
 }
