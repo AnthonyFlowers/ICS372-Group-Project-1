@@ -87,17 +87,17 @@ public class Company {
 	// brandNames and ModelType
 	private Appliance createClass(String className, String brandName, String modelName) {
 		if (className.toUpperCase().equals("ClothWashers".toUpperCase())) {
-			return new ClothWashers(brandName, modelName);
+			return new ClothWashers(nextApplianceId, brandName, modelName);
 		} else if (className.toUpperCase().equals("ClothDryers".toUpperCase())) {
-			return new ClothDryers(brandName, modelName, 0.0);
+			return new ClothDryers(nextApplianceId, brandName, modelName, 0.0);
 		} else if (className.toUpperCase().equals("KitchenRanges".toUpperCase())) {
-			return new KitchenRanges(brandName, modelName);
+			return new KitchenRanges(nextApplianceId, brandName, modelName);
 		} else if (className.toUpperCase().equals("DishWashers".toUpperCase())) {
-			return new DishWashers(brandName, modelName);
+			return new DishWashers(nextApplianceId, brandName, modelName);
 		} else if (className.toUpperCase().equals("Furnaces".toUpperCase())) {
-			return new Furnaces(brandName, modelName);
+			return new Furnaces(nextApplianceId, brandName, modelName);
 		} else if (className.toUpperCase().equals("Refrigerators".toUpperCase())) { // Needs work because Refrigerators
-			return new Refrigerator(brandName, modelName, 0.0);
+			return new Refrigerator(nextApplianceId, brandName, modelName, 0.0);
 		}
 		return null;
 	}

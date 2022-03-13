@@ -26,7 +26,7 @@ public class TestAppliance {
 			String brandName = "Samsung";
 			String modelType = "ClothDryers";
 			Double monthlyPayment = 15.0;
-			ClothDryers appliance = new ClothDryers(brandName, modelType, monthlyPayment);
+			ClothDryers appliance = new ClothDryers(1, brandName, modelType, monthlyPayment);
 			assert (appliance.getBrand().equals(brandName));
 			assert (appliance.getType().equals(modelType));
 			assert (appliance.getMonthlyPayment().equals(monthlyPayment));
