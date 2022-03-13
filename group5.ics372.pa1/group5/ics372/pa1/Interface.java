@@ -3,8 +3,10 @@ package group5.ics372.pa1;
 import java.util.Scanner;
 
 public class Interface {
-	private final static String[] applianceOptions = { "ClothWashers","ClothDryers","KitchenRanges","DishWashers","Refrigerator","Furnace"};
+	private final static String[] applianceOptions = { "ClothWashers", "ClothDryers", "KitchenRanges", "DishWashers",
+			"Refrigerator", "Furnace" };
 	private final static Scanner scanner = new Scanner(System.in);
+
 	public static void main(String[] args) {
 		Company company = new Company();
 //		Scanner scnr = new Scanner(System.in);
@@ -35,7 +37,7 @@ public class Interface {
 					System.out.println("15 : Help");
 
 					menuSelection = scanner.nextInt();
-					//scanner.nextLine();
+					// scanner.nextLine();
 
 				} catch (Exception e) {
 					System.out.println("Error encountered");
@@ -51,40 +53,45 @@ public class Interface {
 					System.out.println("Exiting");
 					scanner.close();
 					System.exit(0);
-			//----------------------------------------------------------------------------------
-				//add a single model into the Catalog's list
-			    //1) The interface will determine the, Class Name, BrandName, and ModelType
-				//2) Those three variables will be passed into Company, which will create a class depending on the interface inputs
-				//3) Catalog will then insert the newly created object into it's list pass from Company
-				case 1: //I'll do this one - Chatchai
+
+					// ----------------------------------------------------------------------------------
+					// add a single model into the Catalog's list
+					// 1) The interface will determine the, Class Name, BrandName, and ModelType
+					// 2) Those three variables will be passed into Company, which will create a
+					// class depending on the interface inputs
+					// 3) Catalog will then insert the newly created object into it's list pass from
+					// Company
+				case 1: // I'll do this one - Chatchai
 					int applianceSelect = -1;
 					String brandName;
 					String modelType;
-					
+
 					System.out.println("Which Appliance would you like to add?");
-					System.out.println("|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
-					try{
+					System.out.println(
+							"| 1.ClothWashers | 2.ClothDryers | 3.KitchenRanges | 4.DishWashers | 5.Refrigerator | 6.Furnace |");
+					try {
 						applianceSelect += scanner.nextInt();
-						//scanner.close();
-					} catch(Exception e) {
+						// scanner.close();
+					} catch (Exception e) {
 						System.out.println("Case 1 Error");
 					}
-					scanner.nextLine(); //use to consume \n
+					scanner.nextLine(); // use to consume \n
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s brand name.");
-					brandName = scanner.nextLine();
-					
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] +  "'s model type.");
-					modelType = scanner.nextLine();
-					
-					// add to catalog
-					
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
+					brandName = scanner.nextLine().strip();
+
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
+					modelType = scanner.nextLine().strip();
+
 					System.out.println("The Brand Name is: " + brandName);
 					System.out.println("The Model Type is: " + modelType);
-					company.addAppliance(applianceOptions[applianceSelect],brandName, modelType);
+					// Item is added to Catalog
+					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
-					System.exit(0);
-			//----------------------------------------------------------------------------------
+					break;
+				// ----------------------------------------------------------------------------------
 				// add a single customer to the customer list
 				// 1) The interface will ask for the customers Name, Address, and phone number
 				// 2) The three variables will be used to create a new customer object

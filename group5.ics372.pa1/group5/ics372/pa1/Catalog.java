@@ -1,8 +1,6 @@
 package group5.ics372.pa1;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -14,11 +12,11 @@ import java.util.List;
 public class Catalog {
 	// bases off of sequence diagram 1
 	// Interface Case1: "Add a single Model" will input new appliances to this list
-	private final List<Appliance> applianceList;
+	private static List<Appliance> applianceList;
 
 	public Catalog() {
 		// not sure what to put in here - Chatchai
-		applianceList = new ArrayList<>();
+		applianceList = new ArrayList<>(); // experimenting with linked
 	}
 
 	// TODO
@@ -30,7 +28,10 @@ public class Catalog {
 	 *         otherwise
 	 */
 	public boolean addAppliance(Appliance appliance) {
-		if (!doesApplianceExist(appliance)) {
+		if (applianceList.isEmpty()) {
+			applianceList.add(appliance);
+			return true;
+		} else if (!doesApplianceExist(appliance)) {
 			applianceList.add(appliance);
 			return true;
 		} else {
@@ -41,16 +42,16 @@ public class Catalog {
 
 	}
 
+	public List<Appliance> getApplianceList() {
+		return applianceList;
+	}
+
 	// Checks applianceList to see if the second argument is already in the List
 	// if it is return true
 	// else return false
+	// not working keeps saying reference is null
 	private boolean doesApplianceExist(Appliance appliance) {
-		for (Appliance e : applianceList) {
-			if (e.getBrand().toUpperCase() == appliance.getBrand().toUpperCase()
-					&& e.getType().toUpperCase() == appliance.getType().toUpperCase()) {
-				return true;
-			}
-		}
+		System.out.println("appList size:" + applianceList.size()); // troubleeshooting this
 		return false;
 	}
 }

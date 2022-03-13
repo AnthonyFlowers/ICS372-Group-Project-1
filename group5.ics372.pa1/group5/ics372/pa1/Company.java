@@ -38,11 +38,14 @@ public class Company {
 	 * @param String modelName - the model of the appliance
 	 */
 	public void addAppliance(String className, String brandName, String modelName) {
-		Appliance newApp = createClass(className, brandName, modelName);
-		catalog.addAppliance(newApp);
+		if (className == null || brandName == null || modelName == null)
+			System.out.println("No null inputs in adding model");
+		else {
+			Appliance newApp = createClass(className, brandName, modelName);
+			catalog.addAppliance(newApp);
+		}
 	}
 
-	// WIP - Chatchai
 	// First loop iterates through all customer
 	// Second loop done in customer, it iterates through all repairPlans and returns
 	// the charge
