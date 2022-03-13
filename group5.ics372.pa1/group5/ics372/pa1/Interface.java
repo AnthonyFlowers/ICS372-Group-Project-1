@@ -77,7 +77,7 @@ public class Interface {
 
 					System.out.println("Which Appliance would you like to add?");
 					System.out.println(
-							"|1:ClothWashers|2:ClothDryers|3:KitchenRanges|4:DishWashers|5:Refrigerator|6:Furnace|");
+							"| 1.ClothWashers | 2.ClothDryers | 3.KitchenRanges | 4.DishWashers | 5.Refrigerator | 6.Furnace |");
 					try {
 						applianceSelect += scanner.nextInt();
 						// scanner.close();
@@ -88,24 +88,24 @@ public class Interface {
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
 					System.out.println(
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
-					brandName = scanner.nextLine();
+
+					brandName = scanner.nextLine().strip();
 
 					System.out.println(
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
-					modelType = scanner.nextLine();
-
-					// add to catalog
+					modelType = scanner.nextLine().strip();
 
 					System.out.println("The Brand Name is: " + brandName);
 					System.out.println("The Model Type is: " + modelType);
+					// Item is added to Catalog
 					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
-					System.exit(0);
-					// ----------------------------------------------------------------------------------
-					// add a single customer to the customer list
-					// 1) The interface will ask for the customers Name, Address, and phone number
-					// 2) The three variables will be used to create a new customer object
-					// 3) The data is passed to the customer and added to the customer list
+					break;
+				// ----------------------------------------------------------------------------------
+				// add a single customer to the customer list
+				// 1) The interface will ask for the customers Name, Address, and phone number
+				// 2) The three variables will be used to create a new customer object
+				// 3) The data is passed to the customer and added to the customer list
 				case 2: // -Anthony
 					System.out.println("Adding a new customer.");
 					System.out.print("Enter the customers name: ");

@@ -14,8 +14,8 @@ public abstract class Appliance implements Serializable {
 	// Protected or public?
 	// Probably protected - Vontha
 	protected long id;
-	protected String brandName;
-	protected String modelType;
+	private String brandName;
+	private String modelType;
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected double repairPlan = 0; // added, "zero" means no repair plans
@@ -54,11 +54,11 @@ public abstract class Appliance implements Serializable {
 		return price;
 	}
 
-	public String getModelType() {
+	public String getType() {
 		return this.modelType;
 	}
 
-	public String getBrandName() {
+	public String getBrand() {
 		return this.brandName;
 	}
 
