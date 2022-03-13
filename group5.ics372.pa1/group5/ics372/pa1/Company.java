@@ -161,14 +161,17 @@ public class Company {
 	}
 
 	public void printCustomers() {
+		System.out.println("Customers:");
 		customerList.print();
 	}
 
 	public void printAppliances() {
+		System.out.println("Appliances:");
 		catalog.print();
 	}
 
 	public List<Customer> getCustomers() {
+
 		return customerList.getCustomerList();
 	}
 
