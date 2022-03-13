@@ -44,33 +44,27 @@ public class Company {
 		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
-	// Used in: Case 1.
-	// Add an appliance to the companies catalog
-	//
-	// 2) else inputs are not null. The inputs will be used to create the
-	// appropriate class, brandname and modeltype object.
-	// 3) The return object will be added to the company's catalog applianceList
+	// possibly change to boolean - chatchai
+	/**
+	 * Add an appliance to the companies catalog
+	 * 
+	 * @param String className - the name of the appliance
+	 * @param String brandName - the brand of the appliance
+	 * @param String modelName - the model of the appliance
+	 */
 	public void addAppliance(String className, String brandName, String modelName) {
 		if (className == null || brandName == null || modelName == null)
 			System.out.println("No null inputs in adding model");
 		else {
-			Appliance newAppliance = createClass(className, brandName, modelName);
-			List<Appliance> catalogApplianceList = catalog.getApplianceList();
-			if (!catalog.applianceAlreadyIn(newAppliance)) {
-				catalogApplianceList.add(newAppliance);
-			} else {
-				System.out.println("Class: " + newAppliance.getType() + "Brand: " + newAppliance.getBrand() + "Type: "
-						+ newAppliance.getType());
-				System.out.println("APPLIANCE ALREADY IN CATALOG! NOT ADDING TO CATALOG");
-			}
+			Appliance newApp = createClass(className, brandName, modelName);
+			catalog.addAppliance(newApp);
 		}
 	}
 
-	/**
-	 * WIP - chatchai xiong
-	 * 
-	 * @return
-	 */
+	// First loop iterates through all customer
+	// Second loop done in customer, it iterates through all repairPlans and returns
+	// the charge
+	// the method finally returns the total charge
 	public double chargeRepairAll() {
 		double totalRepairCharges = 0;
 		Iterator<Customer> customer = customerList.getCustomerList().iterator();
@@ -80,32 +74,31 @@ public class Company {
 		return totalRepairCharges;
 	}
 
-	// Used in: Case 1.
-	// Creates an Appliance Object with the appropriate actual Class type.
-	// 1)Compares the input String className with the Appliance sub Class Names
-	// 2)If match create and return an object with the appropriate Class Type with
-	// brandNames and ModelType
+	// This will be used in Company.java to create the appropriate classes
+	// Give this method the name of the class you want and it'd return the
+	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName) {
-		if (className.toUpperCase().equals("ClothWashers".toUpperCase())) {
-			return new ClothWashers(nextApplianceId, brandName, modelName);
-		} else if (className.toUpperCase().equals("ClothDryers".toUpperCase())) {
-			return new ClothDryers(nextApplianceId, brandName, modelName, 0.0);
-		} else if (className.toUpperCase().equals("KitchenRanges".toUpperCase())) {
-			return new KitchenRanges(nextApplianceId, brandName, modelName);
-		} else if (className.toUpperCase().equals("DishWashers".toUpperCase())) {
-			return new DishWashers(nextApplianceId, brandName, modelName);
-		} else if (className.toUpperCase().equals("Furnaces".toUpperCase())) {
-			return new Furnaces(nextApplianceId, brandName, modelName);
-		} else if (className.toUpperCase().equals("Refrigerators".toUpperCase())) { // Needs work because Refrigerators
-			return new Refrigerator(nextApplianceId, brandName, modelName, 0.0);
+		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
+			return new ClothWashers(nextApplianceId++, brandName, modelName);
+		} else if (className.toUpperCase() == "ClothDryers".toUpperCase()) {
+			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
+		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
+			return new KitchenRanges(nextApplianceId++, brandName, modelName);
+		} else if (className.toUpperCase() == "DishWashers".toUpperCase()) {
+			return new DishWashers(nextApplianceId++, brandName, modelName);
+		} else if (className.toUpperCase() == "Furnaces".toUpperCase()) {
+			return new Furnaces(nextApplianceId++, brandName, modelName);
 		}
+		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
+		// return new Refrigerator(brandName, modelName);
+		// }
 		return null;
 	}
 
 	/**
 	 * Load this companies data from a saved file
 	 * 
-	 * @param String ataFile - the path to the file to load from
+	 * @param String dataFile - the path to the file to load from
 	 */
 	public void loadData(String dataFile) {
 		try (FileInputStream fin = new FileInputStream(new File(dataFile));

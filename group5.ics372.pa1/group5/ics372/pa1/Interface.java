@@ -1,12 +1,5 @@
 package group5.ics372.pa1;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Interface {
@@ -21,13 +14,12 @@ public class Interface {
 //		Scanner scnr = new Scanner(System.in);
 		int menuSelection = -1;
 
+		loadData();
 		do {
-
 			do { // Get menu selection, if it is not a valid selection display error and
 					// wait for // valid selection
-
 				try {
-					loadData();
+
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
 					System.out.println("1 : Add a single model");
@@ -119,6 +111,9 @@ public class Interface {
 					System.out.println("Customer added successfully!");
 
 				case 3:
+					String customerID;
+					long applianceID;
+
 					System.out.println("To be implemented");
 					break;
 
@@ -191,7 +186,7 @@ public class Interface {
 	 */
 	private static void loadData() {
 		System.out.println("Would you like to try to load a data file from stable storage?");
-		System.out.print("Y|N");
+		System.out.print("Y|N\n");
 		String answer = scanner.nextLine();
 		if (answer.toLowerCase().equals("Y")) {
 			company.loadData(DATA_FILE);
