@@ -10,8 +10,7 @@ import java.io.Serializable;
 public abstract class Appliance implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
-
-	private static long nextId = 1;
+	
 	// Protected or public?
 	// Probably protected - Vontha
 	protected long id;
@@ -27,19 +26,14 @@ public abstract class Appliance implements Serializable {
 	 * @param String brandName - the brand name of this appliance
 	 * @param String modelType - the model of this appliance
 	 */
-	public Appliance(String brandName, String modelType) {
-		addId();
+	public Appliance(long id, String brandName, String modelType) {
+		this.id = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
 		// this.stock = stock; //initialize to methods below, not in constructor
 		// this.repairPlan = repairPlan; //initialize to methods below, not in
 		// constructor
 
-	}
-
-	// Add an id to this appliance and increment the next id for unique ids
-	private void addId() {
-		this.id = nextId++;
 	}
 
 	// aka addRepairPlan()

@@ -21,11 +21,13 @@ public class Company {
 	private int nextCustomerId;
 	private Catalog catalog;
 	private CustomerList customerList;
+	private long nextApplianceId;
 
 	/**
 	 * Initialize a company with a new default Catalog and CustomerList
 	 */
 	public Company() {
+		this.nextApplianceId = 1;
 		this.nextCustomerId = 1;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
@@ -74,15 +76,15 @@ public class Company {
 	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName) {
 		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
-			return new ClothWashers(brandName, modelName);
+			return new ClothWashers(nextApplianceId++, brandName, modelName);
 		} else if (className.toUpperCase() == "ClothDryers".toUpperCase()) {
-			return new ClothDryers(brandName, modelName, 0.0);
+			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
 		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
-			return new KitchenRanges(brandName, modelName);
+			return new KitchenRanges(nextApplianceId++, brandName, modelName);
 		} else if (className.toUpperCase() == "DishWashers".toUpperCase()) {
-			return new DishWashers(brandName, modelName);
+			return new DishWashers(nextApplianceId++, brandName, modelName);
 		} else if (className.toUpperCase() == "Furnaces".toUpperCase()) {
-			return new Furnaces(brandName, modelName);
+			return new Furnaces(nextApplianceId++, brandName, modelName);
 		}
 		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
 		// return new Refrigerator(brandName, modelName);

@@ -36,7 +36,14 @@ public class TestSaveLoad {
 		List<Customer> companyList = company.getCustomers();
 		testCustomers = new ArrayList<>(Arrays.asList(new Customer[companyList.size()]));
 		Collections.copy(testCustomers, companyList);
+		try {
 		company.saveData("test.dat");
+		System.out.println("Success: saved some test data to the test.dat file!");
+		} catch (AssertionError e) {
+			System.out.println("Failed: was not able to save data to the test.dat file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		}
 	}
 
 	// Load some data from the test.dat file -Anthony
@@ -47,12 +54,11 @@ public class TestSaveLoad {
 		try {
 			assert (testCustomers.size() == companyList.size());
 			for (int index = 0; index < testCustomers.size(); index++) {
-				System.out.println(testCustomers.get(index));
-				System.out.println(companyList.get(index));
 				assert (testCustomers.get(index).equals(companyList.get(index)));
 			}
+			System.out.println("Success: loaded test.dat file and the data is correct!");
 		} catch (AssertionError e) {
-			System.out.println("Failed: did not load the test.dat file correctly");
+			System.out.println("Failed: did not load the test.dat file correctly...");
 			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		}
