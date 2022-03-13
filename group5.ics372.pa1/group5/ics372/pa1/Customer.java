@@ -15,15 +15,15 @@ public class Customer implements Serializable {
 	private String phoneNumber;
 	private List<Appliance> repairPlans;
 
-	public Customer(long customerID, String name, String address, String phoneNumber) {
+	public Customer(long nextCustomerId, String name, String address, String phoneNumber) {
 		super();
-		this.customerID = customerID;
+		this.customerID = nextCustomerId;
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 	}
 
-	public long getCustomerID() {
+	public String getCustomerID() {
 		return customerID;
 	}
 

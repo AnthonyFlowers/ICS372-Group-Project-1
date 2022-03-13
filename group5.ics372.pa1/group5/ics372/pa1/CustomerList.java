@@ -22,7 +22,7 @@ public class CustomerList implements Serializable {
 	 * @param customerID
 	 * @return
 	 */
-	public Customer search(long customerID) {
+	public Customer search(String customerID) {
 		for (Customer customer : customerList) {
 			if (customerID == customer.getCustomerID()) {
 				System.out.println("Customer ID Found.");
@@ -43,8 +43,9 @@ public class CustomerList implements Serializable {
 		return customerList;
 	}
 
-	public void addCustomer(int customerId, String customerName, String customerAddress, String customerPhoneNumber) {
-		customerList.add(new Customer(customerId, customerName, customerAddress, customerPhoneNumber));
+	public void addCustomer(long nextCustomerId, String customerName, String customerAddress,
+			String customerPhoneNumber) {
+		customerList.add(new Customer(nextCustomerId, customerName, customerAddress, customerPhoneNumber));
 	}
 
 }

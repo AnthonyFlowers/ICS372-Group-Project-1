@@ -19,7 +19,6 @@ public class Interface {
 			do { // Get menu selection, if it is not a valid selection display error and
 					// wait for // valid selection
 				try {
-
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
 					System.out.println("1 : Add a single model");
@@ -50,6 +49,7 @@ public class Interface {
 			} while (menuSelection < 0 || menuSelection > 16);
 
 			try {
+
 				switch (menuSelection) {
 				case 0:
 					System.out.println("Exiting");
@@ -111,17 +111,22 @@ public class Interface {
 					System.out.println("Customer added successfully!");
 
 				case 3:
-					long applianceID;
-					int quantity;
 					System.out.println("Enter Appliance ID.");
-					applianceID = Long.parseLong(scanner.nextLine());
+					long applianceID = scanner.nextLong();
 					System.out.println("Enter quantity to add to stock.");
-					quantity = scanner.nextInt();
+					int quantity = scanner.nextInt();
 					company.addToInventory(applianceID, quantity);
 					break;
 
 				case 4:
 					// Purchase one+ model for a customer.
+//					System.out.println("Enter Customer ID.");
+//					customerID = scanner.nextLine();
+//					System.out.println("Enter Appliance ID.");
+//					applianceID = scanner.nextLong();
+//					System.out.println("Enter quantity to add to stock.");
+//					quantity = scanner.nextInt();
+//					company.purchaseAppliances(customerID, applianceID, quantity);
 					System.out.println("To be implemented");
 					break;
 
@@ -151,10 +156,17 @@ public class Interface {
 
 				case 11:
 					System.out.println("To be implemented");
+//					prints all appliances
+					company.printAppliances();
+//					needs another method to print only specific appliance type Ex. (ClothWashers).
+//					also needs a prompt to choose between the two.
 					break;
 
 				case 12:
+					// Just need to add details about service plan to Customer toString method.
+					// - Vontha
 					System.out.println("To be implemented");
+					company.printCustomers();
 					break;
 
 				case 13:

@@ -12,7 +12,6 @@ public abstract class Appliance implements Serializable {
 	private static final long serialVersionUID = 2022_03_12L;
 
 	// Protected or public?
-	// Probably protected - Vontha
 	protected long applianceID;
 	private String brandName;
 	private String modelType;

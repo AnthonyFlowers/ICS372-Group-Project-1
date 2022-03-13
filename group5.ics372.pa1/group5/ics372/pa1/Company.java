@@ -18,7 +18,7 @@ import java.util.List;
  */
 public class Company {
 
-	private int nextCustomerId;
+	private long nextCustomerId;
 	private Catalog catalog;
 	private CustomerList customerList;
 	private long nextApplianceId;
