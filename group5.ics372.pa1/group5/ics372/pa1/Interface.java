@@ -85,9 +85,21 @@ public class Interface {
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					System.exit(0);
 			//----------------------------------------------------------------------------------
-				case 2:
-					System.out.println("To be implemented");
-					break;
+				// add a single customer to the customer list
+				// 1) The interface will ask for the customers Name, Address, and phone number
+				// 2) The three variables will be used to create a new customer object
+				// 3) The data is passed to the customer and added to the customer list
+				case 2: // -Anthony
+					System.out.println("Enter the customers information.");
+					System.out.print("Enter the customers name: ");
+					String customerName = scanner.next().strip();
+					System.out.print("Enter the customers address: ");
+					String customerAddress = scanner.next().strip();
+					System.out.print("Enter the customers phone number: ");
+					String customerPhoneNumber = scanner.next().strip();
+					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
+					System.out.println("Case 2 ran successfully. System exiting...");
+					System.exit(0);
 
 				case 3:
 					System.out.println("To be implemented");

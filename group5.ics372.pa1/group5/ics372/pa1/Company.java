@@ -18,8 +18,8 @@ public class Company {
 		this.customerList = new CustomerList();
 	}
 
-	public void addCustomer() {
-
+	public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
+		customerList.addCustomer(customerName, customerAddress,customerPhoneNumber);
 	}
 
 	//possibly change to boolean - chatchai

@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Customer {
+	private static int nextId = 1;
 	private int customerID;
 	private String name;
 	private String address;
@@ -16,6 +17,10 @@ public class Customer {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Customer(String customerName, String customerAddress, String customerPhoneNumber) {
+		this(nextId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
 	public int getCustomerID() {
@@ -55,8 +60,8 @@ public class Customer {
 
 	}
 
-	//WIP
-	//TODO implement removing charges after add the total charges
+	// WIP
+	// TODO implement removing charges after add the total charges
 	public double chargeAllRepairs() {
 		Iterator<Appliance> repairs = repairPlans.iterator();
 		double totalRepairCosts = 0;
