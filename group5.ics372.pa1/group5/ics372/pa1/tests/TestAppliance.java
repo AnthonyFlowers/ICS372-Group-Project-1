@@ -3,6 +3,12 @@ package group5.ics372.pa1.tests;
 import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.ClothDryers;
 
+/**
+ * Class for testing the Appliance classes
+ * 
+ * @author Group 5
+ *
+ */
 public class TestAppliance {
 
 	public static void main(String[] args) {
@@ -24,9 +30,9 @@ public class TestAppliance {
 			assert (appliance.getBrand().equals(brandName));
 			assert (appliance.getType().equals(modelType));
 			assert (appliance.getMonthlyPayment().equals(monthlyPayment));
-			System.out.println("Success: ClothDryer information was added and is correct.");
+			System.out.println("Success: Appliance information was added and is correct.");
 		} catch (AssertionError e) {
-			System.out.println("Failed: ClothDryer information was not added correctly.");
+			System.out.println("Failed: Appliance information was not added correctly.");
 			System.out.println(e.getStackTrace()[0]);
 		}
 	}
@@ -48,7 +54,7 @@ public class TestAppliance {
 		String applianceType = "ClothDryers";
 		String brandName = "Samsung";
 		Double monthlyPayment = 15.0;
-		ClothDryers appliance = new ClothDryers(applianceType, brandName, monthlyPayment);
+		ClothDryers appliance = new ClothDryers(1, applianceType, brandName, monthlyPayment);
 		return appliance;
 	}
 }

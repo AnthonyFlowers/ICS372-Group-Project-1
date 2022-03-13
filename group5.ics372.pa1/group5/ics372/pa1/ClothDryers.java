@@ -20,8 +20,8 @@ public class ClothDryers extends Appliance {
 	 *               this dryer
 	 * @see group5.ics372.pa1.Appliance#Appliance(String, String)
 	 */
-	public ClothDryers(String brandName, String modelType, Double monthlyPayment) {
-		super(brandName, modelType);
+	public ClothDryers(long id, String brandName, String modelType, Double monthlyPayment) {
+		super(id, brandName, modelType);
 		this.monthlyPayment = monthlyPayment;
 	}
 

@@ -5,6 +5,10 @@ import group5.ics372.pa1.Company;
 public class TestAddAppliance {
 
 	public static void main(String[] args) {
+		testAll();
+	}
+	
+	public static void testAll() {
 		testAddAppliance();
 	}
 

@@ -1,14 +1,23 @@
 package group5.ics372.pa1;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Scanner;
 
 public class Interface {
+	private final static String DATA_FILE = "company.dat";
+	private final static Scanner scanner = new Scanner(System.in);
 	private final static String[] applianceOptions = { "ClothWashers", "ClothDryers", "KitchenRanges", "DishWashers",
 			"Refrigerator", "Furnace" };
-	private final static Scanner scanner = new Scanner(System.in);
+	private static Company company;
 
 	public static void main(String[] args) {
-		Company company = new Company();
+		company = new Company();
 //		Scanner scnr = new Scanner(System.in);
 		int menuSelection = -1;
 
@@ -18,6 +27,7 @@ public class Interface {
 					// wait for // valid selection
 
 				try {
+					loadData();
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
 					System.out.println("1 : Add a single model");
@@ -53,7 +63,6 @@ public class Interface {
 					System.out.println("Exiting");
 					scanner.close();
 					System.exit(0);
-
 					// ----------------------------------------------------------------------------------
 					// add a single model into the Catalog's list
 					// 1) The interface will determine the, Class Name, BrandName, and ModelType
@@ -79,6 +88,7 @@ public class Interface {
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
 					System.out.println(
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
+
 					brandName = scanner.nextLine().strip();
 
 					System.out.println(
@@ -98,7 +108,7 @@ public class Interface {
 				// 2) The three variables will be used to create a new customer object
 				// 3) The data is passed to the customer and added to the customer list
 				case 2: // -Anthony
-					System.out.println("Enter the customers information.");
+					System.out.println("Adding a new customer.");
 					System.out.print("Enter the customers name: ");
 					String customerName = scanner.nextLine().strip();
 					System.out.print("Enter the customers address: ");
@@ -106,8 +116,7 @@ public class Interface {
 					System.out.print("Enter the customers phone number: ");
 					String customerPhoneNumber = scanner.next().strip();
 					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
-					System.out.println("Case 2 ran successfully. System exiting...");
-					System.exit(0);
+					System.out.println("Customer added successfully!");
 
 				case 3:
 					System.out.println("To be implemented");
@@ -153,8 +162,8 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
-				case 14:
-					System.out.println("To be implemented");
+				case 14: // -Anthony
+					saveData();
 					break;
 
 				case 15:
@@ -167,6 +176,26 @@ public class Interface {
 			}
 		} while (menuSelection != 0);
 		scanner.close();
+	}
+
+	/**
+	 * Method to save the current company data to stable storage -Anthony
+	 */
+	private static void saveData() {
+		System.out.println("Saving the current data!");
+		company.saveData(DATA_FILE);
+	}
+
+	/**
+	 * Method to load previously saved data from stable storage -Anthony
+	 */
+	private static void loadData() {
+		System.out.println("Would you like to try to load a data file from stable storage?");
+		System.out.print("Y|N");
+		String answer = scanner.nextLine();
+		if (answer.toLowerCase().equals("Y")) {
+			company.loadData(DATA_FILE);
+		}
 	}
 
 	private static Appliance getApplianceInfo() {
