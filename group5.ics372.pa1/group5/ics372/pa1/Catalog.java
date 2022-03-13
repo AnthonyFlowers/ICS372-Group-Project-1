@@ -34,8 +34,8 @@ public class Catalog {
 			applianceList.add(appliance);
 			return true;
 		} else {
-			System.out.println("Appliance with Brand:\"" + appliance.getBrand() + "\" and Model Type: \""
-					+ appliance.getType() + "\" already exist in the Catalog List.");
+			System.out.println("Appliance with Brand:\"" + appliance.getBrandName() + "\" and Model Type: \""
+					+ appliance.getModelType() + "\" already exist in the Catalog List.");
 			return false;
 		}
 
@@ -46,8 +46,8 @@ public class Catalog {
 	// else return false
 	private boolean doesApplianceExist(Appliance appliance) {
 		for (Appliance e : applianceList) {
-			if (e.getBrand().toUpperCase() == appliance.getBrand().toUpperCase()
-					&& e.getType().toUpperCase() == appliance.getType().toUpperCase()) {
+			if (e.getBrandName().toUpperCase() == appliance.getBrandName().toUpperCase()
+					&& e.getModelType().toUpperCase() == appliance.getModelType().toUpperCase()) {
 				return true;
 			}
 		}

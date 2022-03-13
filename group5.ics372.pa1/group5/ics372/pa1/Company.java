@@ -13,6 +13,9 @@ public class Company {
 	private final Catalog catalog;
 	private final CustomerList customerList;
 
+	/**
+	 * Initialize a company with a new default Catalog and CustomerList
+	 */
 	public Company() {
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
@@ -63,7 +66,7 @@ public class Company {
 		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
 			return new ClothWashers(brandName, modelName);
 		} else if (className.toUpperCase() == "ClothDryers".toUpperCase()) {
-			return new ClothDryers(brandName, modelName);
+			return new ClothDryers(brandName, modelName, 0.0);
 		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
 			return new KitchenRanges(brandName, modelName);
 		} else if (className.toUpperCase() == "DishWashers".toUpperCase()) {
@@ -75,6 +78,5 @@ public class Company {
 		// return new Refrigerator(brandName, modelName);
 		// }
 		return null;
-
 	}
 }

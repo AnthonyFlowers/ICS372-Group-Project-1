@@ -1,10 +1,32 @@
 package group5.ics372.pa1;
 
-public class ClothDryers extends Appliance{
+/**
+ * This class represents a ClothDryer appliance. Cloth dryers have a
+ * monthlyPayment for service plans
+ * 
+ * @author Group 5
+ *
+ */
+public class ClothDryers extends Appliance {
 
-	public ClothDryers(String brandName, String modelType) {
+	private final Double monthlyPayment;
+
+	/**
+	 * Initialize a new ClothDryer appliance
+	 * 
+	 * @param String brandName
+	 * @param String modelType
+	 * @param Double monthlyPayment - the monthly payment for the service plan of
+	 *               this dryer
+	 * @see group5.ics372.pa1.Appliance#Appliance(String, String)
+	 */
+	public ClothDryers(String brandName, String modelType, Double monthlyPayment) {
 		super(brandName, modelType);
-		// TODO Auto-generated constructor stub
+		this.monthlyPayment = monthlyPayment;
+	}
+
+	public Double getMonthlyPayment() {
+		return monthlyPayment;
 	}
 
 }
