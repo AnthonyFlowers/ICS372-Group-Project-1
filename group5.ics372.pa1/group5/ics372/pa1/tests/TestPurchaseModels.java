@@ -11,6 +11,8 @@ public class TestPurchaseModels {
 		company.addAppliance("ClothDryers", "Samsung", "Dryer");
 		System.out.println(company.getCustomers());
 		System.out.println(company.getAppliances());
+		System.out.println("Hello" == "Hello");
+		System.out.println("Hello".equalsIgnoreCase("hello"));
 	}
 
 }

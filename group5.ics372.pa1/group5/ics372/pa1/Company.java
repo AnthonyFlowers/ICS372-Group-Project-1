@@ -79,16 +79,15 @@ public class Company {
 	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName) {
 		System.out.println("Created class");
-		if (className.toUpperCase() == "ClothWashers".toUpperCase()) {
+		if ("ClothWashers".equalsIgnoreCase(className)) {
 			return new ClothWashers(nextApplianceId++, brandName, modelName);
-		} else if (className.toUpperCase().toString() == "ClothDryers".toUpperCase().toString()) {
-			System.out.println("Created dryer");
+		} else if ("ClothDryers".equalsIgnoreCase(className)) {
 			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
-		} else if (className.toUpperCase() == "KitchenRanges".toUpperCase()) {
+		} else if ("KitchenRanges".equalsIgnoreCase(className)) {
 			return new KitchenRanges(nextApplianceId++, brandName, modelName);
-		} else if (className.toUpperCase() == "DishWashers".toUpperCase()) {
+		} else if ("DishWashers".equalsIgnoreCase(className)) {
 			return new DishWashers(nextApplianceId++, brandName, modelName);
-		} else if (className.toUpperCase() == "Furnaces".toUpperCase()) {
+		} else if ("Furnaces".equalsIgnoreCase(className)) {
 			return new Furnaces(nextApplianceId++, brandName, modelName);
 		}
 		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
