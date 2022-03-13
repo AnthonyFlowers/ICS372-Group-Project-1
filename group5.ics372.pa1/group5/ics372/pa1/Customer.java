@@ -5,17 +5,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
-public class Customer implements Serializable{
+public class Customer implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
 
-	private final int customerID;
+	private final long customerID;
 	private String name;
 	private String address;
 	private String phoneNumber;
 	private List<Appliance> repairPlans;
 
-	public Customer(int customerID, String name, String address, String phoneNumber) {
+	public Customer(long customerID, String name, String address, String phoneNumber) {
 		super();
 		this.customerID = customerID;
 		this.name = name;
@@ -23,7 +23,7 @@ public class Customer implements Serializable{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public int getCustomerID() {
+	public long getCustomerID() {
 		return customerID;
 	}
 
@@ -74,9 +74,9 @@ public class Customer implements Serializable{
 	@Override
 	public String toString() {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(String.format("ID: %s | Name: %s", this.customerID, this.name));
-		stringBuilder.append("\nAddress: " + this.address);
-		stringBuilder.append("\nPhone Number: " + this.phoneNumber);
+		stringBuilder.append(String.format("ID: %s\t| Name: %s", this.customerID, this.name));
+		stringBuilder.append("\t| Address: " + this.address);
+		stringBuilder.append("\t| Phone Number: " + this.phoneNumber);
 		return stringBuilder.toString();
 	}
 
@@ -99,5 +99,4 @@ public class Customer implements Serializable{
 				&& Objects.equals(repairPlans, other.repairPlans);
 	}
 
-	
 }

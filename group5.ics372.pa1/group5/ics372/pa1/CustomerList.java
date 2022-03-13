@@ -16,6 +16,29 @@ public class CustomerList implements Serializable {
 	// Changed: private List<Customer> customerList;
 	private final List<Customer> customerList = new ArrayList<>();
 
+	/**
+	 * Checks if customers ID exists in customerList
+	 * 
+	 * @param customerID
+	 * @return
+	 */
+	public Customer search(long customerID) {
+		for (Customer customer : customerList) {
+			if (customerID == customer.getCustomerID()) {
+				System.out.println("Customer ID Found.");
+				return customer;
+			}
+		}
+		System.out.println("Customer ID Not Found.");
+		return null;
+	}
+
+	public void print() {
+		for (Customer customer : customerList) {
+			System.out.println(customer.toString());
+		}
+	}
+
 	public List<Customer> getCustomerList() {
 		return customerList;
 	}

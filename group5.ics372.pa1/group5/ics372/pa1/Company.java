@@ -33,18 +33,8 @@ public class Company {
 		this.customerList = new CustomerList();
 	}
 
-	/**
-	 * Add a new customer to the customer list
-	 * 
-	 * @param String customerName - the name of the customer
-	 * @param String customerAddress - the address of the customer
-	 * @param String customerPhoneNumber - the phone number of the customer
-	 */
-	public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
-		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
-	}
-
 	// possibly change to boolean - chatchai
+	// Process 1
 	/**
 	 * Add an appliance to the companies catalog
 	 * 
@@ -59,6 +49,32 @@ public class Company {
 			Appliance newApp = createClass(className, brandName, modelName);
 			catalog.addAppliance(newApp);
 		}
+	}
+
+	// Process 2
+	/**
+	 * Add a new customer to the customer list
+	 * 
+	 * @param String customerName - the name of the customer
+	 * @param String customerAddress - the address of the customer
+	 * @param String customerPhoneNumber - the phone number of the customer
+	 */
+	public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
+		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
+	}
+
+	// Process 3
+	public void addToInventory(long applianceID, int quantity) {
+		catalog.search(applianceID).addStock(quantity);
+	}
+
+	// Process 4 in progress
+	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
+//		if (customerList.search(customerID) && catalog.search(applianceID)) {
+//
+//		} else {
+//
+//		}
 	}
 
 	// First loop iterates through all customer
@@ -78,7 +94,6 @@ public class Company {
 	// Give this method the name of the class you want and it'd return the
 	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName) {
-		System.out.println("Created class");
 		if ("ClothWashers".equalsIgnoreCase(className)) {
 			return new ClothWashers(nextApplianceId++, brandName, modelName);
 		} else if ("ClothDryers".equalsIgnoreCase(className)) {
@@ -143,6 +158,14 @@ public class Company {
 			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		}
+	}
+
+	public void printCustomers() {
+		customerList.print();
+	}
+
+	public void printAppliances() {
+		catalog.print();
 	}
 
 	public List<Customer> getCustomers() {

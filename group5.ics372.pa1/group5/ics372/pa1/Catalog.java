@@ -41,9 +41,36 @@ public class Catalog implements Serializable {
 		return false;
 	}
 
+	/**
+	 * Checks if appliance ID exists in applianceList
+	 * 
+	 * @param applianceID
+	 * @return
+	 */
+	public Appliance search(long applianceID) {
+		for (Appliance appliance : applianceList) {
+			if (applianceID == appliance.getApplianceID()) {
+				System.out.println("Appliance ID Found.");
+				return appliance;
+			}
+		}
+		System.out.println("Appliance ID Not Found");
+		return null;
+	}
+
+	public void print() {
+		for (Appliance appliance : applianceList) {
+			System.out.println(appliance.toString());
+		}
+	}
+
 	public List<Appliance> getApplianceList() {
-		System.out.println("Getting to Catalog");
 		return applianceList;
+	}
+
+	@Override
+	public String toString() {
+		return "\n";
 	}
 
 }

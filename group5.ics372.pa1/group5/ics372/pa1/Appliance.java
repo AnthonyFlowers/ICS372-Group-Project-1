@@ -50,6 +50,10 @@ public abstract class Appliance implements Serializable {
 		this.price = price;
 	}
 
+	public long getApplianceID() {
+		return applianceID;
+	}
+
 	public double getPrice() {
 		return price;
 	}
@@ -114,10 +118,8 @@ public abstract class Appliance implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(String.format("ID: %s | BrandName: %s | ModelName: %s", this.applianceID, this.brandName,
-				this.modelType));
-		System.out.println("Getting to appliance");
-		return stringBuilder.toString();
+		return String.format("ID: %s\t| BrandName: %s\t| ModelName: %s \t| Stock: %d", this.applianceID, this.brandName,
+				this.modelType, this.getStock());
+
 	}
 }
