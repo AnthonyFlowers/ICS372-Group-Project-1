@@ -10,8 +10,11 @@ public class TestAddAppliance {
 
 	private static void testAddAppliance() {
 		Company company = new Company();
-		String applianceName = "Washer";
-		company.addAppliance(null, null, null);
+		String applianceName = "ClothWashers";
+		String brandName = "Samsung";
+		String modelName = "Super Washer";
+		company.addAppliance(applianceName, brandName, modelName);
+		System.out.println("Success: an appliance was added successfully.");
 	}
 
 }

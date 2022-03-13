@@ -10,7 +10,10 @@ public abstract class Appliance {
 	protected double repairPlan = 0; // added, "zero" means no repair plans
 
 	/**
-	 * Generic Constructor
+	 * Initialize a new appliance with a generated id
+	 * 
+	 * @param String brandName - the brand name of this appliance
+	 * @param String modelType - the model of this appliance
 	 */
 	public Appliance(String brandName, String modelType) {
 		addId();
@@ -22,6 +25,7 @@ public abstract class Appliance {
 
 	}
 
+	// Add an id to this appliance and increment the next id for unique ids
 	private void addId() {
 		this.id = nextId++;
 	}

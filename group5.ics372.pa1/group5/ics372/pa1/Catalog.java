@@ -35,8 +35,8 @@ public class Catalog {
 			applianceList.add(appliance);
 			return true;
 		} else {
-			System.out.println("Appliance with Brand:\"" + appliance.getBrand() + "\" and Model Type: \""
-					+ appliance.getType() + "\" already exist in the Catalog List.");
+			System.out.println("Appliance with Brand:\"" + appliance.getBrandName() + "\" and Model Type: \""
+					+ appliance.getModelType() + "\" already exist in the Catalog List.");
 			return false;
 		}
 
