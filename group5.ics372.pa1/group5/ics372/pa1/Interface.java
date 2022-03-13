@@ -111,10 +111,13 @@ public class Interface {
 					System.out.println("Customer added successfully!");
 
 				case 3:
-					String customerID;
 					long applianceID;
-
-					System.out.println("To be implemented");
+					int quantity;
+					System.out.println("Enter Appliance ID.");
+					applianceID = Long.parseLong(scanner.nextLine());
+					System.out.println("Enter quantity to add to stock.");
+					quantity = scanner.nextInt();
+					company.addToInventory(applianceID, quantity);
 					break;
 
 				case 4:
