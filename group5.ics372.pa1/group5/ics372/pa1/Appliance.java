@@ -119,8 +119,8 @@ public abstract class Appliance implements Serializable {
 	 */
 	@Override
 	public String toString() {
-		return String.format("ID: %s\t| BrandName: %s\t| ModelType: %s \t| Stock: %d", this.applianceID, this.brandName,
-				this.modelType, this.getStock());
+		return String.format("ID: %s\t| BrandName: %s\t| ModelType: %s\t| Price: %.2f\t| Stock: %d", this.applianceID,
+				this.brandName, this.modelType, this.price, this.getStock());
 
 	}
 }

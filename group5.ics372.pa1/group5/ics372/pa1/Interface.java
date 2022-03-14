@@ -69,7 +69,8 @@ public class Interface {
 					String modelType;
 
 					System.out.println("Which Appliance would you like to add?");
-					System.out.println("| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
+					System.out.println(
+							"| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 					try {
 						applianceSelect += scanner.nextInt();
 					} catch (Exception e) {
@@ -77,34 +78,36 @@ public class Interface {
 					}
 					scanner.nextLine(); // use to consume \n
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
 					brandName = scanner.nextLine().strip();
 
-					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
+					System.out.println(
+							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
 					System.out.println("Appliance selected: " + applianceSelect);
-					switch(applianceSelect) {
-					    case 5:
-					        // get furnace output
-		                    System.out.println("Enter the maximum output in BTUs: ");
-		                    attribute = scanner.nextLine().strip();
-					        break;
-					    case 4:
-					        // get refrigerator capacity
-                            System.out.println("Enter the capacity in liters: ");
-                            attribute = scanner.nextLine().strip();
-                            break;
-					    case 1:
-					    case 0:
-					        // get repair plan cost
-                            System.out.println("Enter the repair plan monthly cost: ");
-                            attribute = scanner.nextLine().strip();
-                            break;
-                        default:
-                            break;
+					switch (applianceSelect) {
+					case 5:
+						// get furnace output
+						System.out.println("Enter the maximum output in BTUs: ");
+						attribute = scanner.nextLine().strip();
+						break;
+					case 4:
+						// get refrigerator capacity
+						System.out.println("Enter the capacity in liters: ");
+						attribute = scanner.nextLine().strip();
+						break;
+					case 1:
+					case 0:
+						// get repair plan cost
+						System.out.println("Enter the repair plan monthly cost: ");
+						attribute = scanner.nextLine().strip();
+						break;
+					default:
+						break;
 					}
 
-                    company.addAppliance(applianceOptions[applianceSelect], brandName, modelType, attribute);
+					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
 				// ----------------------------------------------------------------------------------
@@ -163,11 +166,7 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
-				case 10:
-					System.out.println("To be implemented");
-					break;
-
-				case 11:
+				case 10: //
 					System.out.println("To be implemented");
 //					prints all appliances
 					company.printAppliances();
@@ -175,15 +174,16 @@ public class Interface {
 //					also needs a prompt to choose between the two.
 					break;
 
-				case 12:
-					// Just need to add details about service plan to Customer toString method.
-					// - Vontha
-					System.out.println("To be implemented");
+				case 11:
+
+					break;
+
+				case 12: // Finished - Vontha
 					company.printCustomers();
 					break;
 
-				case 13:
-					System.out.println("To be implemented");
+				case 13: // Finished - Vontha
+					company.printBackOrders();
 					break;
 
 				case 14: // -Anthony

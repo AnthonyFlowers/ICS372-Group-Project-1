@@ -83,6 +83,7 @@ public class Customer implements Serializable {
 		stringBuilder.append(String.format("ID: %s\t| Name: %s", this.customerID, this.name));
 		stringBuilder.append("\t| Address: " + this.address);
 		stringBuilder.append("\t| Phone Number: " + this.phoneNumber);
+		stringBuilder.append("\t| Service Plan: " + this.getRepairPlans());
 		return stringBuilder.toString();
 	}
 

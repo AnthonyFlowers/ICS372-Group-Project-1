@@ -16,8 +16,9 @@ public class BackOrders {
 
 	@Override
 	public String toString() {
-		return "BackOrder ID " + backorderID + "|\tCustomer ID " + customer.getCustomerID() + "|\tAppliance ID "
-				+ appliance.getApplianceID() + "|\tQuantity " + quantity;
+		return "BackOrder ID " + backorderID + "|\tBrand: " + appliance.getBrand() + "|\tModel:" + appliance.getType()
+				+ "|\tCustomer Name: " + customer.getName() + "|\tCustomer ID " + customer.getCustomerID()
+				+ "|\tQuantity " + quantity;
 	}
 
 }
