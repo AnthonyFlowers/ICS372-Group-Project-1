@@ -37,7 +37,6 @@ public class Company {
 		this.backOrdersList = new BackOrdersList();
 	}
 
-	// possibly change to boolean - chatchai
 	// Process 1
 	/**
 	 * Add an appliance to the companies catalog
@@ -117,6 +116,7 @@ public class Company {
 		return totalRepairCharges;
 	}
 
+	// Process 1
 	// This will be used in Company.java to create the appropriate classes
 	// Give this method the name of the class you want and it'd return the
 	// appropriate class
@@ -192,9 +192,28 @@ public class Company {
 		customerList.print();
 	}
 
+	// Process 10
 	public void printAppliances() {
 		System.out.println("Appliances:");
 		catalog.print();
+	}
+
+	// Process 10
+	// applianceObj.getClass().toString().replaceFirst("class group5.ics372.pa1.",
+	// "")
+	public void printSpecificAppliances(String className) {
+		System.out.println(className + " Appliances: ");
+
+		// 1) runs though catalog.applianceList
+		// 2) convert's its actualType's name into string and compares it with the input
+		// String className
+		// 3) if match then print display of the appliance's details
+		for (Appliance app : catalog.getApplianceList()) {
+			String currentAppNameStr = app.getClass().toString().replaceFirst("class group5.ics372.pa1.", "");
+			if (currentAppNameStr.toUpperCase().equals(className.toUpperCase())) {
+				System.out.println(app.toString());
+			}
+		}
 	}
 
 	public void printBackOrders() {

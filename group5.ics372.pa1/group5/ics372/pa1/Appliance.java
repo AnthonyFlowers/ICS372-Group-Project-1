@@ -113,10 +113,6 @@ public abstract class Appliance implements Serializable {
 		return this.backOrder;
 	}
 
-	/**
-	 * Left blank for now. Need to review project guidelines on what the toString
-	 * should do again
-	 */
 	@Override
 	public String toString() {
 		return String.format("ID: %s\t| BrandName: %s\t| ModelType: %s\t| Price: %.2f\t| Stock: %d", this.applianceID,

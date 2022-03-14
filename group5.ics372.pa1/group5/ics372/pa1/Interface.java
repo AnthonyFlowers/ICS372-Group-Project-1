@@ -72,7 +72,7 @@ public class Interface {
 					System.out.println(
 							"| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 					try {
-						applianceSelect += scanner.nextInt();
+						applianceSelect = scanner.nextInt() - 1;
 					} catch (Exception e) {
 						System.out.println("Case 1 Error");
 					}
@@ -166,10 +166,40 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
-				case 10: // Half Done - Vontha
-					System.out.println("To be implemented");
-//					prints all appliances
-					company.printAppliances();
+				// Displays a listing of all Appliance or Specific Appliances
+				// User will be prompted to select all or a specific option
+				case 10: // Half Done - Vontha, -Ill finish it -Xiong
+					int selectOptionCaseTen = 0;
+					System.out.println("Would you like display all or a specific Appliance?");
+					System.out.println("1. Select All | 2. Select a Specific Appliance");
+
+					try {
+						selectOptionCaseTen = scanner.nextInt();
+					} catch (Exception e) {
+						System.out.println("Case 10 Error");
+					}
+					// option 1, list all
+					// calls company.printApliances();
+					if (selectOptionCaseTen == 1) {
+						company.printAppliances();
+					}
+					// option 2
+					// calls company.printSpecificAppliances(int option);
+					else if (selectOptionCaseTen == 2) {
+						selectOptionCaseTen = 0;
+						System.out.println("Which Appliance would you like to display?");
+						System.out.println(
+								"| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
+						selectOptionCaseTen = scanner.nextInt() - 1;
+
+						if (selectOptionCaseTen >= 0 && selectOptionCaseTen <= 6) {
+							company.printSpecificAppliances(applianceOptions[selectOptionCaseTen]);
+						} else {
+							System.out.println("You must select from options 1.- 6.");
+						}
+					} else {
+						System.out.println("You must select from options 1. or 2.");
+					}
 //					needs another method to print only specific appliance type Ex. (ClothWashers).
 //					also needs a prompt to choose between the two.
 					break;
