@@ -144,12 +144,15 @@ public class Company {
 	 * 
 	 * @param String dataFile - the path to the file to load from
 	 */
+	// We can suppress this because we know the data type that will be gotten
+	@SuppressWarnings("unchecked")
 	public void loadData(String dataFile) {
 		try (FileInputStream fin = new FileInputStream(new File(dataFile));
 				ObjectInputStream oin = new ObjectInputStream(fin)) {
 			this.catalog = (Catalog) oin.readObject();
 			this.customerList = (CustomerList) oin.readObject();
 			this.nextCustomerId = (long) oin.readObject();
+			this.catalog.setApplianceList((List<Appliance>) oin.readObject());
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not find the data file...");
 			System.out.println(e.getStackTrace()[0]);
@@ -176,6 +179,7 @@ public class Company {
 			oos.writeObject(this.catalog);
 			oos.writeObject(this.customerList);
 			oos.writeObject(this.nextCustomerId);
+			oos.writeObject(this.catalog.getApplianceList());
 		} catch (FileNotFoundException e) {
 			System.out.println("The data file was not found...");
 			System.out.println(e.getStackTrace()[0]);

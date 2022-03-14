@@ -61,8 +61,24 @@ public class Catalog implements Serializable {
 		}
 	}
 
+	/**
+	 * Get the appliance list stored in the companies catalog
+	 * 
+	 * @return List<Applaince> applianceList - the list of appliances in this
+	 *         companies catalog
+	 */
 	public List<Appliance> getApplianceList() {
 		return applianceList;
+	}
+
+	/**
+	 * Set this catalogs applianceList
+	 * 
+	 * @param List<Applaince> applianceList - the value to set this catalogs
+	 *                        applianceList to
+	 */
+	public void setApplianceList(List<Appliance> applianceList) {
+		Catalog.applianceList = applianceList;
 	}
 
 	@Override

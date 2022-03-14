@@ -33,9 +33,9 @@ public class TestSaveLoad {
 		Company company = new Company();
 		company.addCustomer("Anthony", "Somewhere", "Number");
 		company.addCustomer("John", "Somewhere else", "Another number");
-		List<Customer> companyList = company.getCustomers();
-		testCustomers = new ArrayList<>(Arrays.asList(new Customer[companyList.size()]));
-		Collections.copy(testCustomers, companyList);
+		List<Customer> customerList = company.getCustomers();
+		testCustomers = new ArrayList<>(Arrays.asList(new Customer[customerList.size()]));
+		Collections.copy(testCustomers, customerList);
 		try {
 		company.saveData("test.dat");
 		System.out.println("Success: saved some test data to the test.dat file!");
@@ -50,11 +50,11 @@ public class TestSaveLoad {
 	private static void testLoadData() {
 		Company company = new Company();
 		company.loadData("test.dat");
-		List<Customer> companyList = company.getCustomers();
+		List<Customer> customerList = company.getCustomers();
 		try {
-			assert (testCustomers.size() == companyList.size());
+			assert (testCustomers.size() == customerList.size());
 			for (int index = 0; index < testCustomers.size(); index++) {
-				assert (testCustomers.get(index).equals(companyList.get(index)));
+				assert (testCustomers.get(index).equals(customerList.get(index)));
 			}
 			System.out.println("Success: loaded test.dat file and the data is correct!");
 		} catch (AssertionError e) {
