@@ -146,7 +146,7 @@ public class Interface {
 					company.purchaseAppliances(customerID, applianceID, quantity);
 					break;
 
-				case 5:
+				case 5: // Working on - Chatchai
 					System.out.println("To be implemented");
 					break;
 
