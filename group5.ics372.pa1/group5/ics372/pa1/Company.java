@@ -19,9 +19,11 @@ import java.util.List;
 public class Company {
 
 	private long nextCustomerId;
+	private long nextApplianceId;
+	private long nextBackOrderId;
 	private Catalog catalog;
 	private CustomerList customerList;
-	private long nextApplianceId;
+	private BackOrdersList backOrdersList;
 
 	/**
 	 * Initialize a company with a new default Catalog and CustomerList
@@ -29,8 +31,10 @@ public class Company {
 	public Company() {
 		this.nextApplianceId = 1;
 		this.nextCustomerId = 1;
+		this.nextBackOrderId = 1;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
+		this.backOrdersList = new BackOrdersList();
 	}
 
 	// possibly change to boolean - chatchai
@@ -63,6 +67,10 @@ public class Company {
 		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
+	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
+		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
+	}
+
 	// Process 3
 	public void addToInventory(long applianceID, int quantity) {
 		Appliance appliance = catalog.search(applianceID);
@@ -79,7 +87,7 @@ public class Company {
 		Appliance appliance = catalog.search(applianceID);
 		if (customer != null && appliance != null) {
 			if (appliance.removeStock(quantity)) {
-				customer.addRepairPlan(appliance);
+//				customer.addRepairPlan(appliance);
 				System.out.println("Purchase completed.");
 			} else {
 				System.out.println("Not enough stock.");
