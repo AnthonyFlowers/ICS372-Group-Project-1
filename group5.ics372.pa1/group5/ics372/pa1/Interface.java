@@ -110,7 +110,8 @@ public class Interface {
 					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
 					System.out.println("Customer added successfully!");
 
-				case 3:
+				case 3: // Finished - Vontha
+
 					System.out.println("Enter Appliance ID.");
 					long applianceID = scanner.nextLong();
 					System.out.println("Enter quantity to add to stock.");
@@ -118,16 +119,15 @@ public class Interface {
 					company.addToInventory(applianceID, quantity);
 					break;
 
-				case 4:
-					// Purchase one+ model for a customer.
-//					System.out.println("Enter Customer ID.");
-//					customerID = scanner.nextLine();
-//					System.out.println("Enter Appliance ID.");
-//					applianceID = scanner.nextLong();
-//					System.out.println("Enter quantity to add to stock.");
-//					quantity = scanner.nextInt();
-//					company.purchaseAppliances(customerID, applianceID, quantity);
-					System.out.println("To be implemented");
+				case 4: // Finished - Vontha
+
+					System.out.println("Enter Customer ID.");
+					long customerID = scanner.nextLong();
+					System.out.println("Enter Appliance ID.");
+					applianceID = scanner.nextLong();
+					System.out.println("Enter quantity to purchase.");
+					quantity = scanner.nextInt();
+					company.purchaseAppliances(customerID, applianceID, quantity);
 					break;
 
 				case 5:

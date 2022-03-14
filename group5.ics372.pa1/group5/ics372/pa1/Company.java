@@ -67,9 +67,9 @@ public class Company {
 		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
-	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
-		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
-	}
+//	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
+//		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
+//	}
 
 	// Process 3
 	public void addToInventory(long applianceID, int quantity) {
@@ -85,13 +85,20 @@ public class Company {
 	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
 		Customer customer = customerList.search(customerID);
 		Appliance appliance = catalog.search(applianceID);
-		if (customer != null && appliance != null) {
+		if (customer != null && appliance != null && appliance.canBackOrder()) {
 			if (appliance.removeStock(quantity)) {
-//				customer.addRepairPlan(appliance);
+				customer.addAppliance(appliance);
 				System.out.println("Purchase completed.");
 			} else {
-				System.out.println("Not enough stock.");
+				System.out.println(appliance.getStock() + " appliances delivered.");
+				System.out.println(quantity - appliance.getStock() + " appliances have been backordered.");
+				System.out.println("BackOrder created.\nID = " + nextBackOrderId);
+				backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity - appliance.getStock());
+				customer.addAppliance(appliance);
+				appliance.removeStock(appliance.getStock());
 			}
+		} else if (appliance.canBackOrder() == false) {
+			System.out.println("This appliance cannot be backordered.");
 		} else {
 			System.out.println("Invalid customer or appliance id.");
 		}
@@ -190,9 +197,18 @@ public class Company {
 		catalog.print();
 	}
 
-	public List<Customer> getCustomers() {
+	public void printBackOrders() {
+		System.out.println("BackOrders:");
+		backOrdersList.print();
+	}
 
+	public List<Customer> getCustomers() {
 		return customerList.getCustomerList();
+	}
+
+	public BackOrdersList getBackOrdersList() {
+		System.out.println("Company");
+		return backOrdersList;
 	}
 
 	public List<Appliance> getAppliances() {

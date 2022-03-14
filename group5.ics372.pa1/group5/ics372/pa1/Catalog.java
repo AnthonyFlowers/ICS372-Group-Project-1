@@ -23,10 +23,7 @@ public class Catalog implements Serializable {
 	}
 
 	public void addAppliance(Appliance appliance) {
-//		if (!applianceAlreadyIn(appliance)) {
 		applianceList.add(appliance);
-//		}
-
 	}
 
 	public boolean applianceAlreadyIn(Appliance appliance) {

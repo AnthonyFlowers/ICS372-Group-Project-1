@@ -4,13 +4,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BackOrdersList {
-	private static List<BackOrders> backOrdersList = new ArrayList<>();
+	private List<BackOrders> backOrdersList;
 
-	public static List<BackOrders> getBackOrdersList() {
+	public BackOrdersList() {
+		this.backOrdersList = new ArrayList<BackOrders>();
+	}
+
+	public List<BackOrders> getBackOrdersList() {
+		System.out.println("BackOrdersList");
 		return backOrdersList;
 	}
 
 	public void addBackOrder(long backOrderId, Customer customer, Appliance appliance, int quantity) {
-		this.backOrdersList.add(new BackOrders(backOrderId, customer, appliance, quantity));	
+		backOrdersList.add(new BackOrders(backOrderId, customer, appliance, quantity));
+	}
+
+	public void print() {
+		for (BackOrders backOrders : backOrdersList) {
+			System.out.println(backOrders.toString());
+		}
 	}
 }

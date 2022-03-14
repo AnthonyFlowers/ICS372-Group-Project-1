@@ -18,6 +18,7 @@ public abstract class Appliance implements Serializable {
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected double repairPlan = 0; // added, "zero" means no repair plans
+	protected boolean backOrder;
 
 	/**
 	 * Initialize a new appliance with a generated id
@@ -29,6 +30,7 @@ public abstract class Appliance implements Serializable {
 		this.applianceID = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
+		this.backOrder = true;
 		// this.stock = stock; //initialize to methods below, not in constructor
 		// this.repairPlan = repairPlan; //initialize to methods below, not in
 		// constructor
@@ -108,7 +110,7 @@ public abstract class Appliance implements Serializable {
 	 * TODO
 	 */
 	public boolean canBackOrder() {
-		return false;
+		return this.backOrder;
 	}
 
 	/**

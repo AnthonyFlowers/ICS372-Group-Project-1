@@ -4,7 +4,7 @@ public class ClothWashers extends Appliance {
 
 	public ClothWashers(long id, String brandName, String modelType) {
 		super(id, brandName, modelType);
-		
+
 	}
 
 }

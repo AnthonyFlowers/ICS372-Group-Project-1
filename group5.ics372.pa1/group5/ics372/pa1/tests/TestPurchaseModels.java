@@ -18,13 +18,15 @@ public class TestPurchaseModels {
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addAppliance("ClothDryers", "Samsung", "Dryer");
 		company.addAppliance("ClothWashers", "Samsung", "Washer");
+		company.addAppliance("Furnaces", "Samsung", "Furnace");
 		company.addToInventory(2, 2);
 		company.printCustomers();
 		company.printAppliances();
-		company.purchaseAppliances(1, 2, 3);
-		company.purchaseAppliances(1, 2, 1);
+		company.purchaseAppliances(1, 2, 5);
+		company.purchaseAppliances(2, 3, 4);
 //		company.purchaseAppliances(1, 0, 0);
 		company.printAppliances();
+		company.printBackOrders();
 	}
 
 }

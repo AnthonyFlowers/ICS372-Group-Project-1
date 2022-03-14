@@ -1,6 +1,7 @@
 package group5.ics372.pa1;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
@@ -13,6 +14,7 @@ public class Customer implements Serializable {
 	private String name;
 	private String address;
 	private String phoneNumber;
+	private List<Appliance> customerAppliances;
 	private List<Appliance> repairPlans;
 
 	public Customer(long nextCustomerId, String name, String address, String phoneNumber) {
@@ -21,6 +23,7 @@ public class Customer implements Serializable {
 		this.name = name;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
+		this.customerAppliances = new ArrayList<Appliance>();
 	}
 
 	public long getCustomerID() {
@@ -57,7 +60,10 @@ public class Customer implements Serializable {
 
 	public void addRepairPlan(Appliance appliance) {
 		this.repairPlans.add(appliance);
+	}
 
+	public void addAppliance(Appliance appliance) {
+		customerAppliances.add(appliance);
 	}
 
 	// WIP
