@@ -19,6 +19,26 @@ public class BackOrdersList {
 		backOrdersList.add(new BackOrders(backOrderId, customer, appliance, quantity));
 	}
 
+	// Process 5
+	// WIP - Chatchai
+	public BackOrders findWithCustomerID() {
+		for (BackOrders tempBackorders : backOrdersList) {
+
+		}
+		return null;
+	}
+
+	// Process 5
+	// WIP -Chatchai
+	// !Warning! This method will immediately remove a backorder without checks!
+	public boolean removeBackOrder(long backOrderID) {
+		for (BackOrders tempBackOrders : backOrdersList) {
+
+		}
+
+		return false;
+	}
+
 	public void print() {
 		for (BackOrders backOrders : backOrdersList) {
 			System.out.println(backOrders.toString());

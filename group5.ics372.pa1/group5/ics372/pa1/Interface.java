@@ -146,8 +146,20 @@ public class Interface {
 					company.purchaseAppliances(customerID, applianceID, quantity);
 					break;
 
-				case 5: // Working on - Chatchai
-					System.out.println("To be implemented");
+				// WIP - Chatchai
+				// actor inputs customerID
+				// system searches for backorders with customerID
+				// system checks if the stock for that appliance is available
+				// if available then, company will subtract from inventory to fulfill order and
+				// give system prompt
+				case 5:
+					System.out.println("Initiate a Backorder: ");
+					System.out.println("Please enter the ID of the Customer...");
+					// input customerID
+					System.out.println("The backorders for this customer are:");
+					// display customer backorders
+
+					System.out.println();
 					break;
 
 				case 6:
@@ -166,9 +178,10 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
+				// Finished - Vontha, Chatchai
 				// Displays a listing of all Appliance or Specific Appliances
 				// User will be prompted to select all or a specific option
-				case 10: // Half Done - Vontha, -Ill finish it -Xiong
+				case 10:
 					int selectOptionCaseTen = 0;
 					System.out.println("Would you like display all or a specific Appliance?");
 					System.out.println("1. Select All | 2. Select a Specific Appliance");
