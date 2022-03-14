@@ -19,11 +19,9 @@ import java.util.List;
 public class Company {
 
 	private long nextCustomerId;
-	private long nextApplianceId;
-	private long nextBackOrderId;
 	private Catalog catalog;
 	private CustomerList customerList;
-	private BackOrdersList backOrdersList;
+	private long nextApplianceId;
 
 	/**
 	 * Initialize a company with a new default Catalog and CustomerList
@@ -31,10 +29,8 @@ public class Company {
 	public Company() {
 		this.nextApplianceId = 1;
 		this.nextCustomerId = 1;
-		this.nextBackOrderId = 1;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
-		this.backOrdersList = new BackOrdersList();
 	}
 
 	// possibly change to boolean - chatchai
@@ -46,11 +42,12 @@ public class Company {
 	 * @param String brandName - the brand of the appliance
 	 * @param String modelName - the model of the appliance
 	 */
-	public void addAppliance(String className, String brandName, String modelName) {
+	public void addAppliance(String className, String brandName, String modelName, String attribute) {
 		if (className == null || brandName == null || modelName == null)
 			System.out.println("No null inputs in adding model");
 		else {
-			Appliance newApp = createClass(className, brandName, modelName);
+			
+		    Appliance newApp = createClass(className, brandName, modelName, attribute);
 			catalog.addAppliance(newApp);
 		}
 	}
@@ -67,10 +64,6 @@ public class Company {
 		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
-	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
-		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
-	}
-
 	// Process 3
 	public void addToInventory(long applianceID, int quantity) {
 		Appliance appliance = catalog.search(applianceID);
@@ -83,18 +76,11 @@ public class Company {
 
 	// Process 4 in progress
 	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
-		Customer customer = customerList.search(customerID);
-		Appliance appliance = catalog.search(applianceID);
-		if (customer != null && appliance != null) {
-			if (appliance.removeStock(quantity)) {
-//				customer.addRepairPlan(appliance);
-				System.out.println("Purchase completed.");
-			} else {
-				System.out.println("Not enough stock.");
-			}
-		} else {
-			System.out.println("Invalid customer or appliance id.");
-		}
+//		if (customerList.search(customerID) && catalog.search(applianceID)) {
+//
+//		} else {
+//
+//		}
 	}
 
 	// First loop iterates through all customer
@@ -113,21 +99,21 @@ public class Company {
 	// This will be used in Company.java to create the appropriate classes
 	// Give this method the name of the class you want and it'd return the
 	// appropriate class
-	private Appliance createClass(String className, String brandName, String modelName) {
+	private Appliance createClass(String className, String brandName, String modelName, String attribute) {
 		if ("ClothWashers".equalsIgnoreCase(className)) {
-			return new ClothWashers(nextApplianceId++, brandName, modelName);
+			return new ClothWashers(nextApplianceId++, brandName, modelName, Double.parseDouble(attribute));
 		} else if ("ClothDryers".equalsIgnoreCase(className)) {
-			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
+			return new ClothDryers(nextApplianceId++, brandName, modelName, Double.parseDouble(attribute));
 		} else if ("KitchenRanges".equalsIgnoreCase(className)) {
 			return new KitchenRanges(nextApplianceId++, brandName, modelName);
 		} else if ("DishWashers".equalsIgnoreCase(className)) {
 			return new DishWashers(nextApplianceId++, brandName, modelName);
 		} else if ("Furnaces".equalsIgnoreCase(className)) {
-			return new Furnaces(nextApplianceId++, brandName, modelName);
+			return new Furnaces(nextApplianceId++, brandName, modelName, Integer.parseInt(attribute));
 		}
-		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
-		// return new Refrigerator(brandName, modelName);
-		// }
+		else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
+		    //return new Refrigerator(nextApplianceId++, brandName, modelName, Integer.parseInt(attribute));
+		}
 		System.out.println("Failed to create class");
 		return null;
 	}
