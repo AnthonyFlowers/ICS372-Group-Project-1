@@ -16,8 +16,9 @@ public abstract class Appliance implements Serializable {
 	private String brandName;
 	private String modelType;
 	protected double price;
-	protected int stock = 0; // reffered to as inventory in "instructions"
+	protected int stock = 0; // referred to as inventory in "instructions"
 	protected double repairPlan = 0; // added, "zero" means no repair plans
+	protected int attributeValue = 0; // 0 means no attribute for appliance type
 
 	/**
 	 * Initialize a new appliance with a generated id
@@ -29,13 +30,37 @@ public abstract class Appliance implements Serializable {
 		this.applianceID = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
-		// this.stock = stock; //initialize to methods below, not in constructor
-		// this.repairPlan = repairPlan; //initialize to methods below, not in
-		// constructor
-
 	}
 
-	// aka addRepairPlan()
+    /**
+     * Initialize a new appliance with a generated id
+     * 
+     * @param String brandName - the brand name of this appliance
+     * @param String modelType - the model of this appliance
+     * @param long attribute   - the capacity or max output value for this type of appliance
+     */
+    public Appliance(long id, String brandName, String modelType, int attribute) {
+        this.applianceID = id;
+        this.brandName = brandName;
+        this.modelType = modelType;
+        this.attributeValue = attribute;
+    }
+
+    /**
+     * Initialize a new appliance with a generated id
+     * 
+     * @param String brandName - the brand name of this appliance
+     * @param String modelType - the model of this appliance
+     * @param double attribute - the monthly cost of the repair plan
+     */
+    public Appliance(long id, String brandName, String modelType, double attribute) {
+        this.applianceID = id;
+        this.brandName = brandName;
+        this.modelType = modelType;
+        this.repairPlan = attribute;
+    }
+
+    // aka addRepairPlan()
 	public void addRepairCharges(double newRepairCharges) {
 		this.repairPlan = newRepairCharges;
 	}
@@ -90,11 +115,11 @@ public abstract class Appliance implements Serializable {
 	 * true then subtract removeAmount from Stock. Then return true #2: Else no
 	 * operation performed, return false
 	 * 
-	 * @param removeAmount
+	 * @param addAmount
 	 */
 	public boolean removeStock(int removeAmount) {
 		// #1
-		if (stock - removeAmount >= 0) {
+		if (removeAmount - stock >= 0) {
 			this.stock -= removeAmount;
 			return true;
 		}

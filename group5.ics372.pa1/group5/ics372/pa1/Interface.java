@@ -6,7 +6,7 @@ public class Interface {
 	private final static String DATA_FILE = "company.dat";
 	private final static Scanner scanner = new Scanner(System.in);
 	private final static String[] applianceOptions = { "ClothWashers", "ClothDryers", "KitchenRanges", "DishWashers",
-			"Refrigerator", "Furnace" };
+			"Refrigerators", "Furnaces" };
 	private static Company company;
 
 	public static void main(String[] args) {
@@ -38,7 +38,7 @@ public class Interface {
 					System.out.println("15 : Help");
 
 					menuSelection = scanner.nextInt();
-					// scanner.nextLine();
+					scanner.nextLine();
 
 				} catch (Exception e) {
 					System.out.println("Error encountered");
@@ -64,34 +64,47 @@ public class Interface {
 					// Company
 				case 1: // I'll do this one - Chatchai
 					int applianceSelect = -1;
+					String attribute = null;
 					String brandName;
 					String modelType;
 
 					System.out.println("Which Appliance would you like to add?");
-					System.out.println(
-							"| 1.ClothWashers | 2.ClothDryers | 3.KitchenRanges | 4.DishWashers | 5.Refrigerator | 6.Furnace |");
+					System.out.println("| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 					try {
 						applianceSelect += scanner.nextInt();
-						// scanner.close();
 					} catch (Exception e) {
 						System.out.println("Case 1 Error");
 					}
 					scanner.nextLine(); // use to consume \n
 					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
-					System.out.println(
-							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
-
+					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
 					brandName = scanner.nextLine().strip();
 
-					System.out.println(
-							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
+					System.out.println("Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
+					System.out.println("Appliance selected: " + applianceSelect);
+					switch(applianceSelect) {
+					    case 5:
+					        // get furnace output
+		                    System.out.println("Enter the maximum output in BTUs: ");
+		                    attribute = scanner.nextLine().strip();
+					        break;
+					    case 4:
+					        // get refrigerator capacity
+                            System.out.println("Enter the capacity in liters: ");
+                            attribute = scanner.nextLine().strip();
+                            break;
+					    case 1:
+					    case 0:
+					        // get repair plan cost
+                            System.out.println("Enter the repair plan monthly cost: ");
+                            attribute = scanner.nextLine().strip();
+                            break;
+                        default:
+                            break;
+					}
 
-					// System.out.println("The Brand Name is: " + brandName);
-					// System.out.println("The Model Type is: " + modelType);
-					// System.out.println("applianceOptions: " + applianceOptions[applianceSelect]);
-					// System.out.println("applianceSelect: " + applianceOptions[applianceSelect]);
-					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
+                    company.addAppliance(applianceOptions[applianceSelect], brandName, modelType, attribute);
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
 				// ----------------------------------------------------------------------------------
@@ -201,8 +214,7 @@ public class Interface {
 	 * Method to load previously saved data from stable storage -Anthony
 	 */
 	private static void loadData() {
-		System.out.println("Would you like to try to load a data file from stable storage?");
-		System.out.print("Y|N\n");
+		System.out.print("Would you like to try to load a data file from stable storage [Y/N]? ");
 		String answer = scanner.nextLine();
 		if (answer.toLowerCase().equals("Y")) {
 			company.loadData(DATA_FILE);
