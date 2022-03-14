@@ -65,7 +65,12 @@ public class Company {
 
 	// Process 3
 	public void addToInventory(long applianceID, int quantity) {
-		catalog.search(applianceID).addStock(quantity);
+		Appliance appliance = catalog.search(applianceID);
+		if (appliance == null) {
+			System.out.println("Cannot add stock.");
+		} else {
+			appliance.addStock(quantity);
+		}
 	}
 
 	// Process 4 in progress

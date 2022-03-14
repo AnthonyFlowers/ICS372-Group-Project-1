@@ -18,7 +18,7 @@ public class TestPurchaseModels {
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addAppliance("ClothDryers", "Samsung", "Dryer");
 		company.addAppliance("ClothWashers", "Samsung", "Washer");
-		company.addToInventory(1, 2);
+		company.addToInventory(2, 2);
 		company.printCustomers();
 		company.printAppliances();
 		company.purchaseAppliances(1, 2, 0);
