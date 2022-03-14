@@ -149,7 +149,7 @@ public class Company {
 				ObjectInputStream oin = new ObjectInputStream(fin)) {
 			this.catalog = (Catalog) oin.readObject();
 			this.customerList = (CustomerList) oin.readObject();
-			this.nextCustomerId = (int) oin.readObject();
+			this.nextCustomerId = (long) oin.readObject();
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not find the data file...");
 			System.out.println(e.getStackTrace()[0]);
