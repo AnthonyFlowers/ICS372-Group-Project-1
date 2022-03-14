@@ -75,11 +75,18 @@ public class Company {
 
 	// Process 4 in progress
 	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
-//		if (customerList.search(customerID) && catalog.search(applianceID)) {
-//
-//		} else {
-//
-//		}
+		Customer customer = customerList.search(customerID);
+		Appliance appliance = catalog.search(applianceID);
+		if (customer != null && appliance != null) {
+			if (appliance.removeStock(quantity)) {
+				customer.addRepairPlan(appliance);
+				System.out.println("Purchase completed.");
+			} else {
+				System.out.println("Not enough stock.");
+			}
+		} else {
+			System.out.println("Invalid customer or appliance id.");
+		}
 	}
 
 	// First loop iterates through all customer

@@ -21,8 +21,10 @@ public class TestPurchaseModels {
 		company.addToInventory(2, 2);
 		company.printCustomers();
 		company.printAppliances();
-		company.purchaseAppliances(1, 2, 0);
-		company.purchaseAppliances(1, 0, 0);
+		company.purchaseAppliances(1, 2, 3);
+		company.purchaseAppliances(1, 2, 1);
+//		company.purchaseAppliances(1, 0, 0);
+		company.printAppliances();
 	}
 
 }

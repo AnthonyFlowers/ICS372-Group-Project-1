@@ -45,7 +45,7 @@ public abstract class Appliance implements Serializable {
 		this.stock += addAmount;
 	}
 
-	public void setPrine(double price) {
+	public void setPrice(double price) {
 		this.price = price;
 	}
 
@@ -90,11 +90,11 @@ public abstract class Appliance implements Serializable {
 	 * true then subtract removeAmount from Stock. Then return true #2: Else no
 	 * operation performed, return false
 	 * 
-	 * @param addAmount
+	 * @param removeAmount
 	 */
 	public boolean removeStock(int removeAmount) {
 		// #1
-		if (removeAmount - stock >= 0) {
+		if (stock - removeAmount >= 0) {
 			this.stock -= removeAmount;
 			return true;
 		}
