@@ -166,7 +166,7 @@ public class Interface {
 					System.out.println("To be implemented");
 					break;
 
-				case 10: //
+				case 10: // Half Done - Vontha
 					System.out.println("To be implemented");
 //					prints all appliances
 					company.printAppliances();
