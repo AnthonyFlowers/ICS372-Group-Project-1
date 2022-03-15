@@ -198,7 +198,10 @@ public class Company {
 			long tempCustomerId = repairPlanIterator.getCustomer().getCustomerID();
 			long tempApplianceId = repairPlanIterator.getAppliance().getApplianceID();
 			if (tempCustomerId == customerId && tempApplianceId == applianceId) {
+				System.out.println("RepairPlan Removed: ");
+				System.out.println(customerRepairPlans.toString());
 				customerRepairPlans.remove(repairPlanIterator);
+
 			}
 		}
 

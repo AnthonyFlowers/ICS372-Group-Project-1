@@ -28,4 +28,10 @@ public class RepairPlan {
 	public Appliance getAppliance() {
 		return this.appliance;
 	}
+
+	public String toString() {
+		return "RepairPlan ID " + id + "|\tCustomerName: " + customer.getName() + "|\tCustomerID:"
+				+ customer.getCustomerID() + "|\tAppliance Class: " + appliance.getClass() + "|\tAppliance ID: "
+				+ appliance.getApplianceID();
+	}
 }
