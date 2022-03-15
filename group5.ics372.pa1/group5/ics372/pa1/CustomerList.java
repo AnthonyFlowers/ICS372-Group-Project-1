@@ -39,13 +39,42 @@ public class CustomerList implements Serializable {
 		}
 	}
 
+	/**
+	 * Get the customer list
+	 * 
+	 * @return List<Customer> - the list of customers
+	 */
 	public List<Customer> getCustomerList() {
 		return customerList;
 	}
 
+	/**
+	 * Add a customer to this customer list
+	 * 
+	 * @param nextCustomerId      - the nextCustomerId to hand out
+	 * @param customerName        - the new customers name
+	 * @param customerAddress     - the new customers address
+	 * @param customerPhoneNumber - the new customers phone number
+	 */
 	public void addCustomer(long nextCustomerId, String customerName, String customerAddress,
 			String customerPhoneNumber) {
 		customerList.add(new Customer(nextCustomerId, customerName, customerAddress, customerPhoneNumber));
+	}
+
+	/**
+	 * Finds a customer by the customerId
+	 * 
+	 * @param customerId - the customerId of the customer to find
+	 * @return Customer - the customer with the passed customerId or null if not
+	 *         found
+	 */
+	public Customer getCustomerById(long customerId) {
+		for (Customer customer : customerList) {
+			if (customer.getCustomerID() == customerId) {
+				return customer;
+			}
+		}
+		return null;
 	}
 
 }

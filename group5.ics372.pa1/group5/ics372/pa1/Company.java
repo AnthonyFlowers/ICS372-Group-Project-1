@@ -140,6 +140,46 @@ public class Company {
 	}
 
 	/**
+	 * Enroll a customer in a repair plan for a single appliance. The user id and
+	 * the eligible appliance id are input. The system should do nothing (apart from
+	 * displaying an error message) if the appliance does not have a repair plan.
+	 * 
+	 * @param customerId - the id of the customer to add the repair plan to
+	 * @param applianceId - the id of the appliance with a repair plan
+	 * 
+	 * @throws IllegalArgumentException if an appliance with the passed applianceId
+	 *                                  is not found
+	 * @throws IllegalArgumentException if a customer with the passed customerId is
+	 *                                  not found
+	 * @throws IllegalArgumentException if the found appliance does not have a
+	 *                                  repair plan
+	 * 
+	 */
+	public void enrollCustomerInRepailPlan(long customerId, long applianceId) throws IllegalArgumentException {
+		Appliance appliance = getApplianceById(applianceId);
+		Customer customer = customerList.getCustomerById(customerId);
+		if (appliance == null) {
+			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
+		} else if (customer == null) {
+			throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
+		} else if (!appliance.hasRepairPlan()) {
+			throw new IllegalArgumentException(
+					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
+		}
+		customer.addRepairPlan(appliance);
+	}
+
+	// Get appliance from the catalog by id
+	private Appliance getApplianceById(long applianceId) {
+		for (Appliance appliance : catalog.getApplianceList()) {
+			if (appliance.getApplianceID() == applianceId) {
+				return appliance;
+			}
+		}
+		return null;
+	}
+
+	/**
 	 * Load this companies data from a saved file
 	 * 
 	 * @param String dataFile - the path to the file to load from

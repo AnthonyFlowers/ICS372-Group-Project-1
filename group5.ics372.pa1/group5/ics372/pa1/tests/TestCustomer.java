@@ -1,5 +1,8 @@
 package group5.ics372.pa1.tests;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import group5.ics372.pa1.Customer;
 
 public class TestCustomer {
@@ -69,5 +72,16 @@ public class TestCustomer {
 		String customerPhoneNumber = "(651) 793-1300";
 		Customer customer = new Customer(1, customerName, customerAddress, customerPhoneNumber);
 		return customer;
+	}
+	
+	public static List<Customer> getCustomerList(){
+		List<Customer> customerList = new ArrayList<>();
+		customerList.add(new Customer(1, "Name 1", "Address 1", "Phone 1"));
+		customerList.add(new Customer(2, "Name 2", "Address 2", "Phone 2"));
+		customerList.add(new Customer(3, "Name 3", "Address 3", "Phone 3"));
+		customerList.add(new Customer(4, "Name 4", "Address 4", "Phone 4"));
+		customerList.add(new Customer(5, "Name 5", "Address 5", "Phone 5"));
+		customerList.add(new Customer(6, "Name 6", "Address 6", "Phone 6"));
+		return customerList;
 	}
 }

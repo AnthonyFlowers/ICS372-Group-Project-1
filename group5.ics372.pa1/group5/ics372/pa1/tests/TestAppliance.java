@@ -1,5 +1,8 @@
 package group5.ics372.pa1.tests;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.ClothDryers;
 
@@ -56,5 +59,11 @@ public class TestAppliance {
 		Double monthlyPayment = 15.0;
 		ClothDryers appliance = new ClothDryers(1, applianceType, brandName, monthlyPayment);
 		return appliance;
+	}
+	
+	public static List<Appliance> getTestAppliances(){
+		List<Appliance> applianceList = new ArrayList<>();
+		
+		return null;
 	}
 }

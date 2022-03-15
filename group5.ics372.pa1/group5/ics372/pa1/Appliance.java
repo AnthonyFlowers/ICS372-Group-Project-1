@@ -71,6 +71,11 @@ public abstract class Appliance implements Serializable {
 		return stock;
 	}
 
+	/**
+	 * Check if this appliance has a repair plan
+	 * 
+	 * @return boolean - true if this appliance has a repair plan false otherwise
+	 */
 	public boolean hasRepairPlan() {
 		if (this.repairPlan <= 0) {
 			return false;
