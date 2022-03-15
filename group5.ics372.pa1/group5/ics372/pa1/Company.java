@@ -62,6 +62,7 @@ public class Company {
 	public void addAppliance(Appliance appliance) {
 		catalog.addAppliance(appliance);
 	}
+
 	// Process 1
 	// meant to handle create of a Refrigerator Appliance
 	public void addApplianceRefrigerator(String brandName, String modelName, double BTU) {
@@ -165,8 +166,7 @@ public class Company {
 
 	/**
 	 * Enroll a customer in a repair plan for a single appliance. The user id and
-	 * the eligible appliance id are input. The system should do nothing (apart from
-	 * displaying an error message) if the appliance does not have a repair plan.
+	 * the eligible appliance id are input.
 	 * 
 	 * @param customerId  - the id of the customer to add the repair plan to
 	 * @param applianceId - the id of the appliance with a repair plan
@@ -177,7 +177,6 @@ public class Company {
 	 *                                  not found
 	 * @throws IllegalArgumentException if the found appliance does not have a
 	 *                                  repair plan
-	 * 
 	 */
 	public void enrollCustomerInRepailPlan(long customerId, long applianceId) throws IllegalArgumentException {
 		Appliance appliance = getApplianceById(applianceId);
