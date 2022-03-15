@@ -88,7 +88,7 @@ public class Interface {
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
 					System.out.println("Appliance selected: " + applianceSelect);
-					System.out.println("Please enter the cost for the repair plan: ");
+					System.out.println("Please enter the cost for the repair plan or 0 if none: ");
 					repairCost = scanner.nextDouble();
 
 					// If refrigerator
