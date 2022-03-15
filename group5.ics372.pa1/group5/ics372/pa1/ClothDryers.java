@@ -9,6 +9,7 @@ package group5.ics372.pa1;
  */
 public class ClothDryers extends Appliance {
 
+	private static final long serialVersionUID = 2022_03_14L;
 	private final Double monthlyPayment;
 
 	/**

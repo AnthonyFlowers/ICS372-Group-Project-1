@@ -24,9 +24,9 @@ public class TestCustomer {
 			List<Appliance> applianceList = TestAppliance.getTestAppliances();
 			Customer testCustomer = getBasicCustomer();
 			Appliance appliance = applianceList.get(0);
-			testCustomer.addRepairPlan(appliance);
+			testCustomer.addRepairPlan(appliance.getRepairPlan());
 			assert(testCustomer.getRepairPlans().size() == 1);
-			testCustomer.addRepairPlan(appliance);
+			testCustomer.addRepairPlan(appliance.getRepairPlan());
 			assert(testCustomer.getRepairPlans().size() == 2);
 			System.out.println("Success: Customer was able to have repair plans added");
 		} catch(IllegalArgumentException e) {

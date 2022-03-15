@@ -71,6 +71,7 @@ public class TestAppliance {
 	}
 	
 	public static Appliance getRepairableAppliance() {
-		return new ClothDryers(1, "Brand 1", "Model 1", 15.0);
+		Appliance appliance = new ClothDryers(1, "Brand 1", "Model 1", 15.0);
+		return appliance ;
 	}
 }

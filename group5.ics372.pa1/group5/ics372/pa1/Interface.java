@@ -163,10 +163,8 @@ public class Interface {
 					}
 					break;
 				case 7:
-					long customerId1 = 0;
-					long applianceId1 = 0;
 					System.out.println("Please enter the customer id: ");
-					customerId1 = scanner.nextLong();
+					customerId = scanner.nextLong();
 					System.out.println("Please enter the appliance id: ");
 					applianceId = scanner.nextLong();
 

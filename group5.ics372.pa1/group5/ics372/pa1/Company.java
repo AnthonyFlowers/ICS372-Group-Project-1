@@ -171,11 +171,11 @@ public class Company {
 			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
 		} else if (customer == null) {
 			throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
-		} else if (!appliance.hasRepairPlan()) {
+		} else if (appliance.getRepairPlan() == null) {
 			throw new IllegalArgumentException(
 					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
 		}
-		customer.addRepairPlan(appliance);
+		customer.addRepairPlan(appliance.getRepairPlan());
 	}
 
 	// Get appliance from the catalog by id
