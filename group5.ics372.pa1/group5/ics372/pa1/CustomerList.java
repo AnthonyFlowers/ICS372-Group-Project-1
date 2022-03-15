@@ -8,12 +8,6 @@ public class CustomerList implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
 
-	// Made static -Chatchai
-	// I feel Company should only have one list -Chatchai
-	// Removed static because it would not save correctly
-	// The way this class is we should probably just have the company hold the List
-	// of customers - Anthony
-	// Changed: private List<Customer> customerList;
 	private final List<Customer> customerList = new ArrayList<>();
 
 	/**
@@ -75,6 +69,11 @@ public class CustomerList implements Serializable {
 			}
 		}
 		return null;
+	}
+
+	// Added for troubleshooting
+	public void addCustomerObj(Customer customer) {
+		customerList.add(customer);
 	}
 
 }

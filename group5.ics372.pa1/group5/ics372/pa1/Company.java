@@ -139,6 +139,11 @@ public class Company {
 		return null;
 	}
 
+	// Process 5
+	public void fulfillBackOrder(long backOrderID) {
+		backOrdersList.fulfillBackOrder(backOrderID);
+	}
+
 	/**
 	 * Enroll a customer in a repair plan for a single appliance. The user id and
 	 * the eligible appliance id are input. The system should do nothing (apart from

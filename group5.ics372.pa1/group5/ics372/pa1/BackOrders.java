@@ -14,6 +14,26 @@ public class BackOrders {
 		this.quantity = quantity;
 	}
 
+	public Customer getCustomer() {
+		return this.customer;
+	}
+
+	public long getBackOrderID() {
+		return this.backorderID;
+	}
+
+	public int getQuantity() {
+		return this.quantity;
+	}
+
+	public long getCustomerID() {
+		return this.customer.getCustomerID();
+	}
+
+	public Appliance getAppliance() {
+		return this.appliance;
+	}
+
 	@Override
 	public String toString() {
 		return "BackOrder ID " + backorderID + "|\tBrand: " + appliance.getBrand() + "|\tModel:" + appliance.getType()

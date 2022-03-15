@@ -153,13 +153,12 @@ public class Interface {
 				// if available then, company will subtract from inventory to fulfill order and
 				// give system prompt
 				case 5:
-					System.out.println("Initiate a Backorder: ");
-					System.out.println("Please enter the ID of the Customer...");
-					// input customerID
-					System.out.println("The backorders for this customer are:");
-					// display customer backorders
-
-					System.out.println();
+					long backOrderIDSelect;
+					System.out.println("Initiatiating a Backorder: ");
+					System.out.println("Please enter the BackOrder ID...");
+					backOrderIDSelect = scanner.nextLong();
+					company.fulfillBackOrder(backOrderIDSelect);
+					// System.out.println("Process 5: Completed");
 					break;
 
 				case 6:
