@@ -65,6 +65,7 @@ public class Interface {
 					// Company
 				case 1: // I'll do this one - Chatchai
 					int applianceSelect = 0;
+					double repairCost = 0;
 					String attribute = null;
 					String brandName;
 					String modelType;
@@ -87,6 +88,8 @@ public class Interface {
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
 					System.out.println("Appliance selected: " + applianceSelect);
+					System.out.println("Please enter the cost for the repair plan: ");
+					repairCost = scanner.nextDouble();
 
 					// If refrigerator
 					if (applianceSelect == 4) {
@@ -95,7 +98,7 @@ public class Interface {
 						btu = scanner.nextDouble();
 						company.addApplianceRefrigerator(brandName, modelType, btu);
 					} else {
-						company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
+						company.addAppliance(applianceOptions[applianceSelect], brandName, modelType, repairCost);
 					}
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
@@ -163,10 +166,12 @@ public class Interface {
 					}
 					break;
 				case 7:
+					System.out.println("Withdrawing from Repair Plans: ");
 					System.out.println("Please enter the customer id: ");
 					customerId = scanner.nextLong();
 					System.out.println("Please enter the appliance id: ");
 					applianceId = scanner.nextLong();
+					company.withdrawRepairPlan(customerId, applianceId);
 
 					break;
 

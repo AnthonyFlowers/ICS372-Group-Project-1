@@ -18,8 +18,8 @@ public class TestAddAppliance {
 		String applianceName = "ClothWashers";
 		String brandName = "Samsung";
 		String modelName = "Super Washer";
-		String attribute = "0.0";
-		company.addAppliance(applianceName, brandName, modelName);
+		double attribute = 0.0;
+		company.addAppliance(applianceName, brandName, modelName, attribute);
 		System.out.println("Success: Company was able to add an appliance successfully.");
 	}
 

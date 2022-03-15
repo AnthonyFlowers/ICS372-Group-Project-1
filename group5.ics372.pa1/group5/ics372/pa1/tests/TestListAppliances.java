@@ -31,8 +31,8 @@ public class TestListAppliances {
 		String applianceName = "ClothWashers";
 		String brandName = "Bob's Washers";
 		String modelName = "Super Washer";
-		String attribute = "100.0";
-		company.addAppliance(applianceName, brandName, modelName);
+		double attribute = 100.0;
+		company.addAppliance(applianceName, brandName, modelName, attribute);
 		System.out.println("Success: an appliance was added successfully.");
 	}
 
@@ -41,8 +41,8 @@ public class TestListAppliances {
 		String applianceName = "ClothDryers";
 		String brandName = "Kate's Dryers";
 		String modelName = "miniDryer 3000";
-		String attribute = "0.0";
-		company.addAppliance(applianceName, brandName, modelName);
+		double attribute = 0.0;
+		company.addAppliance(applianceName, brandName, modelName, attribute);
 		System.out.println("Success: an appliance was added successfully.");
 	}
 

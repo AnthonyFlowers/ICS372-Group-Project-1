@@ -5,6 +5,7 @@ import java.util.List;
 
 import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.Customer;
+import group5.ics372.pa1.RepairPlan;
 
 public class TestCustomer {
 	public static void main(String[] args) {
@@ -17,19 +18,21 @@ public class TestCustomer {
 		testUpdateCustomerData();
 		testAddRepairPlan();
 	}
-	
+
 	// Test adding appliances that can be added
 	private static void testAddRepairPlan() {
 		try {
 			List<Appliance> applianceList = TestAppliance.getTestAppliances();
 			Customer testCustomer = getBasicCustomer();
 			Appliance appliance = applianceList.get(0);
-			testCustomer.addRepairPlan(appliance.getRepairPlan());
-			assert(testCustomer.getRepairPlans().size() == 1);
-			testCustomer.addRepairPlan(appliance.getRepairPlan());
-			assert(testCustomer.getRepairPlans().size() == 2);
+			RepairPlan repairPlan = new RepairPlan(99, testCustomer, appliance, 100);
+			RepairPlan repairPlan2 = new RepairPlan(45, testCustomer, appliance, 45);
+			testCustomer.addRepairPlan(repairPlan);
+			assert (testCustomer.getRepairPlans().size() == 1);
+			testCustomer.addRepairPlan(repairPlan2);
+			assert (testCustomer.getRepairPlans().size() == 2);
 			System.out.println("Success: Customer was able to have repair plans added");
-		} catch(IllegalArgumentException e) {
+		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		}
 	}
@@ -91,8 +94,8 @@ public class TestCustomer {
 		Customer customer = new Customer(1, customerName, customerAddress, customerPhoneNumber);
 		return customer;
 	}
-	
-	public static List<Customer> getTestCustomers(){
+
+	public static List<Customer> getTestCustomers() {
 		List<Customer> customerList = new ArrayList<>();
 		customerList.add(new Customer(1, "Name 1", "Address 1", "Phone 1"));
 		customerList.add(new Customer(2, "Name 2", "Address 2", "Phone 2"));

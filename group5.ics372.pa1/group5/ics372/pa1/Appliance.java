@@ -13,7 +13,8 @@ public abstract class Appliance implements Serializable {
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected boolean hasRepairPlan;
-	protected RepairPlan repairPlan; // added, "zero" means no repair plans
+	// protected RepairPlan repairPlan;
+	protected double repairCost; // added, "zero" means no repair plans
 	protected boolean backOrder;
 
 	/**
@@ -26,12 +27,13 @@ public abstract class Appliance implements Serializable {
 		this.applianceID = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
+		this.repairCost = repairCost;
 		this.backOrder = true;
 		this.hasRepairPlan = false;
 	}
 
 	public void setRepairCost(double newCost) {
-		this.repairPlan.setCost(newCost);
+		this.repairCost = newCost;
 	}
 
 	// Adds to stock, aka "inventory"
@@ -68,16 +70,19 @@ public abstract class Appliance implements Serializable {
 	 * 
 	 * @return boolean - true if this appliance has a repair plan false otherwise
 	 */
-	public boolean hasRepairPlan(RepairPlan tempRepairPlan) {
-		if (tempRepairPlan == null)
-			return false;
-		return true;
+	public boolean getRepairPlanBoolean() {
+		return hasRepairPlan;
 	}
 
 	// Returns the cost of the repairPlan if it has one else the cost is zero
-	public RepairPlan getRepairPlan() {
-		return repairPlan;
+	public double getRepairCost() {
+		return repairCost;
 	}
+
+	// Don't need this obj in appliance
+	// public RepairPlan getRepairPlan() {
+	// return this.repairPlan;
+	// }
 
 	/**
 	 * #1: Code checks to make sure removeAmount doesn't make stock go negative if

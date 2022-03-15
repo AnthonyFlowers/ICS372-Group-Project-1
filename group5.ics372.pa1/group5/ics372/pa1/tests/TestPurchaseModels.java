@@ -8,6 +8,7 @@ public class TestPurchaseModels {
 
 	public static void main(String[] args) {
 		Company company = new Company();
+		double attribute = 10;
 		company.addCustomer("Vontha", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
@@ -16,9 +17,9 @@ public class TestPurchaseModels {
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
-		company.addAppliance("ClothDryers", "Samsung", "Dryer");
-		company.addAppliance("ClothWashers", "Samsung", "Washer");
-		company.addAppliance("Furnaces", "Samsung", "Furnace");
+		company.addAppliance("ClothDryers", "Samsung", "Dryer", attribute);
+		company.addAppliance("ClothWashers", "Samsung", "Washer", attribute);
+		company.addAppliance("Furnaces", "Samsung", "Furnace", attribute);
 		company.addToInventory(2, 2);
 		company.printCustomers();
 		company.printAppliances();

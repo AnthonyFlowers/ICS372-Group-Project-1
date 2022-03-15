@@ -20,6 +20,7 @@ public class Company {
 	private long nextCustomerId;
 	private long nextApplianceId;
 	private long nextBackOrderId;
+	private long nextRepairPlanId;
 	private Catalog catalog;
 	private CustomerList customerList;
 	private BackOrdersList backOrdersList;
@@ -31,6 +32,7 @@ public class Company {
 		this.nextApplianceId = 1;
 		this.nextCustomerId = 1;
 		this.nextBackOrderId = 1;
+		this.nextRepairPlanId = 1;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
 		this.backOrdersList = new BackOrdersList();
@@ -44,11 +46,11 @@ public class Company {
 	 * @param String brandName - the brand of the appliance
 	 * @param String modelName - the model of the appliance
 	 */
-	public void addAppliance(String className, String brandName, String modelName) {
+	public void addAppliance(String className, String brandName, String modelName, double repairCost) {
 		if (className == null || brandName == null || modelName == null)
 			System.out.println("No null inputs in adding model");
 		else {
-			Appliance newApp = createClass(className, brandName, modelName);
+			Appliance newApp = createClass(className, brandName, modelName, repairCost);
 			catalog.addAppliance(newApp);
 		}
 	}
@@ -122,7 +124,7 @@ public class Company {
 	// This will be used in Company.java to create the appropriate classes
 	// Give this method the name of the class you want and it'd return the
 	// appropriate class
-	private Appliance createClass(String className, String brandName, String modelName) {
+	private Appliance createClass(String className, String brandName, String modelName, double repairCost) {
 		if ("ClothWashers".equalsIgnoreCase(className)) {
 			return new ClothWashers(nextApplianceId++, brandName, modelName);
 		} else if ("ClothDryers".equalsIgnoreCase(className)) {
@@ -150,6 +152,7 @@ public class Company {
 		backOrdersList.fulfillBackOrder(backOrderID);
 	}
 
+	// Process 6
 	/**
 	 * Enroll a customer in a repair plan for a single appliance. The user id and
 	 * the eligible appliance id are input.
@@ -171,11 +174,14 @@ public class Company {
 			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
 		} else if (customer == null) {
 			throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
-		} else if (appliance.getRepairPlan() == null) {
+		} else if (!appliance.hasRepairPlan) { // changed - Chatchai
 			throw new IllegalArgumentException(
 					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
 		}
-		customer.addRepairPlan(appliance.getRepairPlan());
+		long tempCusId = customer.getCustomerID();
+		long tempAppId = appliance.getApplianceID();
+		double tempRepairCost = appliance.getRepairCost();
+		customer.addRepairPlan(new RepairPlan(nextRepairPlanId++, customer, appliance, tempRepairCost));
 	}
 
 	// Get appliance from the catalog by id
@@ -192,17 +198,23 @@ public class Company {
 	public void withdrawRepairPlan(long customerId, long applianceId) {
 		// get customer from customerList
 		Customer tempCustomer = customerList.getCustomer(customerId);
+		System.out.println(tempCustomer);
 		List<RepairPlan> customerRepairPlans = tempCustomer.getRepairPlans();
+		RepairPlan toBeRemovedPlan = new RepairPlan(0, null, null, 0.0);
 
 		for (RepairPlan repairPlanIterator : customerRepairPlans) {
 			long tempCustomerId = repairPlanIterator.getCustomer().getCustomerID();
 			long tempApplianceId = repairPlanIterator.getAppliance().getApplianceID();
 			if (tempCustomerId == customerId && tempApplianceId == applianceId) {
-				System.out.println("RepairPlan Removed: ");
-				System.out.println(customerRepairPlans.toString());
-				customerRepairPlans.remove(repairPlanIterator);
-
+				toBeRemovedPlan = repairPlanIterator;
 			}
+		}
+		if (toBeRemovedPlan.getAppliance() != null) {
+			System.out.println("The repair plan below has been removed. ");
+			System.out.println(customerRepairPlans.toString());
+			customerRepairPlans.remove(toBeRemovedPlan);
+		} else {
+			System.out.println("The system could not find an repair plan with the Customer and Appliance Id");
 		}
 
 	}
