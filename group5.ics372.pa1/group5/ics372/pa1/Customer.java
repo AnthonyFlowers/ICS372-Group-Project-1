@@ -2,7 +2,6 @@ package group5.ics372.pa1;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -69,13 +68,8 @@ public class Customer implements Serializable {
 
 	// WIP
 	// TODO implement removing charges after add the total charges
-	public double chargeAllRepairs() {
-		Iterator<Appliance> repairs = repairPlans.iterator();
-		double totalRepairCosts = 0;
-		while (repairs.hasNext()) {
-			totalRepairCosts = totalRepairCosts + repairs.next().getRepairPlan();
-		}
-		return totalRepairCosts;
+	public double chargeRepairs() {
+		return 0.0;
 	}
 
 	@Override
