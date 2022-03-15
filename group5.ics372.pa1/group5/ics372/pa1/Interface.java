@@ -146,7 +146,7 @@ public class Interface {
 					company.purchaseAppliances(customerID, applianceID, quantity);
 					break;
 
-				// WIP - Chatchai
+				// Done - Chatchai
 				// actor inputs customerID
 				// system searches for backorders with customerID
 				// system checks if the stock for that appliance is available
