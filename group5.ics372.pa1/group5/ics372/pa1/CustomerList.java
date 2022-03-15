@@ -33,6 +33,16 @@ public class CustomerList implements Serializable {
 		}
 	}
 
+	public void chargeAllRepairs() {
+		for (Customer cus : customerList) {
+			for (RepairPlan rep : cus.getRepairPlans()) {
+				cus.chargeRepair(rep);
+			}
+			System.out.println("Customer :" + cus.getName() + " ID: " + cus.getCustomerID() + " TotalRepairCharges : "
+					+ cus.getTotalReapirCharges());
+		}
+	}
+
 	/**
 	 * Get the customer list
 	 * 

@@ -165,6 +165,7 @@ public class Interface {
 						System.out.println(e.getMessage());
 					}
 					break;
+				// Done -chatchai
 				case 7:
 					System.out.println("Withdrawing from Repair Plans: ");
 					System.out.println("Please enter the customer id: ");
@@ -175,8 +176,21 @@ public class Interface {
 
 					break;
 
-				case 8:
-					System.out.println("To be implemented");
+				case 8: // WIP - Chatchai
+					System.out.println("---------------------------------------------");
+					System.out.println("Do you wish to charge all customer repairs?");
+					System.out.println("---------------------------------------------");
+					System.out.println("| 1. Charge All Customers | 2. Cancel return to main menu |");
+					menuSelection = scanner.nextInt();
+					if (menuSelection == 1) {
+						System.out.println("All customers will be charged for their repair plans");
+						company.chargeAllRepairs();
+					} else if (menuSelection == 2) {
+						System.out.println("Customers not charged...Returning to main menu");
+					} else {
+						System.out.println("Please select options 1 or 2.");
+					}
+
 					break;
 
 				case 9:

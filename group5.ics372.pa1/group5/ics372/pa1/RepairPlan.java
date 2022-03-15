@@ -29,6 +29,10 @@ public class RepairPlan {
 		return this.appliance;
 	}
 
+	public double getCost() {
+		return cost;
+	}
+
 	public String toString() {
 		return "RepairPlan ID " + id + "|\tCustomerName: " + customer.getName() + "|\tCustomerID:"
 				+ customer.getCustomerID() + "|\tAppliance Class: " + appliance.getClass() + "|\tAppliance ID: "

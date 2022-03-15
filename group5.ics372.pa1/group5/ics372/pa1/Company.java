@@ -126,9 +126,9 @@ public class Company {
 	// appropriate class
 	private Appliance createClass(String className, String brandName, String modelName, double repairCost) {
 		if ("ClothWashers".equalsIgnoreCase(className)) {
-			return new ClothWashers(nextApplianceId++, brandName, modelName);
+			return new ClothWashers(nextApplianceId++, brandName, modelName, repairCost);
 		} else if ("ClothDryers".equalsIgnoreCase(className)) {
-			return new ClothDryers(nextApplianceId++, brandName, modelName, 0.0);
+			return new ClothDryers(nextApplianceId++, brandName, modelName, repairCost);
 		} else if ("KitchenRanges".equalsIgnoreCase(className)) {
 			return new KitchenRanges(nextApplianceId++, brandName, modelName);
 		} else if ("DishWashers".equalsIgnoreCase(className)) {
@@ -217,6 +217,11 @@ public class Company {
 			System.out.println("The system could not find an repair plan with the Customer and Appliance Id");
 		}
 
+	}
+
+	// Process 8
+	public void chargeAllRepairs() {
+		customerList.chargeAllRepairs();
 	}
 
 	/**

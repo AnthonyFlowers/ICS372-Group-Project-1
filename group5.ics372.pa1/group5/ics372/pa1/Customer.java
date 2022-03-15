@@ -15,6 +15,7 @@ public class Customer implements Serializable {
 	private String phoneNumber;
 	private List<Appliance> customerAppliances;
 	private List<RepairPlan> repairPlans;
+	private double totalRepairCharges;
 
 	public Customer(long nextCustomerId, String name, String address, String phoneNumber) {
 		super();
@@ -24,6 +25,15 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 		this.customerAppliances = new ArrayList<Appliance>();
 		this.repairPlans = new ArrayList<>();
+		this.totalRepairCharges = 0;
+	}
+
+	public void addRepairCharges(double addCharge) {
+		this.totalRepairCharges += addCharge;
+	}
+
+	public double getTotalReapirCharges() {
+		return this.totalRepairCharges;
 	}
 
 	public long getCustomerID() {
@@ -62,14 +72,29 @@ public class Customer implements Serializable {
 		this.repairPlans.add(repairPlan);
 	}
 
-	public void addAppliance(Appliance appliance) {
-		customerAppliances.add(appliance);
+	public void chargeRepair(RepairPlan repairPlan) {
+		System.out.println("Plan's Cost: " + repairPlan.getCost());
+		totalRepairCharges += repairPlan.getCost();
 	}
 
-	// WIP
-	// TODO implement removing charges after add the total charges
-	public double chargeRepairs() {
-		return 0.0;
+	public void removeRepairPlan(RepairPlan repairPlan) {
+		RepairPlan removeRepairPlan = new RepairPlan(0, null, null, 0);
+		for (RepairPlan tempRepairPlan : repairPlans) {
+			if (repairPlan.equals(tempRepairPlan)) {
+				removeRepairPlan = tempRepairPlan;
+			}
+		}
+
+		if (repairPlan.equals(removeRepairPlan)) {
+			repairPlans.remove(repairPlan);
+		} else {
+			System.out.println("Could not find repair plan");
+		}
+
+	}
+
+	public void addAppliance(Appliance appliance) {
+		customerAppliances.add(appliance);
 	}
 
 	@Override
