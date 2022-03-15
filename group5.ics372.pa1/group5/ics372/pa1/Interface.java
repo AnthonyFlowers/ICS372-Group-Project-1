@@ -162,7 +162,16 @@ public class Interface {
 					break;
 
 				case 6:
-					System.out.println("To be implemented");
+					System.out.println("Adding a repair plan");
+					System.out.print("Enter the id of the customer to add the repair plan to: ");
+					long customerId = scanner.nextLong();
+					System.out.print("Enter the id of the appliance with the repair plan to add: ");
+					long applianceId = scanner.nextLong();
+					try {
+						company.enrollCustomerInRepailPlan(customerId, applianceId);
+					} catch(IllegalArgumentException e) {
+						System.out.println(e.getMessage());
+					}
 					break;
 
 				case 7:

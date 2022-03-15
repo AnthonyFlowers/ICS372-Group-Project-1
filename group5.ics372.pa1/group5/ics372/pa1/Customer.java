@@ -24,6 +24,7 @@ public class Customer implements Serializable {
 		this.address = address;
 		this.phoneNumber = phoneNumber;
 		this.customerAppliances = new ArrayList<Appliance>();
+		this.repairPlans = new ArrayList<>();
 	}
 
 	public long getCustomerID() {

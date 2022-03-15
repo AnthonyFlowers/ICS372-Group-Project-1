@@ -5,6 +5,7 @@ import java.util.List;
 
 import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.ClothDryers;
+import group5.ics372.pa1.DishWashers;
 
 /**
  * Class for testing the Appliance classes
@@ -63,7 +64,9 @@ public class TestAppliance {
 	
 	public static List<Appliance> getTestAppliances(){
 		List<Appliance> applianceList = new ArrayList<>();
-		
-		return null;
+		applianceList.add(new ClothDryers(1, "Brand 1", "Model 1", 15.0));
+		applianceList.add(new ClothDryers(2, "Brand 2", "Model 2", 30.0));
+		applianceList.add(new DishWashers(3, "Brand 3", "Model 3"));
+		return applianceList;
 	}
 }

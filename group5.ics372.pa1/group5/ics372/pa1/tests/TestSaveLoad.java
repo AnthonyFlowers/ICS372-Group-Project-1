@@ -38,9 +38,9 @@ public class TestSaveLoad {
 		Collections.copy(testCustomers, customerList);
 		try {
 		company.saveData("test.dat");
-		System.out.println("Success: saved some test data to the test.dat file!");
+		System.out.println("Success: Company saved some test data to the test.dat file!");
 		} catch (AssertionError e) {
-			System.out.println("Failed: was not able to save data to the test.dat file...");
+			System.out.println("Failed: Company was not able to save data to the test.dat file...");
 			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		}
@@ -56,9 +56,9 @@ public class TestSaveLoad {
 			for (int index = 0; index < testCustomers.size(); index++) {
 				assert (testCustomers.get(index).equals(customerList.get(index)));
 			}
-			System.out.println("Success: loaded test.dat file and the data is correct!");
+			System.out.println("Success: Company loaded test.dat file and the data is correct!");
 		} catch (AssertionError e) {
-			System.out.println("Failed: did not load the test.dat file correctly...");
+			System.out.println("Failed: Company did not load the test.dat file correctly...");
 			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		}

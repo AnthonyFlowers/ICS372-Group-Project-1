@@ -3,6 +3,7 @@ package group5.ics372.pa1.tests;
 import java.util.ArrayList;
 import java.util.List;
 
+import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.Customer;
 
 public class TestCustomer {
@@ -14,6 +15,23 @@ public class TestCustomer {
 		testCreateCustomer();
 		testReadCustomerData();
 		testUpdateCustomerData();
+		testAddRepairPlan();
+	}
+	
+	// Test adding appliances that can be added
+	private static void testAddRepairPlan() {
+		try {
+			List<Appliance> applianceList = TestAppliance.getTestAppliances();
+			Customer testCustomer = getBasicCustomer();
+			Appliance appliance = applianceList.get(0);
+			testCustomer.addRepairPlan(appliance);
+			assert(testCustomer.getRepairPlans().size() == 1);
+			testCustomer.addRepairPlan(appliance);
+			assert(testCustomer.getRepairPlans().size() == 2);
+			System.out.println("Success: Customer was able to have repair plans added");
+		} catch(IllegalArgumentException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
 	// Test updating a customers data
@@ -74,7 +92,7 @@ public class TestCustomer {
 		return customer;
 	}
 	
-	public static List<Customer> getCustomerList(){
+	public static List<Customer> getTestCustomers(){
 		List<Customer> customerList = new ArrayList<>();
 		customerList.add(new Customer(1, "Name 1", "Address 1", "Phone 1"));
 		customerList.add(new Customer(2, "Name 2", "Address 2", "Phone 2"));
