@@ -62,6 +62,12 @@ public class Company {
 	public void addAppliance(Appliance appliance) {
 		catalog.addAppliance(appliance);
 	}
+	// Process 1
+	// meant to handle create of a Refrigerator Appliance
+	public void addApplianceRefrigerator(String brandName, String modelName, double BTU) {
+		Appliance newApp = createClassRefrigerator(brandName, modelName, BTU);
+		catalog.addAppliance(newApp);
+	}
 
 	// Process 2
 	/**
@@ -141,11 +147,14 @@ public class Company {
 		} else if ("Furnaces".equalsIgnoreCase(className)) {
 			return new Furnaces(nextApplianceId++, brandName, modelName);
 		}
-		// else if(className.toUpperCase() == "Refrigerators".toUpperCase()) {
-		// return new Refrigerator(brandName, modelName);
-		// }
 		System.out.println("Failed to create class");
 		return null;
+	}
+
+	// Process 1
+	// create'sClass for special Appliances
+	private Appliance createClassRefrigerator(String brandName, String modelName, double BTU) {
+		return new Refrigerator(nextApplianceId++, brandName, modelName, BTU);
 	}
 
 	// Process 5

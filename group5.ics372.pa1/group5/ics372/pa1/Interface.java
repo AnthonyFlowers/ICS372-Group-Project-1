@@ -63,7 +63,7 @@ public class Interface {
 					// 3) Catalog will then insert the newly created object into it's list pass from
 					// Company
 				case 1: // I'll do this one - Chatchai
-					int applianceSelect = -1;
+					int applianceSelect = 0;
 					String attribute = null;
 					String brandName;
 					String modelType;
@@ -86,28 +86,16 @@ public class Interface {
 							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
 					modelType = scanner.nextLine().strip();
 					System.out.println("Appliance selected: " + applianceSelect);
-					switch (applianceSelect) {
-					case 5:
-						// get furnace output
-						System.out.println("Enter the maximum output in BTUs: ");
-						attribute = scanner.nextLine().strip();
-						break;
-					case 4:
-						// get refrigerator capacity
-						System.out.println("Enter the capacity in liters: ");
-						attribute = scanner.nextLine().strip();
-						break;
-					case 1:
-					case 0:
-						// get repair plan cost
-						System.out.println("Enter the repair plan monthly cost: ");
-						attribute = scanner.nextLine().strip();
-						break;
-					default:
-						break;
-					}
 
-					company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
+					// If refrigerator
+					if (applianceSelect == 4) {
+						double btu = 0;
+						System.out.println("Please enter the BTU amount for the Refrigerator");
+						btu = scanner.nextDouble();
+						company.addApplianceRefrigerator(brandName, modelType, btu);
+					} else {
+						company.addAppliance(applianceOptions[applianceSelect], brandName, modelType);
+					}
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
 				// ----------------------------------------------------------------------------------
