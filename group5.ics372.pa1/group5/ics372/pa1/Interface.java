@@ -65,43 +65,60 @@ public class Interface {
 					// Company
 				case 1: // I'll do this one - Chatchai
 					int applianceSelect = 0;
-					double repairCost = 0;
-					String attribute = null;
+					double repairCost;
 					String brandName;
 					String modelType;
+					double price;
+					double capacity;
+					int btu;
 
 					System.out.println("Which Appliance would you like to add?");
 					System.out.println(
 							"| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 					try {
 						applianceSelect = scanner.nextInt() - 1;
+						if (applianceSelect < 0 || applianceSelect > 5) {
+							do {
+								System.out.println("Invalid input. Try again.");
+								applianceSelect = scanner.nextInt() - 1;
+							} while (applianceSelect < 0 || applianceSelect > 5);
+						}
+						System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
+						System.out.println("Enter brand name: ");
+						brandName = scanner.next();
+						System.out.println("Enter model name: ");
+						modelType = scanner.next();
+						System.out.println("Enter price: ");
+						price = scanner.nextDouble();
+						switch (applianceSelect) {
+
+						case 1: // Cloth Washer
+							System.out.println("Enter repair cost: ");
+							repairCost = scanner.nextDouble();
+							company.addClothWasher(brandName, modelType, price, repairCost);
+						case 2: // Cloth Dryer
+							System.out.println("Enter repair cost: ");
+							repairCost = scanner.nextDouble();
+							company.addClothDryer(brandName, modelType, price, repairCost);
+						case 3: // Kitchen Range
+							company.addKitchenRange(brandName, modelType, price);
+						case 4: // Dishwasher
+							company.addDishWasher(brandName, modelType, price);
+						case 5: // Refrigerator
+							System.out.println("Enter capacity: ");
+							capacity = scanner.nextDouble();
+							company.addRefrigerator(brandName, modelType, price, capacity);
+						case 6: // Furnace
+							System.out.println("Enter btu output: ");
+							btu = scanner.nextInt();
+							company.addFurnace(brandName, modelType, price, btu);
+						}
 					} catch (Exception e) {
 						System.out.println("Case 1 Error");
 					}
-					scanner.nextLine(); // use to consume \n
-					System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
-					System.out.println(
-							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s brand name.");
-					brandName = scanner.nextLine().strip();
-
-					System.out.println(
-							"Please enter the name for the " + applianceOptions[applianceSelect] + "'s model type.");
-					modelType = scanner.nextLine().strip();
-					System.out.println("Appliance selected: " + applianceSelect);
-					System.out.println("Please enter the cost for the repair plan or 0 if none: ");
-					repairCost = scanner.nextDouble();
-
-					// If refrigerator
-					if (applianceSelect == 4) {
-						double btu = 0;
-						System.out.println("Please enter the BTU amount for the Refrigerator");
-						btu = scanner.nextDouble();
-						company.addApplianceRefrigerator(brandName, modelType, btu);
-					} else {
-						company.addAppliance(applianceOptions[applianceSelect], brandName, modelType, repairCost);
-					}
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
+
 				// ----------------------------------------------------------------------------------
 				// add a single customer to the customer list
 				// 1) The interface will ask for the customers Name, Address, and phone number
@@ -160,7 +177,7 @@ public class Interface {
 					System.out.print("Enter the id of the appliance with the repair plan to add: ");
 					applianceId = scanner.nextLong();
 					try {
-						company.enrollCustomerInRepailPlan(customerId, applianceId);
+						company.enrollCustomerInRepairPlan(customerId, applianceId);
 					} catch (IllegalArgumentException e) {
 						System.out.println(e.getMessage());
 					}

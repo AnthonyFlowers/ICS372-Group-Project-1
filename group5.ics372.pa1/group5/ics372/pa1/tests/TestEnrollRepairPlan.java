@@ -21,9 +21,9 @@ public class TestEnrollRepairPlan {
 		company.addCustomer(customer.getName(), customer.getAddress(), customer.getPhoneNumber());
 		Appliance appliance = TestAppliance.getRepairableAppliance();
 		company.addAppliance(appliance);
-		company.enrollCustomerInRepailPlan(1, 1);
+		company.enrollCustomerInRepairPlan(1, 1);
 		assert (company.getCustomers().get(0).getRepairPlans().size() == 1);
-		company.enrollCustomerInRepailPlan(1, 1);
+		company.enrollCustomerInRepairPlan(1, 1);
 		assert (company.getCustomers().get(0).getRepairPlans().size() == 2);
 		System.out.println("Success: EnrollRepairPlan was able to add a repair plan to a customer using the Company");
 	}

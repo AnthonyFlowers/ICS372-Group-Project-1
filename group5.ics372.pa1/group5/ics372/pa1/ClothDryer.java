@@ -7,7 +7,7 @@ package group5.ics372.pa1;
  * @author Group 5
  *
  */
-public class ClothDryers extends Appliance {
+public class ClothDryer extends Appliance {
 
 	private static final long serialVersionUID = 2022_03_14L;
 	private final double monthlyPayment;
@@ -21,8 +21,8 @@ public class ClothDryers extends Appliance {
 	 *               this dryer
 	 * @see group5.ics372.pa1.Appliance#Appliance(String, String)
 	 */
-	public ClothDryers(long id, String brandName, String modelType, double monthlyPayment) {
-		super(id, brandName, modelType);
+	public ClothDryer(long id, String brandName, String modelType, double price, double monthlyPayment) {
+		super(id, brandName, modelType, price);
 		this.monthlyPayment = 2 * monthlyPayment;
 		this.hasRepairPlan = true;
 	}
@@ -31,6 +31,7 @@ public class ClothDryers extends Appliance {
 		return monthlyPayment;
 	}
 
+	@Override
 	public double getRepairCost() {
 		return this.monthlyPayment;
 	}

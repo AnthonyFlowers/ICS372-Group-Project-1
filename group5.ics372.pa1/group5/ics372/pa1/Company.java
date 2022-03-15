@@ -43,20 +43,34 @@ public class Company {
 	}
 
 	// Process 1
-	/**
-	 * Add an appliance to the companies catalog New Branch
-	 * 
-	 * @param String className - the name of the appliance
-	 * @param String brandName - the brand of the appliance
-	 * @param String modelName - the model of the appliance
-	 */
-	public void addAppliance(String className, String brandName, String modelName, double repairCost) {
-		if (className == null || brandName == null || modelName == null)
-			System.out.println("No null inputs in adding model");
-		else {
-			Appliance newApp = createClass(className, brandName, modelName, repairCost);
-			catalog.addAppliance(newApp);
-		}
+	public void addClothWasher(String brandName, String modelType, double price, double repairCost) {
+		catalog.addAppliance(new ClothWasher(nextApplianceId++, brandName, modelType, price, repairCost));
+		System.out.println("ClothWasher has been added.");
+	}
+
+	public void addClothDryer(String brandName, String modelType, double price, double repairCost) {
+		catalog.addAppliance(new ClothDryer(nextApplianceId++, brandName, modelType, price, repairCost));
+		System.out.println("ClothDryer has been added.");
+	}
+
+	public void addKitchenRange(String brandName, String modelType, double price) {
+		catalog.addAppliance(new KitchenRange(nextApplianceId++, brandName, modelType, price));
+		System.out.println("KitchenRange has been added.");
+	}
+
+	public void addDishWasher(String brandName, String modelType, double price) {
+		catalog.addAppliance(new DishWasher(nextApplianceId++, brandName, modelType, price));
+		System.out.println("DishWasher has been added.");
+	}
+
+	public void addRefrigerator(String brandName, String modelType, double price, double capacity) {
+		catalog.addAppliance(new Refrigerator(nextApplianceId++, brandName, modelType, price, capacity));
+		System.out.println("Refrigerator has been added.");
+	}
+
+	public void addFurnace(String brandName, String modelType, double price, int btu) {
+		catalog.addAppliance(new Furnace(nextApplianceId++, brandName, modelType, price, btu));
+		System.out.println("Furnace has been added.");
 	}
 
 	/**
@@ -66,13 +80,6 @@ public class Company {
 	 */
 	public void addAppliance(Appliance appliance) {
 		catalog.addAppliance(appliance);
-	}
-
-	// Process 1
-	// meant to handle create of a Refrigerator Appliance
-	public void addApplianceRefrigerator(String brandName, String modelName, double BTU) {
-		Appliance newApp = createClassRefrigerator(brandName, modelName, BTU);
-		catalog.addAppliance(newApp);
 	}
 
 	// Process 2
@@ -90,10 +97,6 @@ public class Company {
 	public void addCustomer(Customer customer) {
 		this.customerList.addCustomer(customer);
 	}
-
-//	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
-//		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
-//	}
 
 	// Process 3
 	public void addToInventory(long applianceID, int quantity) {
@@ -128,32 +131,6 @@ public class Company {
 		}
 	}
 
-	// Process 1
-	// This will be used in Company.java to create the appropriate classes
-	// Give this method the name of the class you want and it'd return the
-	// appropriate class
-	private Appliance createClass(String className, String brandName, String modelName, double repairCost) {
-		if ("ClothWashers".equalsIgnoreCase(className)) {
-			return new ClothWashers(nextApplianceId++, brandName, modelName, repairCost);
-		} else if ("ClothDryers".equalsIgnoreCase(className)) {
-			return new ClothDryers(nextApplianceId++, brandName, modelName, repairCost);
-		} else if ("KitchenRanges".equalsIgnoreCase(className)) {
-			return new KitchenRanges(nextApplianceId++, brandName, modelName);
-		} else if ("DishWashers".equalsIgnoreCase(className)) {
-			return new DishWashers(nextApplianceId++, brandName, modelName);
-		} else if ("Furnaces".equalsIgnoreCase(className)) {
-			return new Furnaces(nextApplianceId++, brandName, modelName);
-		}
-		System.out.println("Failed to create class");
-		return null;
-	}
-
-	// Process 1
-	// create'sClass for special Appliances
-	private Appliance createClassRefrigerator(String brandName, String modelName, double BTU) {
-		return new Refrigerator(nextApplianceId++, brandName, modelName, BTU);
-	}
-
 	// Process 5
 	// Done - Chatchai
 	public void fulfillBackOrder(long backOrderID) {
@@ -175,7 +152,7 @@ public class Company {
 	 * @throws IllegalArgumentException if the found appliance does not have a
 	 *                                  repair plan
 	 */
-	public void enrollCustomerInRepailPlan(long customerId, long applianceId) throws IllegalArgumentException {
+	public void enrollCustomerInRepairPlan(long customerId, long applianceId) throws IllegalArgumentException {
 		Appliance appliance = getApplianceById(applianceId);
 		Customer customer = customerList.getCustomerById(customerId);
 		if (appliance == null) {
@@ -284,11 +261,6 @@ public class Company {
 		}
 	}
 
-	public void printCustomers() {
-		System.out.println("Customers:");
-		customerList.print();
-	}
-
 	// Process 10
 	public void printAppliances() {
 		System.out.println("Appliances:");
@@ -313,6 +285,13 @@ public class Company {
 		}
 	}
 
+	// Process 12
+	public void printCustomers() {
+		System.out.println("Customers:");
+		customerList.print();
+	}
+
+	// Process 13
 	public void printBackOrders() {
 		System.out.println("BackOrders:");
 		backOrdersList.print();

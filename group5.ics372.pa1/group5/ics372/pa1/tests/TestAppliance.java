@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import group5.ics372.pa1.Appliance;
-import group5.ics372.pa1.ClothDryers;
-import group5.ics372.pa1.DishWashers;
+import group5.ics372.pa1.ClothDryer;
+import group5.ics372.pa1.DishWasher;
 
 /**
  * Class for testing the Appliance classes
@@ -30,7 +30,7 @@ public class TestAppliance {
 			String brandName = "Samsung";
 			String modelType = "ClothDryers";
 			Double monthlyPayment = 15.0;
-			ClothDryers appliance = new ClothDryers(1, brandName, modelType, monthlyPayment);
+			ClothDryer appliance = new ClothDryer(1, brandName, modelType, monthlyPayment);
 			assert (appliance.getBrand().equals(brandName));
 			assert (appliance.getType().equals(modelType));
 			assert (appliance.getMonthlyPayment().equals(monthlyPayment));
@@ -45,7 +45,7 @@ public class TestAppliance {
 	private static void testCreateAppliance() {
 		try {
 			Appliance appliance = createClothDryer();
-			assert (appliance.getClass() == ClothDryers.class);
+			assert (appliance.getClass() == ClothDryer.class);
 			System.out.println("Success: Appliance was created successfully.");
 		} catch (AssertionError e) {
 			System.out.println("Failed: Appliance was not created successfully.");
@@ -54,24 +54,24 @@ public class TestAppliance {
 	}
 
 	// Create a ClothDryer with some data
-	private static ClothDryers createClothDryer() {
+	private static ClothDryer createClothDryer() {
 		String applianceType = "ClothDryers";
 		String brandName = "Samsung";
 		Double monthlyPayment = 15.0;
-		ClothDryers appliance = new ClothDryers(1, applianceType, brandName, monthlyPayment);
+		ClothDryer appliance = new ClothDryer(1, applianceType, brandName, monthlyPayment);
 		return appliance;
 	}
 	
 	public static List<Appliance> getTestAppliances(){
 		List<Appliance> applianceList = new ArrayList<>();
-		applianceList.add(new ClothDryers(1, "Brand 1", "Model 1", 15.0));
-		applianceList.add(new ClothDryers(2, "Brand 2", "Model 2", 30.0));
-		applianceList.add(new DishWashers(3, "Brand 3", "Model 3"));
+		applianceList.add(new ClothDryer(1, "Brand 1", "Model 1", 15.0));
+		applianceList.add(new ClothDryer(2, "Brand 2", "Model 2", 30.0));
+		applianceList.add(new DishWasher(3, "Brand 3", "Model 3"));
 		return applianceList;
 	}
 	
 	public static Appliance getRepairableAppliance() {
-		Appliance appliance = new ClothDryers(1, "Brand 1", "Model 1", 15.0);
+		Appliance appliance = new ClothDryer(1, "Brand 1", "Model 1", 15.0);
 		return appliance ;
 	}
 }

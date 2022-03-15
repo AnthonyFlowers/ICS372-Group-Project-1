@@ -23,11 +23,11 @@ public abstract class Appliance implements Serializable {
 	 * @param String brandName - the brand name of this appliance
 	 * @param String modelType - the model of this appliance
 	 */
-	public Appliance(long id, String brandName, String modelType) {
+	public Appliance(long id, String brandName, String modelType, double price) {
 		this.applianceID = id;
 		this.brandName = brandName;
 		this.modelType = modelType;
-		this.repairCost = repairCost;
+		this.price = price;
 		this.backOrder = true;
 		this.hasRepairPlan = false;
 	}
