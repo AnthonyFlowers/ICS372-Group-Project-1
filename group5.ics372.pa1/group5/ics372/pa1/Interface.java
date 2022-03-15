@@ -64,7 +64,7 @@ public class Interface {
 					// 3) Catalog will then insert the newly created object into it's list pass from
 					// Company
 				case 1: // I'll do this one - Chatchai
-					int applianceSelect = 0;
+					int applianceSelect;
 					double repairCost;
 					String brandName;
 					String modelType;
