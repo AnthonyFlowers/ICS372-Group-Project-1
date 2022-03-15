@@ -49,7 +49,8 @@ public class Interface {
 			} while (menuSelection < 0 || menuSelection > 16);
 
 			try {
-
+				long customerId;
+				long applianceId;
 				switch (menuSelection) {
 				case 0:
 					System.out.println("Exiting");
@@ -117,10 +118,10 @@ public class Interface {
 				case 3: // Finished - Vontha
 
 					System.out.println("Enter Appliance ID.");
-					long applianceID = scanner.nextLong();
+					applianceId = scanner.nextLong();
 					System.out.println("Enter quantity to add to stock.");
 					int quantity = scanner.nextInt();
-					company.addToInventory(applianceID, quantity);
+					company.addToInventory(applianceId, quantity);
 					break;
 
 				case 4: // Finished - Vontha
@@ -128,10 +129,10 @@ public class Interface {
 					System.out.println("Enter Customer ID.");
 					long customerID = scanner.nextLong();
 					System.out.println("Enter Appliance ID.");
-					applianceID = scanner.nextLong();
+					applianceId = scanner.nextLong();
 					System.out.println("Enter quantity to purchase.");
 					quantity = scanner.nextInt();
-					company.purchaseAppliances(customerID, applianceID, quantity);
+					company.purchaseAppliances(customerID, applianceId, quantity);
 					break;
 
 				// Done - Chatchai
@@ -150,11 +151,11 @@ public class Interface {
 					break;
 
 				case 6:
-					System.out.println("Adding a repair plan");
+					System.out.println("Enrolling a customer in a repair plan...");
 					System.out.print("Enter the id of the customer to add the repair plan to: ");
-					long customerId = scanner.nextLong();
+					customerId = scanner.nextLong();
 					System.out.print("Enter the id of the appliance with the repair plan to add: ");
-					long applianceId = scanner.nextLong();
+					applianceId = scanner.nextLong();
 					try {
 						company.enrollCustomerInRepailPlan(customerId, applianceId);
 					} catch (IllegalArgumentException e) {
@@ -167,7 +168,7 @@ public class Interface {
 					System.out.println("Please enter the customer id: ");
 					customerId1 = scanner.nextLong();
 					System.out.println("Please enter the appliance id: ");
-					applianceID = scanner.nextLong();
+					applianceId = scanner.nextLong();
 
 					break;
 
