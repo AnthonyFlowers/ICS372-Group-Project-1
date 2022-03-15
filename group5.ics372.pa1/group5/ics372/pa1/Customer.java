@@ -73,7 +73,7 @@ public class Customer implements Serializable {
 	}
 
 	public void chargeRepair(RepairPlan repairPlan) {
-		System.out.println("Plan's Cost: " + repairPlan.getCost());
+		// System.out.println("Plan's Cost: " + repairPlan.getCost());
 		totalRepairCharges += repairPlan.getCost();
 	}
 

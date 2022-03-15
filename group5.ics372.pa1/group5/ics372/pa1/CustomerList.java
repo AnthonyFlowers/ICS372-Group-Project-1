@@ -74,6 +74,10 @@ public class CustomerList implements Serializable {
 		customerList.add(new Customer(nextCustomerId, customerName, customerAddress, customerPhoneNumber));
 	}
 
+	public void addCustomer(Customer customer) {
+		this.customerList.add(customer);
+	}
+
 	/**
 	 * Finds a customer by the customerId
 	 * 

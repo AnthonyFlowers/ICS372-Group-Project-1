@@ -83,6 +83,10 @@ public class Company {
 		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
 	}
 
+	public void addCustomer(Customer customer) {
+		this.customerList.addCustomer(customer);
+	}
+
 //	public void addBackOrder(Customer customer, Appliance appliance, int quantity) {
 //		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity);
 //	}
