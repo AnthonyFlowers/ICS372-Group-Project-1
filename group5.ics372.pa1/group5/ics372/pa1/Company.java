@@ -139,6 +139,11 @@ public class Company {
 		return null;
 	}
 
+	// Process 5
+	public void fulfillBackOrder(long backOrderID) {
+		backOrdersList.fulfillBackOrder(backOrderID);
+	}
+
 	/**
 	 * Load this companies data from a saved file
 	 * 
