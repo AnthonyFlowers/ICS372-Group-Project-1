@@ -16,4 +16,16 @@ public class RepairPlan {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
+
+	public void addAppliance(Appliance appliance) {
+		this.appliance = appliance;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public Appliance getAppliance() {
+		return this.appliance;
+	}
 }

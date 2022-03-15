@@ -157,15 +157,15 @@ public class Interface {
 					long applianceId = scanner.nextLong();
 					try {
 						company.enrollCustomerInRepailPlan(customerId, applianceId);
-					} catch(IllegalArgumentException e) {
+					} catch (IllegalArgumentException e) {
 						System.out.println(e.getMessage());
 					}
 					break;
 				case 7:
-					long customerId = 0;
-					long applianceId = 0;
+					long customerId1 = 0;
+					long applianceId1 = 0;
 					System.out.println("Please enter the customer id: ");
-					customerId = scanner.nextLong();
+					customerId1 = scanner.nextLong();
 					System.out.println("Please enter the appliance id: ");
 					applianceID = scanner.nextLong();
 

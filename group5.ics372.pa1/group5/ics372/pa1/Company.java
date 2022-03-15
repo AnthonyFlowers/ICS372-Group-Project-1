@@ -7,7 +7,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -62,6 +61,7 @@ public class Company {
 	public void addAppliance(Appliance appliance) {
 		catalog.addAppliance(appliance);
 	}
+
 	// Process 1
 	// meant to handle create of a Refrigerator Appliance
 	public void addApplianceRefrigerator(String brandName, String modelName, double BTU) {
@@ -116,19 +116,6 @@ public class Company {
 		} else {
 			System.out.println("Invalid customer or appliance id.");
 		}
-	}
-
-	// First loop iterates through all customer
-	// Second loop done in customer, it iterates through all repairPlans and returns
-	// the charge
-	// the method finally returns the total charge
-	public double chargeRepairAll() {
-		double totalRepairCharges = 0;
-		Iterator<Customer> customer = customerList.getCustomerList().iterator();
-		while (customer.hasNext()) {
-			totalRepairCharges += customer.next().chargeAllRepairs(); // This is done in Customer.java
-		}
-		return totalRepairCharges;
 	}
 
 	// Process 1
@@ -201,6 +188,22 @@ public class Company {
 			}
 		}
 		return null;
+	}
+
+	// Process 7
+	public void withdrawRepairPlan(long customerId, long applianceId) {
+		// get customer from customerList
+		Customer tempCustomer = customerList.getCustomer(customerId);
+		List<RepairPlan> customerRepairPlans = tempCustomer.getRepairPlans();
+
+		for (RepairPlan repairPlanIterator : customerRepairPlans) {
+			long tempCustomerId = repairPlanIterator.getCustomer().getCustomerID();
+			long tempApplianceId = repairPlanIterator.getAppliance().getApplianceID();
+			if (tempCustomerId == customerId && tempApplianceId == applianceId) {
+				customerRepairPlans.remove(repairPlanIterator);
+			}
+		}
+
 	}
 
 	/**

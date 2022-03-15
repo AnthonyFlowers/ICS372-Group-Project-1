@@ -42,6 +42,15 @@ public class CustomerList implements Serializable {
 		return customerList;
 	}
 
+	public Customer getCustomer(long customerId) {
+		for (Customer cus : customerList) {
+			if (cus.getCustomerID() == customerId) {
+				return cus;
+			}
+		}
+		return null;
+	}
+
 	/**
 	 * Add a customer to this customer list
 	 * 

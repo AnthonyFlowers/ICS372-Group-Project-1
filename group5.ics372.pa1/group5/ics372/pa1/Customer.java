@@ -14,7 +14,7 @@ public class Customer implements Serializable {
 	private String address;
 	private String phoneNumber;
 	private List<Appliance> customerAppliances;
-	private List<Appliance> repairPlans;
+	private List<RepairPlan> repairPlans;
 
 	public Customer(long nextCustomerId, String name, String address, String phoneNumber) {
 		super();
@@ -54,12 +54,12 @@ public class Customer implements Serializable {
 		this.phoneNumber = phoneNumber;
 	}
 
-	public List<Appliance> getRepairPlans() {
+	public List<RepairPlan> getRepairPlans() {
 		return repairPlans;
 	}
 
-	public void addRepairPlan(Appliance appliance) {
-		this.repairPlans.add(appliance);
+	public void addRepairPlan(RepairPlan repairPlan) {
+		this.repairPlans.add(repairPlan);
 	}
 
 	public void addAppliance(Appliance appliance) {
