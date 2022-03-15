@@ -21,6 +21,8 @@ public class Company {
 	private long nextApplianceId;
 	private long nextBackOrderId;
 	private long nextRepairPlanId;
+	private double repairRevenue;
+	private double salesRevenue;
 	private Catalog catalog;
 	private CustomerList customerList;
 	private BackOrdersList backOrdersList;
@@ -33,6 +35,8 @@ public class Company {
 		this.nextCustomerId = 1;
 		this.nextBackOrderId = 1;
 		this.nextRepairPlanId = 1;
+		this.repairRevenue = 0;
+		this.salesRevenue = 0;
 		this.catalog = new Catalog();
 		this.customerList = new CustomerList();
 		this.backOrdersList = new BackOrdersList();
@@ -40,7 +44,7 @@ public class Company {
 
 	// Process 1
 	/**
-	 * Add an appliance to the companies catalog
+	 * Add an appliance to the companies catalog New Branch
 	 * 
 	 * @param String className - the name of the appliance
 	 * @param String brandName - the brand of the appliance
