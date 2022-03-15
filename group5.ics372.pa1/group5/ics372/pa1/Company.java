@@ -81,6 +81,7 @@ public class Company {
 	public void addAppliance(Appliance appliance) {
 		catalog.addAppliance(appliance);
 	}
+	// Process 1 end
 
 	// Process 2
 	/**
@@ -124,8 +125,10 @@ public class Company {
 				customer.addAppliance(appliance);
 				appliance.removeStock(appliance.getStock());
 			}
-		} else if (appliance.canBackOrder() == false) {
-			System.out.println("This appliance cannot be backordered.");
+		} else if (customer != null && appliance != null && appliance.canBackOrder() == false) {
+			customer.addAppliance(appliance);
+			appliance.removeStock(appliance.getStock());
+			System.out.println("This appliance cannot be backordered. Remaining stock sold to customer.");
 		} else {
 			System.out.println("Invalid customer or appliance id.");
 		}
