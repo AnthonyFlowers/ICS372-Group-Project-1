@@ -163,7 +163,13 @@ public class Interface {
 					}
 					break;
 				case 7:
-					System.out.println("To be implemented");
+					long customerId = 0;
+					long applianceId = 0;
+					System.out.println("Please enter the customer id: ");
+					customerId = scanner.nextLong();
+					System.out.println("Please enter the appliance id: ");
+					applianceID = scanner.nextLong();
+
 					break;
 
 				case 8:

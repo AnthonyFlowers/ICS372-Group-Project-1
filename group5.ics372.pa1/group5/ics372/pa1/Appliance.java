@@ -12,8 +12,12 @@ public abstract class Appliance implements Serializable {
 	private String modelType;
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
+<<<<<<< Updated upstream
 	protected double repairPlan = 0; // added, "zero" means no repair plans
 	protected boolean hasRepairPlan;
+=======
+	protected RepairPlan repairPlan; // added, "zero" means no repair plans
+>>>>>>> Stashed changes
 	protected boolean backOrder;
 
 	/**
@@ -27,16 +31,18 @@ public abstract class Appliance implements Serializable {
 		this.brandName = brandName;
 		this.modelType = modelType;
 		this.backOrder = true;
+<<<<<<< Updated upstream
 		this.hasRepairPlan = false;
 		// this.stock = stock; //initialize to methods below, not in constructor
 		// this.repairPlan = repairPlan; //initialize to methods below, not in
 		// constructor
 
+=======
+>>>>>>> Stashed changes
 	}
 
-	// aka addRepairPlan()
-	public void addRepairCharges(double newRepairCharges) {
-		this.repairPlan = newRepairCharges;
+	public void setRepairCost(double newCost) {
+		this.repairPlan.setCost(newCost);
 	}
 
 	// Adds to stock, aka "inventory"
@@ -74,15 +80,18 @@ public abstract class Appliance implements Serializable {
 	 * @return boolean - true if this appliance has a repair plan false otherwise
 	 */
 	public boolean hasRepairPlan() {
+<<<<<<< Updated upstream
 		return hasRepairPlan;
+=======
+		if (repairPlan == null)
+			return false;
+		return true;
+>>>>>>> Stashed changes
 	}
 
 	// Returns the cost of the repairPlan if it has one else the cost is zero
-	public double getRepairPlan() {
-		if (this.hasRepairPlan())
-			return this.repairPlan;
-		else
-			return 0;
+	public RepairPlan getRepairPlan() {
+		return repairPlan;
 	}
 
 	/**
