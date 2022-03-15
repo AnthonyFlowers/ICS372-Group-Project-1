@@ -48,9 +48,6 @@ public class BackOrdersList {
 			System.out.println("NOT FOUND:\nBackOrder with ID:" + backOrderID);
 
 		}
-		// can you find id?
-		// is there stock?
-		// then remove backorder
 	}
 
 	// Process 5
@@ -64,7 +61,7 @@ public class BackOrdersList {
 	}
 
 	// Process 5
-	// WIP - Chatchai
+	// Done - Chatchai
 	// 1) find the backOrder obj using given backOrderID
 	public BackOrders findWithBackOrdersID(long backOrderID) {
 		for (BackOrders tempBackOrders : backOrdersList) {
