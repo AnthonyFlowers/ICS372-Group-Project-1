@@ -20,7 +20,7 @@ public class TestAddAppliance {
 		String modelName = "Super Washer";
 		String attribute = "0.0";
 		company.addAppliance(applianceName, brandName, modelName);
-		System.out.println("Success: an appliance was added successfully.");
+		System.out.println("Success: Company was able to add an appliance successfully.");
 	}
 
 }

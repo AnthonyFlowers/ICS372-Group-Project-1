@@ -54,6 +54,15 @@ public class Company {
 		}
 	}
 
+	/**
+	 * Add an appliance to this companies catalog
+	 * 
+	 * @param appliance - the Appliance to add
+	 */
+	public void addAppliance(Appliance appliance) {
+		catalog.addAppliance(appliance);
+	}
+
 	// Process 2
 	/**
 	 * Add a new customer to the customer list
@@ -150,7 +159,7 @@ public class Company {
 	 * the eligible appliance id are input. The system should do nothing (apart from
 	 * displaying an error message) if the appliance does not have a repair plan.
 	 * 
-	 * @param customerId - the id of the customer to add the repair plan to
+	 * @param customerId  - the id of the customer to add the repair plan to
 	 * @param applianceId - the id of the appliance with a repair plan
 	 * 
 	 * @throws IllegalArgumentException if an appliance with the passed applianceId

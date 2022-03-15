@@ -23,7 +23,7 @@ public class ClothDryers extends Appliance {
 	public ClothDryers(long id, String brandName, String modelType, Double monthlyPayment) {
 		super(id, brandName, modelType);
 		this.monthlyPayment = monthlyPayment;
-		this.addRepairCharges(monthlyPayment);
+		this.hasRepairPlan = true;
 	}
 
 	public Double getMonthlyPayment() {

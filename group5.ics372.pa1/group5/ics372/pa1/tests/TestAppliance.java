@@ -69,4 +69,8 @@ public class TestAppliance {
 		applianceList.add(new DishWashers(3, "Brand 3", "Model 3"));
 		return applianceList;
 	}
+	
+	public static Appliance getRepairableAppliance() {
+		return new ClothDryers(1, "Brand 1", "Model 1", 15.0);
+	}
 }

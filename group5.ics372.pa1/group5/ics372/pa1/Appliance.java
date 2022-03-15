@@ -13,6 +13,7 @@ public abstract class Appliance implements Serializable {
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected double repairPlan = 0; // added, "zero" means no repair plans
+	protected boolean hasRepairPlan;
 	protected boolean backOrder;
 
 	/**
@@ -26,6 +27,7 @@ public abstract class Appliance implements Serializable {
 		this.brandName = brandName;
 		this.modelType = modelType;
 		this.backOrder = true;
+		this.hasRepairPlan = false;
 		// this.stock = stock; //initialize to methods below, not in constructor
 		// this.repairPlan = repairPlan; //initialize to methods below, not in
 		// constructor
@@ -72,11 +74,7 @@ public abstract class Appliance implements Serializable {
 	 * @return boolean - true if this appliance has a repair plan false otherwise
 	 */
 	public boolean hasRepairPlan() {
-		if (this.repairPlan <= 0) {
-			return false;
-		}
-
-		return true;
+		return hasRepairPlan;
 	}
 
 	// Returns the cost of the repairPlan if it has one else the cost is zero

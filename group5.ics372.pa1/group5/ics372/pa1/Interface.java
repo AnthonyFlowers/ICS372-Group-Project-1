@@ -122,10 +122,10 @@ public class Interface {
 					System.out.print("Enter the customers address: ");
 					String customerAddress = scanner.nextLine().strip();
 					System.out.print("Enter the customers phone number: ");
-					String customerPhoneNumber = scanner.next().strip();
+					String customerPhoneNumber = scanner.nextLine().strip();
 					company.addCustomer(customerName, customerAddress, customerPhoneNumber);
 					System.out.println("Customer added successfully!");
-
+					break;
 				case 3: // Finished - Vontha
 
 					System.out.println("Enter Appliance ID.");
@@ -173,7 +173,6 @@ public class Interface {
 						System.out.println(e.getMessage());
 					}
 					break;
-
 				case 7:
 					System.out.println("To be implemented");
 					break;
@@ -267,8 +266,9 @@ public class Interface {
 	private static void loadData() {
 		System.out.print("Would you like to try to load a data file from stable storage [Y/N]? ");
 		String answer = scanner.nextLine();
-		if (answer.toLowerCase().equals("Y")) {
+		if (answer.toLowerCase().equals("y")) {
 			company.loadData(DATA_FILE);
+			System.out.println("Loaded data from storage...");
 		}
 	}
 

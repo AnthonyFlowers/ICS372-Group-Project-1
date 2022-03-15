@@ -84,7 +84,7 @@ public class TestCustomer {
 	}
 
 	// Create a basic customer with some data
-	private static Customer getBasicCustomer() {
+	public static Customer getBasicCustomer() {
 		String customerName = "Anthony Flowers";
 		String customerAddress = "700 E 7th St, St Paul, MN 55106";
 		String customerPhoneNumber = "(651) 793-1300";
