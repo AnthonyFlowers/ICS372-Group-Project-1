@@ -127,7 +127,7 @@ public class Company {
 		double totalRepairCharges = 0;
 		Iterator<Customer> customer = customerList.getCustomerList().iterator();
 		while (customer.hasNext()) {
-			totalRepairCharges += customer.next().chargeAllRepairs(); // This is done in Customer.java
+			totalRepairCharges += customer.next().chargeRepairs(); // This is done in Customer.java
 		}
 		return totalRepairCharges;
 	}
