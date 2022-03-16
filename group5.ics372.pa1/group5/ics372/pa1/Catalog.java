@@ -46,11 +46,9 @@ public class Catalog implements Serializable {
 	public Appliance search(long applianceID) {
 		for (Appliance appliance : applianceList) {
 			if (applianceID == appliance.getApplianceID()) {
-				System.out.println("Appliance ID Found.");
 				return appliance;
 			}
 		}
-		System.out.println("Appliance ID Not Found");
 		return null;
 	}
 
