@@ -310,13 +310,6 @@ public class Interface {
 	}
     }
 
-    private static Appliance getApplianceInfo() {
-	// what type of appliance?
-
-	// get specific appliance info
-	return null;
-    }
-
     private static String getApplianceOption() {
 	System.out.println("---select an appliance---");
 	int option = -1;
