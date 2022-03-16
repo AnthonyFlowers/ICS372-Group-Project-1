@@ -1,9 +1,4 @@
-/**
- * This class implements Serializable, which is a set.
- * This class represents a Customer within the Company.
- * A Customer will hold personal data along with two list of appliance and Repair Plans.
- * @author Chatchai Xiong, Anthony Flowers, Vontha Chan
- */
+
 package group5.ics372.pa1;
 
 import java.io.Serializable;
@@ -11,6 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class implements Serializable, which is a set. This class represents a
+ * Customer within the Company. A Customer will hold personal data along with
+ * two list of appliance and Repair Plans.
+ * 
+ * @author Chatchai Xiong, Anthony Flowers, Vontha Chan
+ */
 public class Customer implements Serializable {
 
     private static final long serialVersionUID = 2022_03_12L;
