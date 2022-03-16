@@ -77,14 +77,15 @@ public class Interface {
 		    System.out.println(
 			    "| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 		    try {
-			applianceSelect = scanner.nextInt() - 1;
-			if (applianceSelect < 0 || applianceSelect > 5) {
+			applianceSelect = scanner.nextInt();
+			System.out.println("select: " + applianceSelect);
+			if (applianceSelect < 1 || applianceSelect > 5) {
 			    do {
 				System.out.println("Invalid input. Try again.");
-				applianceSelect = scanner.nextInt() - 1;
-			    } while (applianceSelect < 0 || applianceSelect > 5);
+				applianceSelect = scanner.nextInt();
+			    } while (applianceSelect < 1 || applianceSelect > 5);
 			}
-			System.out.println("You chose appliance \"" + applianceOptions[applianceSelect] + "\"");
+			System.out.println("You chose appliance \"" + applianceOptions[applianceSelect - 1] + "\"");
 			System.out.println("Enter brand name: ");
 			brandName = scanner.next();
 			System.out.println("Enter model name: ");
@@ -97,22 +98,28 @@ public class Interface {
 			    System.out.println("Enter repair cost: ");
 			    repairCost = scanner.nextDouble();
 			    company.addClothWasher(brandName, modelType, price, repairCost);
+			    break;
 			case 2: // Cloth Dryer
 			    System.out.println("Enter repair cost: ");
 			    repairCost = scanner.nextDouble();
 			    company.addClothDryer(brandName, modelType, price, repairCost);
+			    break;
 			case 3: // Kitchen Range
 			    company.addKitchenRange(brandName, modelType, price);
+			    break;
 			case 4: // Dishwasher
 			    company.addDishWasher(brandName, modelType, price);
+			    break;
 			case 5: // Refrigerator
 			    System.out.println("Enter capacity: ");
 			    capacity = scanner.nextDouble();
 			    company.addRefrigerator(brandName, modelType, price, capacity);
+			    break;
 			case 6: // Furnace
 			    System.out.println("Enter btu output: ");
 			    btu = scanner.nextInt();
 			    company.addFurnace(brandName, modelType, price, btu);
+			    break;
 			}
 		    } catch (Exception e) {
 			System.out.println("Case 1 Error");
