@@ -8,7 +8,7 @@ import java.util.List;
  * created within Company. The class has several methods to help manipulate
  * BackOrder Objects.
  * 
- * @author Chatchai Xiong. Vontha Chan, Anthony Flowers
+ * @author ICS 372-50(WED) Group 5-Chatchai Xiong, Vontha Chan, Anthony Flowers
  *
  */
 public class BackOrdersList {

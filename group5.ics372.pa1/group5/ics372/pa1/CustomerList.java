@@ -7,9 +7,9 @@ import java.util.List;
 /**
  * This class implements Serializable. The class represents of list of customer.
  * The class will be created and held within Company. The class helps Company
- * manipulated Customers with serveral methods.
+ * manipulated Customers with several methods.
  * 
- * @author Chatchai Xiong, Vontha Chan, Anthoy Flowers
+ * @author ICS 372-50(WED) Group 5-Chatchai Xiong, Vontha Chan, Anthony Flowers
  *
  */
 public class CustomerList implements Serializable {
