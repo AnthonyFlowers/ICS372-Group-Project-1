@@ -161,14 +161,18 @@ public class Interface {
 		    break;
 
 		case 4: // Finished - Vontha
-
-		    System.out.println("Enter Customer ID.");
-		    long customerID = scanner.nextLong();
-		    System.out.println("Enter Appliance ID.");
-		    applianceId = scanner.nextLong();
-		    System.out.println("Enter quantity to purchase.");
-		    quantity = scanner.nextInt();
-		    company.purchaseAppliances(customerID, applianceId, quantity);
+			String enterMore = "Y";
+			do {
+			    System.out.println("Enter Customer ID.");
+			    long customerID = scanner.nextLong();
+			    System.out.println("Enter Appliance ID.");
+			    applianceId = scanner.nextLong();
+			    System.out.println("Enter quantity to purchase.");
+			    quantity = scanner.nextInt();
+			    company.purchaseAppliances(customerID, applianceId, quantity);
+			    System.out.println("Would you like to add another purchase entry? [Y/N]");
+			    enterMore = scanner.next();
+			} while(enterMore.equalsIgnoreCase("y"));
 		    break;
 
 		// Done - Chatchai
@@ -286,7 +290,24 @@ public class Interface {
 		    break;
 
 		case 15:
-		    System.out.println("To be implemented");
+		   	System.out.println("Option | Description");
+		   	System.out.println("0.\t Exit the system.");
+		   	System.out.println("1.\t Add an appliance to the companies catalog.");
+		   	System.out.println("2.\t Add a customer to the companies customer list.");
+		   	System.out.println("3.\t Add inventory for an appliance.");
+		   	System.out.println("4.\t Enter a purchase for a customer.");
+		   	System.out.println("5.\t Fullfill a backorder.");
+		   	System.out.println("6.\t Enroll a customer in a repair plan.");
+		   	System.out.println("7.\t Withdraw a customer from a repair plan.");
+		   	System.out.println("8.\t Charge all current repair plans.");
+		   	System.out.println("9.\t Print the revenue from all sales and repair plans.");
+		   	System.out.println("10.\t List current appliances in the catalog.");
+		   	System.out.println("11.\t List all users that have repair plans.");
+		   	System.out.println("12.\t List all customers.");
+		   	System.out.println("13.\t List all current backorders.");
+		   	System.out.println("14.\t Save the companies data to disk.");
+		   	System.out.print("Press enter to continue...");
+		   	scanner.nextLine();
 		    break;
 		}
 
@@ -310,7 +331,7 @@ public class Interface {
      */
     private static void loadData() {
 	System.out.print("Would you like to try to load a data file from stable storage [Y/N]? ");
-	String answer = scanner.nextLine();
+	String answer = scanner.next();
 	if (answer.toLowerCase().equals("y")) {
 	    company.loadData(DATA_FILE);
 	    System.out.println("Loaded data from storage...");
