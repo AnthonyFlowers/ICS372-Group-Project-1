@@ -15,7 +15,8 @@ import java.util.List;
  * will create and hold: -customerList -catalog -backORdersList and
  * corresponding methods to manipulate the objects in the list.
  * 
- * @author ICS 372-50(WED) Group 5-Chatchai Xiong, Vontha Chan, Anthony Flowers
+ * @author ICS 372-50(WED) Group 5 - Chatchai Xiong, Vontha Chan, Anthony
+ *         Flowers
  *
  */
 public class Company {
