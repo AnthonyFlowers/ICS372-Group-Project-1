@@ -25,13 +25,15 @@ public class TestPurchaseModels {
 		company.addClothWasher("Samsung", "Washer", 60.0, 90);
 		company.addFurnace("Samsung", "Furnace", 70.0, 1000);
 		company.addToInventory(2, 2);
+		company.addToInventory(3, 2);
 		company.printCustomers();
 		company.printAppliances();
 		company.purchaseAppliances(1, 2, 5);
 		company.purchaseAppliances(2, 3, 4);
-//		company.purchaseAppliances(1, 0, 0);
+		company.purchaseAppliances(4, 0, 0);
 		company.printAppliances();
 		company.printBackOrders();
+		company.printRevenue();
 	}
 
 	public static void testAll() {
