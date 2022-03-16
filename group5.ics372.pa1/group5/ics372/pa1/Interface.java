@@ -3,6 +3,14 @@ package group5.ics372.pa1;
 
 import java.util.Scanner;
 
+/**
+ * This class is the main interface for the actor to interact with the Company.
+ * This class will allow multiple options for the actor to select in accordance
+ * with the business processes.
+ * 
+ * @author ICS 372-50(WED) Group 5-Chatchai Xiong, Vontha Chan, Anthony Flowers
+ *
+ */
 public class Interface {
     private final static String DATA_FILE = "company.dat";
     private final static Scanner scanner = new Scanner(System.in);
@@ -57,12 +65,7 @@ public class Interface {
 		    System.exit(0);
 
 		    /**
-		     * <h1>Business Processs 1: Add a single Model</h1>
-		     * <ol>
-		     * <li>Prompts the user for an Appliance subclass input.</li>
-		     * <li>With the given input it will create an Appliance</li>
-		     * <li>The create appliance will be store it within Companys applianceList.</li>
-		     * </ol>
+		     * Business Process 1: Add a single Model.
 		     */
 		case 1:
 		    int applianceSelect;
@@ -128,14 +131,7 @@ public class Interface {
 		    break;
 
 		/**
-		 * <h1>Business Process 2: A a single customer</h1>
-		 * <ol>
-		 * <li>The interface will ask for the customers Name, Address and phone number
-		 * as String inputs</li>
-		 * <li>The three inputs will be used to create a new Customer class object</li>
-		 * <li>The data is then passed to the customer and added to the customer
-		 * list</li>
-		 * </ol>
+		 * Business Process 2: Add a single customer.
 		 */
 		case 2:
 		    System.out.println("Adding a new customer.");
@@ -149,7 +145,7 @@ public class Interface {
 		    System.out.println("Customer added successfully!");
 		    break;
 		/**
-		 * <h1>Business Process 2: A single customer</hi>
+		 * Business Process 3: Add to inventory for a single model.
 		 */
 		case 3:
 
@@ -159,6 +155,7 @@ public class Interface {
 		    int quantity = scanner.nextInt();
 		    company.addToInventory(applianceId, quantity);
 		    break;
+<<<<<<< Updated upstream
 
 		case 4: // Finished - Vontha
 			String enterMore = "Y";
@@ -173,23 +170,36 @@ public class Interface {
 			    System.out.println("Would you like to add another purchase entry? [Y/N]");
 			    enterMore = scanner.next();
 			} while(enterMore.equalsIgnoreCase("y"));
+=======
+		/**
+		 * Business Process 4: Purchases one ore more models for a single customer.
+		 */
+		case 4:
+
+		    System.out.println("Enter Customer ID.");
+		    long customerID = scanner.nextLong();
+		    System.out.println("Enter Appliance ID.");
+		    applianceId = scanner.nextLong();
+		    System.out.println("Enter quantity to purchase.");
+		    quantity = scanner.nextInt();
+		    company.purchaseAppliances(customerID, applianceId, quantity);
+>>>>>>> Stashed changes
 		    break;
 
-		// Done - Chatchai
-		// actor inputs customerID
-		// system searches for backorders with customerID
-		// system checks if the stock for that appliance is available
-		// if available then, company will subtract from inventory to fulfill order and
-		// give system prompt
+		/**
+		 * Business Process 5: Fulfill a single backorder.
+		 */
 		case 5:
 		    long backOrderIDSelect;
 		    System.out.println("Initiatiating a Backorder: ");
 		    System.out.println("Please enter the BackOrder ID...");
 		    backOrderIDSelect = scanner.nextLong();
 		    company.fulfillBackOrder(backOrderIDSelect);
-		    // System.out.println("Process 5: Completed");
 		    break;
-
+		/**
+		 * Business Process 6: Enroll a customer in a repair plan for a single
+		 * appliance.
+		 */
 		case 6:
 		    System.out.println("Enrolling a customer in a repair plan...");
 		    System.out.print("Enter the id of the customer to add the repair plan to: ");
@@ -202,7 +212,10 @@ public class Interface {
 			System.out.println(e.getMessage());
 		    }
 		    break;
-		// Done -chatchai
+		/**
+		 * Business Process 7: Withdraw customer from a repair plan for a single
+		 * appliance.
+		 */
 		case 7:
 		    System.out.println("Withdrawing from Repair Plans: ");
 		    System.out.println("Please enter the customer id: ");
@@ -212,8 +225,10 @@ public class Interface {
 		    company.withdrawRepairPlan(customerId, applianceId);
 
 		    break;
-
-		case 8: // WIP - Chatchai
+		/**
+		 * Business Process 8: Charge all repair plans.
+		 */
+		case 8:
 		    System.out.println("---------------------------------------------");
 		    System.out.println("Do you wish to charge all customer repairs?");
 		    System.out.println("---------------------------------------------");
@@ -229,14 +244,16 @@ public class Interface {
 		    }
 
 		    break;
-
+		/**
+		 * Business Process 9: Print revenue from all sales and repair plans.
+		 */
 		case 9:
 		    company.printRevenue();
 		    break;
 
-		// Finished - Vontha, Chatchai
-		// Displays a listing of all Appliance or Specific Appliances
-		// User will be prompted to select all or a specific option
+		/**
+		 * Business Process 10: List all or some types of appliances.
+		 */
 		case 10:
 		    int selectOptionCaseTen = 0;
 		    System.out.println("Would you like display all or a specific Appliance?");
@@ -247,14 +264,9 @@ public class Interface {
 		    } catch (Exception e) {
 			System.out.println("Case 10 Error");
 		    }
-		    // option 1, list all
-		    // calls company.printApliances();
 		    if (selectOptionCaseTen == 1) {
 			company.printAppliances();
-		    }
-		    // option 2
-		    // calls company.printSpecificAppliances(int option);
-		    else if (selectOptionCaseTen == 2) {
+		    } else if (selectOptionCaseTen == 2) {
 			selectOptionCaseTen = 0;
 			System.out.println("Which Appliance would you like to display?");
 			System.out.println(
@@ -269,23 +281,30 @@ public class Interface {
 		    } else {
 			System.out.println("You must select from options 1. or 2.");
 		    }
-//					needs another method to print only specific appliance type Ex. (ClothWashers).
-//					also needs a prompt to choose between the two.
 		    break;
-
+		/**
+		 * Business Process 11: List all users in repair plans.
+		 */
 		case 11:
 		    company.printCustomerRepairPlans();
 		    break;
-
-		case 12: // Finished - Vontha
+		/**
+		 * Business Process 12: List customers.
+		 */
+		case 12:
 		    company.printCustomers();
 		    break;
-
-		case 13: // Finished - Vontha
+		/**
+		 * Business Process 13: List all backorders: appliance brand, model, customer
+		 * name, and quantity.
+		 */
+		case 13:
 		    company.printBackOrders();
 		    break;
-
-		case 14: // -Anthony
+		/**
+		 * Business Process 14: Save to disk.
+		 */
+		case 14:
 		    saveData();
 		    break;
 
@@ -338,6 +357,11 @@ public class Interface {
 	}
     }
 
+    /**
+     * This method returns the Appliance's class name as a string.
+     * 
+     * @return the appliance class as a string
+     */
     private static String getApplianceOption() {
 	System.out.println("---select an appliance---");
 	int option = -1;
