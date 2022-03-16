@@ -8,7 +8,14 @@ public class CustomerList implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
 
-	private final List<Customer> customerList = new ArrayList<>();
+	private final List<Customer> customerList;
+	private final List<RepairPlan> repairPlans;
+
+	public CustomerList() {
+		customerList = new ArrayList<>();
+		;
+		repairPlans = new ArrayList<>();
+	}
 
 	/**
 	 * Checks if customers ID exists in customerList
@@ -97,6 +104,29 @@ public class CustomerList implements Serializable {
 	// Added for troubleshooting
 	public void addCustomerObj(Customer customer) {
 		customerList.add(customer);
+	}
+
+	/**
+	 * Adds the repair plan to the Customer and the companies repair plan list.
+	 * 
+	 * @param customer   - the Customer to add the RepairPlan to
+	 * @param repairPlan - the RepairPlan to add to the customer and the companies
+	 *                   list
+	 */
+	public void addCustomerRepairPlan(Customer customer, RepairPlan repairPlan) {
+		customer.addRepairPlan(repairPlan);
+		repairPlans.add(repairPlan);
+	}
+
+	/**
+	 * Removes the repair plan from its Customer and the companies repair plan list.
+	 * 
+	 * @param toBeRemovedPlan - the RepairPlan to be removed
+	 */
+	public void withdrawCustomerRepairPlan(RepairPlan toBeRemovedPlan) {
+		Customer customer = toBeRemovedPlan.getCustomer();
+		customer.removeRepairPlan(toBeRemovedPlan);
+		repairPlans.remove(toBeRemovedPlan);
 	}
 
 }

@@ -168,11 +168,10 @@ public class Company {
 		} else if (!appliance.hasRepairPlan) { // changed - Chatchai
 			throw new IllegalArgumentException(
 					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
+		} else {
+			RepairPlan repairPlan = new RepairPlan(nextRepairPlanId++, customer, appliance, appliance.getRepairCost());
+			customerList.addCustomerRepairPlan(customer, repairPlan);
 		}
-		long tempCusId = customer.getCustomerID();
-		long tempAppId = appliance.getApplianceID();
-		double tempRepairCost = appliance.getRepairCost();
-		customer.addRepairPlan(new RepairPlan(nextRepairPlanId++, customer, appliance, tempRepairCost));
 	}
 
 	// Get appliance from the catalog by id
@@ -187,23 +186,23 @@ public class Company {
 
 	// Process 7
 	public void withdrawRepairPlan(long customerId, long applianceId) {
-		// get customer from customerList
 		Customer customer = customerList.getCustomer(customerId);
-		System.out.println(customer);
 		List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
-		RepairPlan toBeRemovedPlan = new RepairPlan(0, null, null, 0.0);
+		RepairPlan toBeRemovedPlan = null;
 
-		for (RepairPlan repairPlanIterator : customerRepairPlans) {
-			long tempCustomerId = repairPlanIterator.getCustomer().getCustomerID();
-			long tempApplianceId = repairPlanIterator.getAppliance().getApplianceID();
-			if (tempCustomerId == customerId && tempApplianceId == applianceId) {
-				toBeRemovedPlan = repairPlanIterator;
+		for (RepairPlan repairPlan : customerRepairPlans) {
+			long repairPlanCustomerId = repairPlan.getCustomer().getCustomerID();
+			long repairPlanApplianceId = repairPlan.getAppliance().getApplianceID();
+			if (repairPlanCustomerId == customerId && repairPlanApplianceId == applianceId) {
+				toBeRemovedPlan = repairPlan;
+				break;
 			}
 		}
-		if (toBeRemovedPlan.getAppliance() != null) {
+		if (toBeRemovedPlan != null) {
 			System.out.println("The repair plan below has been removed. ");
-			System.out.println(customerRepairPlans.toString());
-			customerRepairPlans.remove(toBeRemovedPlan);
+//			System.out.println(customerRepairPlans.toString());
+			customerList.withdrawCustomerRepairPlan(toBeRemovedPlan);
+//			customerRepairPlans.remove(toBeRemovedPlan);
 		} else {
 			System.out.println("The system could not find an repair plan with the Customer and Appliance Id");
 		}
