@@ -1,25 +1,23 @@
 package group5.ics372.pa1.tests;
 
+import group5.ics372.pa1.Appliance;
+import group5.ics372.pa1.ClothDryer;
+import group5.ics372.pa1.ClothWasher;
 import group5.ics372.pa1.Company;
 
 public class TestListAppliances {
 	private static Company company = new Company();
 
 	public static void main(String[] args) {
-
-		addApplianceOne();
-		addApplianceTwo();
-		TestPrintAppliances();
-		TestPrintSpecificAppliances();
-
+		testAll();
 	}
 
-	private static void TestPrintAppliances() {
+	private static void testPrintAppliances() {
 		System.out.println("TestPrintAppliances: ");
 		company.printAppliances();
 	}
 
-	private static void TestPrintSpecificAppliances() {
+	private static void testPrintSpecificAppliances() {
 		System.out.println("TestPrintSpecificAppliances: ");
 		String className = "ClothWashers";
 		company.printSpecificAppliances(className);
@@ -31,8 +29,8 @@ public class TestListAppliances {
 		String applianceName = "ClothWashers";
 		String brandName = "Bob's Washers";
 		String modelName = "Super Washer";
-		double attribute = 100.0;
-		company.addAppliance(applianceName, brandName, modelName, attribute);
+		Appliance appliance = new ClothWasher(1, brandName, modelName, 300, 12.0);
+		company.addAppliance(appliance);
 		System.out.println("Success: an appliance was added successfully.");
 	}
 
@@ -41,9 +39,16 @@ public class TestListAppliances {
 		String applianceName = "ClothDryers";
 		String brandName = "Kate's Dryers";
 		String modelName = "miniDryer 3000";
-		double attribute = 0.0;
-		company.addAppliance(applianceName, brandName, modelName, attribute);
+		Appliance appliance = new ClothDryer(1, brandName, modelName, 150.0, 5.0);
+		company.addAppliance(appliance);
 		System.out.println("Success: an appliance was added successfully.");
+	}
+
+	public static void testAll() {
+		addApplianceOne();
+		addApplianceTwo();
+		testPrintAppliances();
+		testPrintSpecificAppliances();
 	}
 
 }

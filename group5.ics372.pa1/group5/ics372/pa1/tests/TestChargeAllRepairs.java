@@ -10,14 +10,14 @@ public class TestChargeAllRepairs {
 	private static Company company = new Company();
 
 	public static void main(String[] args) {
-		TestChargeRepair();
+		testChargeRepair();
 	}
 
-	public static void TestChargeRepair() {
+	public static void testChargeRepair() {
 		Customer customer = new Customer(1, "Bob", "Bob", "123");
 		Customer customer2 = new Customer(2, "Dee", "Bob", "123");
-		Appliance appliance = new DishWasher(1, "Jon", "Jon");
-		Appliance appliance2 = new DishWasher(2, "J", "Jo");
+		Appliance appliance = new DishWasher(1, "Jon", "Jon", 10.0);
+		Appliance appliance2 = new DishWasher(2, "J", "Jo", 15.0);
 		RepairPlan repairPlan = new RepairPlan(1, customer, appliance, 300);
 		RepairPlan repairPlan2 = new RepairPlan(2, customer, appliance2, 100);
 		customer.addRepairPlan(repairPlan);
@@ -28,6 +28,10 @@ public class TestChargeAllRepairs {
 		company.addCustomer(customer2);
 		company.chargeAllRepairs();
 
+	}
+
+	public static void testAll() {
+		testChargeRepair();
 	}
 
 }

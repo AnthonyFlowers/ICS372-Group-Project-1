@@ -13,13 +13,13 @@ public class ClothDryer extends Appliance {
 	private final double monthlyPayment;
 
 	/**
-	 * Initialize a new ClothDryer appliance
+	 * Initialize a new ClothDryer
 	 * 
-	 * @param String brandName
-	 * @param String modelType
-	 * @param Double monthlyPayment - the monthly payment for the service plan of
-	 *               this dryer
-	 * @see group5.ics372.pa1.Appliance#Appliance(String, String)
+	 * @param id             - the id of this Appliance
+	 * @param brandName      - the brand name of this appliance
+	 * @param modelType      - the model type of this appliance
+	 * @param price          - the price of this appliance
+	 * @param monthlyPayment - the monthly repair plan price of this ClothDryer
 	 */
 	public ClothDryer(long id, String brandName, String modelType, double price, double monthlyPayment) {
 		super(id, brandName, modelType, price);

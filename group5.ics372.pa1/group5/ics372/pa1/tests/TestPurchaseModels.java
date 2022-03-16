@@ -7,6 +7,10 @@ import group5.ics372.pa1.Company;
 public class TestPurchaseModels {
 
 	public static void main(String[] args) {
+		testAll();
+	}
+
+	public static void testPurchaseAppliance() {
 		Company company = new Company();
 		double attribute = 10;
 		company.addCustomer("Vontha", "Apple Valley", "6122275181");
@@ -28,6 +32,10 @@ public class TestPurchaseModels {
 //		company.purchaseAppliances(1, 0, 0);
 		company.printAppliances();
 		company.printBackOrders();
+	}
+
+	public static void testAll() {
+		testPurchaseAppliance();
 	}
 
 }

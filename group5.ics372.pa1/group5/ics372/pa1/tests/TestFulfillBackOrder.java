@@ -11,27 +11,30 @@ public class TestFulfillBackOrder {
 	public static Company company = new Company();
 
 	public static void main(String[] args) {
+		testAll();
+	}
+
+	public static void testAll() {
 		System.out.println("-------------------------------------");
 		System.out.println("Testing Not Enough in Stock:");
 
-		TestNotEnoughStock();
+		testNotEnoughStock();
 
 		System.out.println("-------------------------------------");
 		System.out.println("-------------------------------------");
 		System.out.println("Testing Enough in Stock:");
 
-		TestEnoughStock();
+		testEnoughStock();
 
 		System.out.println("-------------------------------------");
-
 	}
 
-	public static void TestNotEnoughStock() {
+	public static void testNotEnoughStock() {
 		int stock = 15;
 		int backQuantity = 20;
 
 		Customer customer = new Customer(1, "Bob", "Bob St.", "1234556789");
-		Appliance appliance = new DishWasher(1, "Bob's Washer", "xr3000");
+		Appliance appliance = new DishWasher(1, "Bob's Washer", "xr3000", 30.0);
 		// -----------------------------------------------------------------
 		appliance.addStock(stock);
 		BackOrders backorder = new BackOrders(1L, customer, appliance, backQuantity);
@@ -43,12 +46,12 @@ public class TestFulfillBackOrder {
 
 	}
 
-	public static void TestEnoughStock() {
+	public static void testEnoughStock() {
 		int stock = 99;
 		int backQuantity = 20;
 
 		Customer customer = new Customer(1, "Bob", "Bob St.", "1234556789");
-		Appliance appliance = new DishWasher(1, "Jill's Washer", "xr9000");
+		Appliance appliance = new DishWasher(1, "Jill's Washer", "xr9000", 35.0);
 		// -----------------------------------------------------------------
 		appliance.addStock(stock);
 		BackOrders backorder = new BackOrders(1L, customer, appliance, backQuantity);
