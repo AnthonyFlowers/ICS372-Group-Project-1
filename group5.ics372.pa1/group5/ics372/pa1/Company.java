@@ -211,7 +211,7 @@ public class Company {
 
 	// Process 8
 	public void chargeAllRepairs() {
-		customerList.chargeAllRepairs();
+		this.repairRevenue = customerList.chargeAllRepairs();
 	}
 
 	/**

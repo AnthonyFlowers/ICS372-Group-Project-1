@@ -32,7 +32,7 @@ public class Customer implements Serializable {
 		this.totalRepairCharges += addCharge;
 	}
 
-	public double getTotalReapirCharges() {
+	public double getTotalRepairCharges() {
 		return this.totalRepairCharges;
 	}
 
