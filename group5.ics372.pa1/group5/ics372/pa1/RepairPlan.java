@@ -38,4 +38,8 @@ public class RepairPlan {
 				+ customer.getCustomerID() + "|\tAppliance Class: " + appliance.getClass() + "|\tAppliance ID: "
 				+ appliance.getApplianceID();
 	}
+
+	public void chargeRepair() {
+		customer.chargeRepair(this);
+	}
 }

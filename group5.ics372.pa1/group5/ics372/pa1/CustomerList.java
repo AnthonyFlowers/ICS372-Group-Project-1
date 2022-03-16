@@ -42,6 +42,10 @@ public class CustomerList implements Serializable {
 
 	public double chargeAllRepairs() {
 		double total = 0;
+//		for(RepairPlan repairPlan : repairPlans) {
+//			repairPlan.chargeRepair();
+//			total += repairPlan.getCost();
+//		}
 		for (Customer customer : customerList) {
 			for (RepairPlan repairPlan : customer.getRepairPlans()) {
 				customer.chargeRepair(repairPlan);

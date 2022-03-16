@@ -24,14 +24,15 @@ public class TestChargeAllRepairs {
 		customer.chargeRepair(repairPlan2);
 		customer2.addRepairPlan(repairPlan2);
 
-		company.addCustomer(customer);
-		company.addCustomer(customer2);
-		company.chargeAllRepairs();
-		company.printRevenue();
+		assert(customer.getTotalRepairCharges() == repairPlan.getCost());
+//		company.addCustomer(customer);
+//		company.addCustomer(customer2);
+//		company.chargeAllRepairs();
 
 	}
 
 	public static void testAll() {
 		testChargeRepair();
 	}
+
 }

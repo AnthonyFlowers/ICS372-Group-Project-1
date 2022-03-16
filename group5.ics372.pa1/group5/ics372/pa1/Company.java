@@ -211,7 +211,7 @@ public class Company {
 
 	// Process 8
 	public void chargeAllRepairs() {
-		this.repairRevenue = customerList.chargeAllRepairs();
+		this.repairRevenue += customerList.chargeAllRepairs();
 	}
 
 	/**
@@ -327,6 +327,21 @@ public class Company {
 
 	public List<Appliance> getAppliances() {
 		return catalog.getApplianceList();
+	}
+
+	public void printCustomerRepairPlans() {
+		System.out.println("Showing Customer Repair Plans...");
+		for (Customer customer : customerList.getCustomerList()) {
+			System.out.println(String.format("Customer: %s Address: %s Phone: %s ID: %s Balance: %s",
+					customer.getName(), customer.getAddress(), customer.getPhoneNumber(), customer.getCustomerID(),
+					customer.getTotalRepairCharges()));
+			System.out.println("The customer has a repair plan for these appliances:");
+			for (RepairPlan repairPlan : customer.getRepairPlans()) {
+				Appliance planAppliance = repairPlan.getAppliance();
+				System.out.println(
+						String.format("Brand: %s Model: %s", planAppliance.getBrand(), planAppliance.getType()));
+			}
+		}
 	}
 
 }

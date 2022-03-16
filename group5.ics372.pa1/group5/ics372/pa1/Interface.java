@@ -254,7 +254,7 @@ public class Interface {
 					break;
 
 				case 11:
-
+					company.printCustomerRepairPlans();
 					break;
 
 				case 12: // Finished - Vontha
