@@ -34,5 +34,4 @@ public class TestChargeAllRepairs {
 	public static void testAll() {
 		testChargeRepair();
 	}
-
 }

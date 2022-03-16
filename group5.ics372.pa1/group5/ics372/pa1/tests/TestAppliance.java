@@ -29,8 +29,8 @@ public class TestAppliance {
 		try {
 			String brandName = "Samsung";
 			String modelType = "ClothDryers";
-			Double monthlyPayment = 15.0;
-			ClothDryer appliance = new ClothDryer(1, brandName, modelType, monthlyPayment, monthlyPayment);
+			double monthlyPayment = 15.0;
+			ClothDryer appliance = new ClothDryer(1, brandName, modelType, 250.0, monthlyPayment);
 			assert (appliance.getBrand().equals(brandName));
 			assert (appliance.getType().equals(modelType));
 			assert (appliance.getMonthlyPayment() == monthlyPayment);
@@ -61,17 +61,17 @@ public class TestAppliance {
 		ClothDryer appliance = new ClothDryer(1, applianceType, brandName, monthlyPayment, monthlyPayment);
 		return appliance;
 	}
-	
-	public static List<Appliance> getTestAppliances(){
+
+	public static List<Appliance> getTestAppliances() {
 		List<Appliance> applianceList = new ArrayList<>();
 		applianceList.add(new ClothDryer(1, "Brand 1", "Model 1", 150.0, 2.1));
 		applianceList.add(new ClothDryer(2, "Brand 2", "Model 2", 300.0, 5.0));
 		applianceList.add(new DishWasher(3, "Brand 3", "Model 3", 520.0));
 		return applianceList;
 	}
-	
+
 	public static Appliance getRepairableAppliance() {
 		Appliance appliance = new ClothDryer(1, "Brand 1", "Model 1", 150.0, 3.50);
-		return appliance ;
+		return appliance;
 	}
 }

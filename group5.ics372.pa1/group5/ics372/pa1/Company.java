@@ -188,9 +188,9 @@ public class Company {
 	// Process 7
 	public void withdrawRepairPlan(long customerId, long applianceId) {
 		// get customer from customerList
-		Customer tempCustomer = customerList.getCustomer(customerId);
-		System.out.println(tempCustomer);
-		List<RepairPlan> customerRepairPlans = tempCustomer.getRepairPlans();
+		Customer customer = customerList.getCustomer(customerId);
+		System.out.println(customer);
+		List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
 		RepairPlan toBeRemovedPlan = new RepairPlan(0, null, null, 0.0);
 
 		for (RepairPlan repairPlanIterator : customerRepairPlans) {
@@ -231,15 +231,15 @@ public class Company {
 			this.catalog.setApplianceList((List<Appliance>) oin.readObject());
 		} catch (FileNotFoundException e) {
 			System.out.println("Could not find the data file...");
-			System.out.println(e.getStackTrace()[0]);
+//			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		} catch (IOException e) {
 			System.out.println("Failed to load the data file...");
-			System.out.println(e.getStackTrace()[0]);
+//			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			System.out.println("There was a problem loading the data from the file...");
-			System.out.println(e.getStackTrace()[0]);
+//			System.out.println(e.getStackTrace()[0]);
 //			e.printStackTrace();
 		}
 	}
