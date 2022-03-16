@@ -115,9 +115,11 @@ public class Company {
 		Appliance appliance = catalog.search(applianceID);
 		if (customer != null && appliance != null && appliance.canBackOrder()) {
 			if (appliance.removeStock(quantity)) {
+				this.addSalesRevenue(appliance.getPrice() * quantity);
 				customer.addAppliance(appliance);
 				System.out.println("Purchase completed.");
 			} else {
+				this.addSalesRevenue(appliance.getPrice() * quantity);
 				System.out.println(appliance.getStock() + " appliances delivered.");
 				System.out.println(quantity - appliance.getStock() + " appliances have been backordered.");
 				System.out.println("BackOrder created.\nID = " + nextBackOrderId);
@@ -126,6 +128,7 @@ public class Company {
 				appliance.removeStock(appliance.getStock());
 			}
 		} else if (customer != null && appliance != null && appliance.canBackOrder() == false) {
+			this.addSalesRevenue(appliance.getPrice() * appliance.getStock());
 			customer.addAppliance(appliance);
 			appliance.removeStock(appliance.getStock());
 			System.out.println("This appliance cannot be backordered. Remaining stock sold to customer.");
@@ -264,6 +267,20 @@ public class Company {
 		}
 	}
 
+	// Process 9
+	public void printRevenue() {
+		System.out.println(String.format("Sales revenue: %.2f", salesRevenue));
+		System.out.println(String.format("Repair revenue: %.2f", repairRevenue));
+	}
+
+	public void addSalesRevenue(double amount) {
+		this.salesRevenue += amount;
+	}
+
+	public void addRepairRevenue(double amount) {
+		this.repairRevenue += amount;
+	}
+
 	// Process 10
 	public void printAppliances() {
 		System.out.println("Appliances:");
@@ -312,4 +329,5 @@ public class Company {
 	public List<Appliance> getAppliances() {
 		return catalog.getApplianceList();
 	}
+
 }
