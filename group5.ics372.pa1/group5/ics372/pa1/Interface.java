@@ -211,7 +211,7 @@ public class Interface {
 					break;
 
 				case 9:
-					System.out.println("To be implemented");
+					company.printRevenue();
 					break;
 
 				// Finished - Vontha, Chatchai
