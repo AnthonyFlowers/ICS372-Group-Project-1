@@ -296,10 +296,10 @@ public class Company {
 		// 2) convert's its actualType's name into string and compares it with the input
 		// String className
 		// 3) if match then print display of the appliance's details
-		for (Appliance app : catalog.getApplianceList()) {
-			String currentAppNameStr = app.getClass().toString().replaceFirst("class group5.ics372.pa1.", "");
+		for (Appliance appliance : catalog.getApplianceList()) {
+			String currentAppNameStr = appliance.getClass().toString().replaceFirst("class group5.ics372.pa1.", "");
 			if (currentAppNameStr.toUpperCase().equals(className.toUpperCase())) {
-				System.out.println(app.toString());
+				System.out.println(appliance.toString());
 			}
 		}
 	}

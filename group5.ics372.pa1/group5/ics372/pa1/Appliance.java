@@ -8,8 +8,8 @@ public abstract class Appliance implements Serializable {
 
 	// Protected or public?
 	protected long applianceID;
-	private String brandName;
-	private String modelType;
+	protected String brandName;
+	protected String modelType;
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected boolean hasRepairPlan;
