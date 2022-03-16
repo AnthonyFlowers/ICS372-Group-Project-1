@@ -36,25 +36,6 @@ public class Catalog implements Serializable {
 	}
 
 	/**
-	 * Determines whether an Appliance is already within the Catalog's applianceList
-	 * based off it's brand and type attributes.
-	 * 
-	 * @param appliance attribute brandName and type will be compared with the
-	 *                  catalog's applianceList to see if it has already been
-	 *                  created.
-	 * @return
-	 */
-	public boolean applianceAlreadyIn(Appliance appliance) {
-		for (Appliance e : applianceList) {
-			if (e.getBrand().toUpperCase().equals(appliance.getBrand().toUpperCase())
-					&& e.getType().toUpperCase().equals(appliance.getType().toUpperCase())) {
-				return true;
-			}
-		}
-		return false;
-	}
-
-	/**
 	 * Checks if appliance ID exists in applianceList. Searches for the Appliance
 	 * with the given input Appliance ID and returns it.
 	 * 
