@@ -33,14 +33,17 @@ public class CustomerList implements Serializable {
 		}
 	}
 
-	public void chargeAllRepairs() {
-		for (Customer cus : customerList) {
-			for (RepairPlan rep : cus.getRepairPlans()) {
-				cus.chargeRepair(rep);
+	public double chargeAllRepairs() {
+		double total = 0;
+		for (Customer customer : customerList) {
+			for (RepairPlan repairPlan : customer.getRepairPlans()) {
+				customer.chargeRepair(repairPlan);
 			}
-			System.out.println("Customer :" + cus.getName() + " ID: " + cus.getCustomerID() + " TotalRepairCharges : "
-					+ cus.getTotalReapirCharges());
+			total += customer.getTotalRepairCharges();
+			System.out.println("Customer :" + customer.getName() + " ID: " + customer.getCustomerID()
+					+ " TotalRepairCharges : " + customer.getTotalRepairCharges());
 		}
+		return total;
 	}
 
 	/**
@@ -53,9 +56,9 @@ public class CustomerList implements Serializable {
 	}
 
 	public Customer getCustomer(long customerId) {
-		for (Customer cus : customerList) {
-			if (cus.getCustomerID() == customerId) {
-				return cus;
+		for (Customer customer : customerList) {
+			if (customer.getCustomerID() == customerId) {
+				return customer;
 			}
 		}
 		return null;

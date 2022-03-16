@@ -27,6 +27,7 @@ public class TestChargeAllRepairs {
 		company.addCustomer(customer);
 		company.addCustomer(customer2);
 		company.chargeAllRepairs();
+		company.printRevenue();
 
 	}
 
