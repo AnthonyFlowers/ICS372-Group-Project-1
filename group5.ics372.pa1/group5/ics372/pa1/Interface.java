@@ -78,30 +78,34 @@ public class Interface {
 			    "| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 		    try {
 			applianceSelect = scanner.nextInt();
+			scanner.nextLine();
 			System.out.println("select: " + applianceSelect);
 			if (applianceSelect < 1 || applianceSelect > 5) {
 			    do {
 				System.out.println("Invalid input. Try again.");
 				applianceSelect = scanner.nextInt();
+				scanner.nextLine(); // clear current line being read
 			    } while (applianceSelect < 1 || applianceSelect > 5);
 			}
 			System.out.println("You chose appliance \"" + applianceOptions[applianceSelect - 1] + "\"");
 			System.out.println("Enter brand name: ");
-			brandName = scanner.next();
+			brandName = scanner.nextLine();
 			System.out.println("Enter model name: ");
-			modelType = scanner.next();
+			modelType = scanner.nextLine();
 			System.out.println("Enter price: ");
 			price = scanner.nextDouble();
+			scanner.nextLine();
 			switch (applianceSelect) {
-
 			case 1: // Cloth Washer
 			    System.out.println("Enter repair cost: ");
 			    repairCost = scanner.nextDouble();
+			    scanner.nextLine();
 			    company.addClothWasher(brandName, modelType, price, repairCost);
 			    break;
 			case 2: // Cloth Dryer
 			    System.out.println("Enter repair cost: ");
 			    repairCost = scanner.nextDouble();
+			    scanner.nextLine();
 			    company.addClothDryer(brandName, modelType, price, repairCost);
 			    break;
 			case 3: // Kitchen Range
@@ -113,18 +117,19 @@ public class Interface {
 			case 5: // Refrigerator
 			    System.out.println("Enter capacity: ");
 			    capacity = scanner.nextDouble();
+			    scanner.nextLine();
 			    company.addRefrigerator(brandName, modelType, price, capacity);
 			    break;
 			case 6: // Furnace
 			    System.out.println("Enter btu output: ");
 			    btu = scanner.nextInt();
+			    scanner.nextLine();
 			    company.addFurnace(brandName, modelType, price, btu);
 			    break;
 			}
 		    } catch (Exception e) {
 			System.out.println("Case 1 Error");
 		    }
-		    System.out.println("Case 1 ran success. System Successfully closed.");
 		    break;
 
 		/**
@@ -155,8 +160,10 @@ public class Interface {
 
 		    System.out.println("Enter Appliance ID.");
 		    applianceId = scanner.nextLong();
+		    scanner.nextLine();
 		    System.out.println("Enter quantity to add to stock.");
 		    int quantity = scanner.nextInt();
+		    scanner.nextLine();
 		    company.addToInventory(applianceId, quantity);
 		    break;
 
@@ -165,13 +172,16 @@ public class Interface {
 			do {
 			    System.out.println("Enter Customer ID.");
 			    long customerID = scanner.nextLong();
+			    scanner.nextLine();
 			    System.out.println("Enter Appliance ID.");
 			    applianceId = scanner.nextLong();
+			    scanner.nextLine();
 			    System.out.println("Enter quantity to purchase.");
 			    quantity = scanner.nextInt();
+			    scanner.nextLine();
 			    company.purchaseAppliances(customerID, applianceId, quantity);
 			    System.out.println("Would you like to add another purchase entry? [Y/N]");
-			    enterMore = scanner.next();
+			    enterMore = scanner.nextLine();
 			} while(enterMore.equalsIgnoreCase("y"));
 		    break;
 
@@ -186,6 +196,7 @@ public class Interface {
 		    System.out.println("Initiatiating a Backorder: ");
 		    System.out.println("Please enter the BackOrder ID...");
 		    backOrderIDSelect = scanner.nextLong();
+		    scanner.nextLine();
 		    company.fulfillBackOrder(backOrderIDSelect);
 		    // System.out.println("Process 5: Completed");
 		    break;
@@ -194,8 +205,10 @@ public class Interface {
 		    System.out.println("Enrolling a customer in a repair plan...");
 		    System.out.print("Enter the id of the customer to add the repair plan to: ");
 		    customerId = scanner.nextLong();
+		    scanner.nextLine();
 		    System.out.print("Enter the id of the appliance with the repair plan to add: ");
 		    applianceId = scanner.nextLong();
+		    scanner.nextLine();
 		    try {
 			company.enrollCustomerInRepairPlan(customerId, applianceId);
 		    } catch (IllegalArgumentException e) {
@@ -207,10 +220,11 @@ public class Interface {
 		    System.out.println("Withdrawing from Repair Plans: ");
 		    System.out.println("Please enter the customer id: ");
 		    customerId = scanner.nextLong();
+		    scanner.nextLine();
 		    System.out.println("Please enter the appliance id: ");
 		    applianceId = scanner.nextLong();
+		    scanner.nextLine();
 		    company.withdrawRepairPlan(customerId, applianceId);
-
 		    break;
 
 		case 8: // WIP - Chatchai
@@ -219,6 +233,7 @@ public class Interface {
 		    System.out.println("---------------------------------------------");
 		    System.out.println("| 1. Charge All Customers | 2. Cancel return to main menu |");
 		    menuSelection = scanner.nextInt();
+		    scanner.nextLine();
 		    if (menuSelection == 1) {
 			System.out.println("All customers will be charged for their repair plans");
 			company.chargeAllRepairs();
@@ -227,7 +242,6 @@ public class Interface {
 		    } else {
 			System.out.println("Please select options 1 or 2.");
 		    }
-
 		    break;
 
 		case 9:
@@ -244,6 +258,7 @@ public class Interface {
 
 		    try {
 			selectOptionCaseTen = scanner.nextInt();
+			scanner.nextLine();
 		    } catch (Exception e) {
 			System.out.println("Case 10 Error");
 		    }
@@ -260,6 +275,7 @@ public class Interface {
 			System.out.println(
 				"| 1. ClothWashers | 2. ClothDryers | 3. KitchenRanges | 4. DishWashers | 5. Refrigerators | 6. Furnaces |");
 			selectOptionCaseTen = scanner.nextInt() - 1;
+			scanner.nextLine();
 
 			if (selectOptionCaseTen >= 0 && selectOptionCaseTen <= 6) {
 			    company.printSpecificAppliances(applianceOptions[selectOptionCaseTen]);
@@ -306,10 +322,10 @@ public class Interface {
 		   	System.out.println("12.\t List all customers.");
 		   	System.out.println("13.\t List all current backorders.");
 		   	System.out.println("14.\t Save the companies data to disk.");
-		   	System.out.print("Press enter to continue...");
-		   	scanner.nextLine();
+		   	System.out.println("15.\t Shows this help message.");
 		    break;
 		}
+		waitToContinue();
 
 	    } catch (Exception e) {
 		e.printStackTrace();
@@ -317,6 +333,11 @@ public class Interface {
 	} while (menuSelection != 0);
 	scanner.close();
     }
+
+	private static void waitToContinue() {
+		System.out.print("Press enter to continue...");
+		scanner.nextLine();
+	}
 
     /**
      * Method to save the current company data to stable storage -Anthony
@@ -331,7 +352,7 @@ public class Interface {
      */
     private static void loadData() {
 	System.out.print("Would you like to try to load a data file from stable storage [Y/N]? ");
-	String answer = scanner.next();
+	String answer = scanner.nextLine();
 	if (answer.toLowerCase().equals("y")) {
 	    company.loadData(DATA_FILE);
 	    System.out.println("Loaded data from storage...");
@@ -346,10 +367,10 @@ public class Interface {
 		System.out.println(String.format("%d : %s", index + 1, applianceOptions[index]));
 	    }
 	    option = scanner.nextInt();
+	    scanner.nextLine();
 	} while (0 < option && option < applianceOptions.length + 1);
 
 	return "";
-
     }
 
 }
