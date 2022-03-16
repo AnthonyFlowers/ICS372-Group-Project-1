@@ -83,12 +83,12 @@ public class Interface {
 			applianceSelect = scanner.nextInt();
 			scanner.nextLine();
 			System.out.println("select: " + applianceSelect);
-			if (applianceSelect < 1 || applianceSelect > 5) {
+			if (applianceSelect < 1 || applianceSelect > 6) {
 			    do {
 				System.out.println("Invalid input. Try again.");
 				applianceSelect = scanner.nextInt();
 				scanner.nextLine(); // clear current line being read
-			    } while (applianceSelect < 1 || applianceSelect > 5);
+			    } while (applianceSelect < 1 || applianceSelect > 6);
 			}
 			System.out.println("You chose appliance \"" + applianceOptions[applianceSelect - 1] + "\"");
 			System.out.println("Enter brand name: ");
