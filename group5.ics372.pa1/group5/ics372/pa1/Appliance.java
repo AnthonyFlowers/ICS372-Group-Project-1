@@ -2,6 +2,13 @@ package group5.ics372.pa1;
 
 import java.io.Serializable;
 
+/**
+ * This class represents an appliance. An Appliance is the base item that is
+ * stored in the companies catalog
+ * 
+ * @author Group 5
+ *
+ */
 public abstract class Appliance implements Serializable {
 
 	private static final long serialVersionUID = 2022_03_12L;
@@ -13,15 +20,16 @@ public abstract class Appliance implements Serializable {
 	protected double price;
 	protected int stock = 0; // reffered to as inventory in "instructions"
 	protected boolean hasRepairPlan;
-	// protected RepairPlan repairPlan;
 	protected double repairCost; // added, "zero" means no repair plans
 	protected boolean backOrder;
 
 	/**
-	 * Initialize a new appliance with a generated id
+	 * Initialize a new Appliance
 	 * 
-	 * @param String brandName - the brand name of this appliance
-	 * @param String modelType - the model of this appliance
+	 * @param id        - the id of the new Appliance
+	 * @param brandName - the brand name of the new Appliance
+	 * @param modelType - the model type of the new Appliance
+	 * @param price     - the price of the new Appliance
 	 */
 	public Appliance(long id, String brandName, String modelType, double price) {
 		this.applianceID = id;
@@ -32,35 +40,74 @@ public abstract class Appliance implements Serializable {
 		this.hasRepairPlan = false;
 	}
 
+	/**
+	 * Set the repair cost of this Appliance
+	 * 
+	 * @param newCost - the price to set this Appliances cost to
+	 */
 	public void setRepairCost(double newCost) {
 		this.repairCost = newCost;
 	}
 
-	// Adds to stock, aka "inventory"
+	/**
+	 * Add stock to this Appliance
+	 * 
+	 * @param addAmount - The amount of stock to add to this Appliance
+	 */
 	public void addStock(int addAmount) {
 		this.stock += addAmount;
 	}
 
+	/**
+	 * Set the price of this Appliance
+	 * 
+	 * @param price - the price to set this Appliance to
+	 */
 	public void setPrice(double price) {
 		this.price = price;
 	}
 
+	/**
+	 * Get the ID of this Appliance
+	 * 
+	 * @return long - the ID of this Appliance
+	 */
 	public long getApplianceID() {
 		return applianceID;
 	}
 
+	/**
+	 * Get the price of this Appliance
+	 * 
+	 * @return double - the cost of this Appliance
+	 */
 	public double getPrice() {
 		return price;
 	}
 
+	/**
+	 * Get the model type of this Appliance
+	 * 
+	 * @return String - the model type of this Appliance
+	 */
 	public String getType() {
 		return this.modelType;
 	}
 
+	/**
+	 * Get the brand name of this Appliance
+	 * 
+	 * @return String - the brand name of this Appliance
+	 */
 	public String getBrand() {
 		return this.brandName;
 	}
 
+	/**
+	 * Get the amount of stock remaining for this Appliance
+	 * 
+	 * @return int - the quantity remaining
+	 */
 	public int getStock() {
 		return stock;
 	}
