@@ -1,3 +1,13 @@
+/**
+ * <h1>ICS 372-50 (Tuesdays)</h1>
+ * <h2>Group Project 1 - Group 5</h2>
+ * <h3>Interface.java</h3>
+ * <p> 
+ * This class is the main UI for the Company Java project. 
+ * The actor will be prompted select through 16 menu options.
+ * </p>
+ * @authors Anthony Flowers, Chatchai Xiong, Vontha Chan
+ */
 package group5.ics372.pa1;
 
 import java.util.Scanner;
@@ -11,13 +21,11 @@ public class Interface {
 
 	public static void main(String[] args) {
 		company = new Company();
-//		Scanner scnr = new Scanner(System.in);
 		int menuSelection = -1;
 
 		loadData();
 		do {
-			do { // Get menu selection, if it is not a valid selection display error and
-					// wait for // valid selection
+			do {
 				try {
 					System.out.println("---Enter a selection---");
 					System.out.println("0 : Exit program");
@@ -56,13 +64,15 @@ public class Interface {
 					System.out.println("Exiting");
 					scanner.close();
 					System.exit(0);
-					// ----------------------------------------------------------------------------------
-					// add a single model into the Catalog's list
-					// 1) The interface will determine the, Class Name, BrandName, and ModelType
-					// 2) Those three variables will be passed into Company, which will create a
-					// class depending on the interface inputs
-					// 3) Catalog will then insert the newly created object into it's list pass from
-					// Company
+
+					/**
+					 * <h1>Business Processs 1: Add a single Model</h1>
+					 * <ol>
+					 * <li>Prompts the user for an Appliance subclass input.</li>
+					 * <li>With the given input it will create an Appliance</li>
+					 * <li>The create appliance will be store it within Companys applianceList.</li>
+					 * </ol>
+					 */
 				case 1: // I'll do this one - Chatchai
 					int applianceSelect;
 					double repairCost;
@@ -119,12 +129,18 @@ public class Interface {
 					System.out.println("Case 1 ran success. System Successfully closed.");
 					break;
 
+				/**
+				 * <h1>Business Process 2: A a single customer</h1>
+				 * <ol>
+				 * <li></li>
+				 * </ol>
+				 */
 				// ----------------------------------------------------------------------------------
 				// add a single customer to the customer list
 				// 1) The interface will ask for the customers Name, Address, and phone number
 				// 2) The three variables will be used to create a new customer object
 				// 3) The data is passed to the customer and added to the customer list
-				case 2: // -Anthony
+				case 2:
 					System.out.println("Adding a new customer.");
 					System.out.print("Enter the customers name: ");
 					String customerName = scanner.nextLine().strip();
