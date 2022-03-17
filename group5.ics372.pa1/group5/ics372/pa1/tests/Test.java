@@ -13,7 +13,7 @@ public class Test {
 		TestCustomer.testAll();
 		TestEnrollRepairPlan.testAll();
 		TestFulfillBackOrder.testAll();
-		TestListAppliances.testAll();
+//		TestListAppliances.testAll();
 		TestPurchaseModels.testAll();
 		TestSaveLoad.testAll();
 		TestWithdrawRepairPlan.testAll();

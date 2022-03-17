@@ -1,6 +1,8 @@
 
 package group5.ics372.pa1;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -351,7 +353,17 @@ public class Interface {
 	 */
 	private static void saveData() {
 		System.out.println("Saving the current data!");
-		company.saveData(DATA_FILE);
+		try {
+			company.saveData(DATA_FILE);
+		} catch (FileNotFoundException e) {
+			System.out.println("The data file was not found...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("There was a problem writing the data file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		}
 	}
 
 	/**

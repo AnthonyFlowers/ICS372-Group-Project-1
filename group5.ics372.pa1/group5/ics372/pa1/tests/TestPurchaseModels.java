@@ -28,7 +28,7 @@ public class TestPurchaseModels {
 		company.purchaseAppliances(1, 2, 5);
 		company.purchaseAppliances(2, 3, 4);
 		company.purchaseAppliances(4, 0, 0);
-		company.printBackOrders();
+//		company.printBackOrders();
 	}
 
 	public static void testAll() {

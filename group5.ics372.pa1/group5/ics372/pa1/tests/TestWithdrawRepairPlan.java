@@ -20,8 +20,8 @@ public class TestWithdrawRepairPlan {
 		RepairPlan repairPlan = new RepairPlan(1, customer, appliance, 300);
 		customer.addRepairPlan(repairPlan);
 
-		System.out.println("Customer: " + customer.getName());
-		System.out.println("Repair Plan: " + customer.getRepairPlans().toString());
+//		System.out.println("Customer: " + customer.getName());
+//		System.out.println("Repair Plan: " + customer.getRepairPlans().toString());
 	}
 
 	public static void testAll() {

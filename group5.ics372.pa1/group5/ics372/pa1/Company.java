@@ -345,22 +345,16 @@ public class Company {
 	 * Save this companies data to a data file
 	 * 
 	 * @param String dataFile - the path to the file to save to
+	 * @throws IOException - if there is a problem reading the file
+	 * @throws FileNotFoundException  - if the data file does not exist
 	 */
-	public void saveData(String dataFile) {
+	public void saveData(String dataFile) throws FileNotFoundException, IOException {
 		try (FileOutputStream fos = new FileOutputStream(new File(dataFile));
 				ObjectOutputStream oos = new ObjectOutputStream(fos)) {
 			oos.writeObject(this.catalog);
 			oos.writeObject(this.customerList);
 			oos.writeObject(this.nextCustomerId);
 			oos.writeObject(this.catalog.getApplianceList());
-		} catch (FileNotFoundException e) {
-			System.out.println("The data file was not found...");
-			System.out.println(e.getStackTrace()[0]);
-//			e.printStackTrace();
-		} catch (IOException e) {
-			System.out.println("There was a problem writing the data file...");
-			System.out.println(e.getStackTrace()[0]);
-//			e.printStackTrace();
 		}
 	}
 

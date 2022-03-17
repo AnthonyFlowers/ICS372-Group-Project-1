@@ -1,5 +1,7 @@
 package group5.ics372.pa1.tests;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -37,8 +39,16 @@ public class TestSaveLoad {
 		testCustomers = new ArrayList<>(Arrays.asList(new Customer[customerList.size()]));
 		Collections.copy(testCustomers, customerList);
 		try {
-		company.saveData("test.dat");
-		System.out.println("Success: Company saved some test data to the test.dat file!");
+			company.saveData("test.dat");
+			System.out.println("Success: Company saved some test data to the test.dat file!");
+		} catch (FileNotFoundException e) {
+			System.out.println("The data file was not found...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
+		} catch (IOException e) {
+			System.out.println("There was a problem writing the data file...");
+			System.out.println(e.getStackTrace()[0]);
+//			e.printStackTrace();
 		} catch (AssertionError e) {
 			System.out.println("Failed: Company was not able to save data to the test.dat file...");
 			System.out.println(e.getStackTrace()[0]);

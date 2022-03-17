@@ -15,18 +15,18 @@ public class TestFulfillBackOrder {
 	}
 
 	public static void testAll() {
-		System.out.println("-------------------------------------");
-		System.out.println("Testing Not Enough in Stock:");
+//		System.out.println("-------------------------------------");
+//		System.out.println("Testing Not Enough in Stock:");
 
 		testNotEnoughStock();
 
-		System.out.println("-------------------------------------");
-		System.out.println("-------------------------------------");
-		System.out.println("Testing Enough in Stock:");
+//		System.out.println("-------------------------------------");
+//		System.out.println("-------------------------------------");
+//		System.out.println("Testing Enough in Stock:");
 
 		testEnoughStock();
 
-		System.out.println("-------------------------------------");
+//		System.out.println("-------------------------------------");
 	}
 
 	public static void testNotEnoughStock() {
