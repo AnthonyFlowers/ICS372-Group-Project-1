@@ -18,6 +18,7 @@ public class TestCustomer {
 		testUpdateCustomerData();
 		testAddRepairPlan();
 	}
+	
 
 	// Test adding appliances that can be added
 	private static void testAddRepairPlan() {
