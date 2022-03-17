@@ -53,16 +53,16 @@ public class TestBed extends Interface {
 
 	// Process 8
 	private static void testChargeAllRepairPlans() {
-		
+
 	}
 
 	// Process 7
 	private static void testWithdrawCustomerFromRepairPlan() {
 		company.enrollCustomerInRepairPlan(1L, 3L);
 		Customer customer = company.getCustomerById(1L);
-		assert(customer.getRepairPlans().size() > 0);
+		assert (customer.getRepairPlans().size() > 0);
 		company.withdrawRepairPlan(1L, 3L);
-		assert(customer.getRepairPlans().size() == 0);
+		assert (customer.getRepairPlans().size() == 0);
 	}
 
 	// Process 6
@@ -72,18 +72,18 @@ public class TestBed extends Interface {
 		company.purchaseAppliances(4L, 2L, 1);
 		assert (customer.getRepairPlans().size() == 0);
 		company.enrollCustomerInRepairPlan(4L, 2L);
-//		company.chargeAllRepairs();
 		assert (customer.getRepairPlans().size() > 0);
 
 	}
 
 	// Process 5
 	private static void testFulfillBackOrder() {
-		Customer customer = company.getCustomerById(2L);
 		company.addToInventory(3L, 1);
-//		assert(customer.get)
+		assert (company.getBackOrdersList().getBackOrdersList().size() == 0);
 		company.purchaseAppliances(2L, 3L, 2);
+		assert (company.getBackOrdersList().getBackOrdersList().size() == 1);
 		company.fulfillBackOrder(1L);
+		assert (company.getBackOrdersList().getBackOrdersList().size() == 0);
 	}
 
 	// Process 4
