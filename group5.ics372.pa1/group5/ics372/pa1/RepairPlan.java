@@ -1,5 +1,7 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
+
 import group5.ics372.pa1.appliances.Appliance;
 
 /**
@@ -8,7 +10,9 @@ import group5.ics372.pa1.appliances.Appliance;
  * 
  * @author Chatchai Xiong, Anthony Flowers, Vontha Chan
  */
-public class RepairPlan {
+public class RepairPlan implements Serializable {
+	private static final long serialVersionUID = 2022_03_17L;
+
 	private long id;
 	private Customer customer;
 	private Appliance appliance;

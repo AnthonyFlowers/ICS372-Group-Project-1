@@ -1,5 +1,7 @@
 package group5.ics372.pa1;
 
+import java.io.Serializable;
+
 import group5.ics372.pa1.appliances.Appliance;
 
 /**
@@ -9,7 +11,9 @@ import group5.ics372.pa1.appliances.Appliance;
  * @author Chatchai Xiong, Vontha Chan, Anthony Flowers
  *
  */
-public class BackOrders {
+public class BackOrders implements Serializable {
+	private static final long serialVersionUID = 2022_03_17L;
+	
 	private long backorderID;
 	private Customer customer;
 	private Appliance appliance;
