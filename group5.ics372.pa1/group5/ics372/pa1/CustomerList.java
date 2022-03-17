@@ -9,7 +9,7 @@ import java.util.List;
  * The class will be created and held within Company. The class helps Company
  * manipulated Customers with serveral methods.
  * 
- * @author Chatchai Xiong, Vontha Chan, Anthoy Flowers
+ * @author Chatchai Xiong, Vontha Chan, Anthony Flowers
  *
  */
 public class CustomerList implements Serializable {

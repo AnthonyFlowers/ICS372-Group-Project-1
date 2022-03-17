@@ -30,7 +30,7 @@ public class Company {
 	private Catalog catalog;
 	private CustomerList customerList;
 	private BackOrdersList backOrdersList;
-	
+
 	private static Company company;
 
 	/**
@@ -47,14 +47,13 @@ public class Company {
 		this.customerList = new CustomerList();
 		this.backOrdersList = new BackOrdersList();
 	}
-	
+
 	public static Company getCompany() {
-		if(company == null) {
+		if (company == null) {
 			company = new Company();
 		}
 		return company;
 	}
-
 
 	/**
 	 * Creates and adds a ClothWasher object to the Company's Catalog. ClothWashers

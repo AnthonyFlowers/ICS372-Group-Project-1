@@ -40,7 +40,7 @@ public class TestFulfillBackOrder {
 		BackOrders backorder = new BackOrders(1L, customer, appliance, backQuantity);
 		// -----------------------------------------------------------------
 		BackOrdersList backOrderList = company.getBackOrdersList();
-		backOrderList.addBackOrderObj(backorder);
+		backOrderList.addBackOrder(backorder);
 		company.fulfillBackOrder(1L);
 		company.getBackOrdersList().removeBackOrder(1);
 
@@ -57,7 +57,7 @@ public class TestFulfillBackOrder {
 		BackOrders backorder = new BackOrders(1L, customer, appliance, backQuantity);
 		// -----------------------------------------------------------------
 		BackOrdersList backOrderList = company.getBackOrdersList();
-		backOrderList.addBackOrderObj(backorder);
+		backOrderList.addBackOrder(backorder);
 		company.fulfillBackOrder(1L);
 
 	}
