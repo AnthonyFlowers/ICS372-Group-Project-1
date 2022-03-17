@@ -477,8 +477,12 @@ public class Company {
 	}
     }
 
-	public Customer getCustomerById(long l) {
-		// TODO Auto-generated method stub
+	public Customer getCustomerById(long customerId) {
+		for(Customer customer : customerList.getCustomerList()) {
+			if(customer.getCustomerID() == customerId) {
+				return customer;
+			}
+		}
 		return null;
 	}
 

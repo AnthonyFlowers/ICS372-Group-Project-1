@@ -78,7 +78,7 @@ public class TestBed extends Interface {
 	private static void testFulfillBackOrder() {
 		company.addToInventory(3L, 1);
 		company.purchaseAppliances(2L, 3L, 2);
-		company.fulfillBackOrder(1);
+		company.fulfillBackOrder(1L);
 	}
 
 	// Process 4
