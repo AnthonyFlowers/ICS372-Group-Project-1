@@ -199,7 +199,7 @@ public class Company {
 	 *                    appliance
 	 */
 	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
-		Customer customer = customerList.search(customerID);
+		Customer customer = customerList.getByCustomerId(customerID);
 		Appliance appliance = catalog.search(applianceID);
 		if (customer != null && appliance != null && appliance.canBackOrder()) {
 			if (appliance.removeStock(quantity)) {
@@ -250,7 +250,7 @@ public class Company {
 	 */
 	public void enrollCustomerInRepairPlan(long customerId, long applianceId) throws IllegalArgumentException {
 		Appliance appliance = getApplianceById(applianceId);
-		Customer customer = customerList.search(customerId);
+		Customer customer = customerList.getByCustomerId(customerId);
 		if (appliance == null) {
 			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
 		} else if (customer == null) {
@@ -272,7 +272,7 @@ public class Company {
 	 *                    Object in Catalog
 	 * @return the Appliance object if found.
 	 */
-	private Appliance getApplianceById(long applianceId) {
+	public Appliance getApplianceById(long applianceId) {
 		for (Appliance appliance : catalog.getApplianceList()) {
 			if (appliance.getApplianceID() == applianceId) {
 				return appliance;
@@ -290,7 +290,7 @@ public class Company {
 	 * @param applianceId the id used to find the appliance.
 	 */
 	public void withdrawRepairPlan(long customerId, long applianceId) {
-		Customer customer = customerList.search(customerId);
+		Customer customer = customerList.getByCustomerId(customerId);
 		List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
 		RepairPlan toBeRemovedPlan = null;
 
@@ -475,6 +475,10 @@ public class Company {
 						String.format("Brand: %s Model: %s", planAppliance.getBrand(), planAppliance.getType()));
 			}
 		}
+	}
+
+	public Customer getCustomerById(long customerId) {
+		return customerList.getByCustomerId(customerId);
 	}
 
 }
