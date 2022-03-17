@@ -204,7 +204,7 @@ public class Company {
 	    if (appliance.removeStock(quantity)) {
 		this.addSalesRevenue(appliance.getPrice() * quantity);
 		customer.addAppliance(appliance);
-		customer.addTotalRevenueSpent(appliance.getPrice());
+		customer.addTotalRevenueSpent(appliance.getPrice() * quantity);
 		System.out.println("Purchase completed.");
 	    } else {
 		this.addSalesRevenue(appliance.getPrice() * quantity);
