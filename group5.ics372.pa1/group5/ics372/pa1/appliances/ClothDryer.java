@@ -8,8 +8,8 @@ package group5.ics372.pa1.appliances;
  *
  */
 public class ClothDryer extends Appliance {
-
 	private static final long serialVersionUID = 2022_03_14L;
+	
 	private final double monthlyPayment;
 
 	/**

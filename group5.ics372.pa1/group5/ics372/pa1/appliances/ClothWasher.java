@@ -1,10 +1,8 @@
 package group5.ics372.pa1.appliances;
 
 public class ClothWasher extends Appliance {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 2022_03_15L;
+	
 	private double repairCost;
 
 	/**
