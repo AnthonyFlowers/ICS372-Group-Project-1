@@ -169,6 +169,7 @@ public class Company {
      */
     public void addCustomer(Customer customer) {
 	this.customerList.addCustomer(customer);
+	nextCustomerId = customer.getCustomerID() + 1;
     }
 
     /**
@@ -477,6 +478,11 @@ public class Company {
 	}
     }
 
+    /**
+     * Get a customer by their customerId
+     * @param customerId - the id of the customer to find
+     * @return Customer 
+     */
 	public Customer getCustomerById(long customerId) {
 		for(Customer customer : customerList.getCustomerList()) {
 			if(customer.getCustomerID() == customerId) {
@@ -485,5 +491,4 @@ public class Company {
 		}
 		return null;
 	}
-
 }

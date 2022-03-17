@@ -36,13 +36,13 @@ public class TestBed extends Interface {
 	private static void runTests() {
 		testAppliancesAddedCorrectly();
 		testCustomersAddedCorrectly();
-		testAddInventory();
-		testPurchaseModel();
+//		testAddInventory();
+//		testPurchaseModel();
 		testFulfillBackOrder();
-		testEnrollCustomerRepairPlan();
-		testWithdrawCustomerFromRepairPlan();
-		testChargeAllRepairPlans();
-		testPrintRevenue();
+//		testEnrollCustomerRepairPlan();
+//		testWithdrawCustomerFromRepairPlan();
+//		testChargeAllRepairPlans();
+//		testPrintRevenue();
 	}
 
 	// Process 9
@@ -53,24 +53,27 @@ public class TestBed extends Interface {
 
 	// Process 8
 	private static void testChargeAllRepairPlans() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	// Process 7
 	private static void testWithdrawCustomerFromRepairPlan() {
-		// TODO Auto-generated method stub
-
+		company.enrollCustomerInRepairPlan(1L, 3L);
+		Customer customer = company.getCustomerById(1L);
+		assert(customer.getRepairPlans().size() > 0);
+		company.withdrawRepairPlan(1L, 3L);
+		assert(customer.getRepairPlans().size() == 0);
 	}
 
 	// Process 6
 	private static void testEnrollCustomerRepairPlan() {
+		Customer customer = company.getCustomerById(4L);
 		company.addToInventory(2L, 5);
 		company.purchaseAppliances(4L, 2L, 1);
+		assert (customer.getRepairPlans().size() == 0);
 		company.enrollCustomerInRepairPlan(4L, 2L);
-		company.chargeAllRepairs();
-		Customer customer = company.getCustomerById(4L);
-		assert (customer.getTotalRepairCharges() == company.getApplianceById(2L).getRepairCost());
+//		company.chargeAllRepairs();
+		assert (customer.getRepairPlans().size() > 0);
 
 	}
 

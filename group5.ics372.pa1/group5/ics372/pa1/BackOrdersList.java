@@ -69,18 +69,11 @@ public class BackOrdersList {
 		BackOrders backOrder;
 		backOrder = findWithBackOrdersID(backOrderID);
 		if (backOrder != null) {
-			if (isThereEnoughStock(backOrder.getQuantity(), backOrder.getAppliance())) {
-				System.out.println("BackOrder: " + backOrderID + "\nSuccessfully completed!");
-				System.out.println("Removing" + "BackOrderID: " + backOrderID);
-				backOrder.getAppliance().removeStock(backOrder.getQuantity());
-				removeBackOrder(backOrderID);
-				System.out.println("Current Appliance Inventory: " + backOrder.getAppliance().getStock());
-			} else {
-				System.out.println("BackOrder: " + backOrderID
-						+ "\nWas found but there is not enough in stock to fulfill this backorder!");
-				System.out.println(backOrder.toString());
-				System.out.println("Appliance: " + backOrder.getAppliance().toString());
-			}
+
+			System.out.println("BackOrder: " + backOrderID + "\nSuccessfully completed!");
+			System.out.println("Removing" + "BackOrderID: " + backOrderID);
+			removeBackOrder(backOrderID);
+			System.out.println("Current Appliance Inventory: " + backOrder.getAppliance().getStock());
 		} else {
 			System.out.println("NOT FOUND:\nBackOrder with ID:" + backOrderID);
 
@@ -114,7 +107,7 @@ public class BackOrdersList {
 	 */
 	public BackOrders findWithBackOrdersID(long backOrderID) {
 		for (BackOrders tempBackOrders : backOrdersList) {
-			if (backOrderID == tempBackOrders.getCustomerID()) {
+			if (backOrderID == tempBackOrders.getBackOrderID()) {
 				System.out.println("System: Found backOrder with ID:" + tempBackOrders.getBackOrderID());
 				return tempBackOrders;
 			}
