@@ -101,210 +101,210 @@ public class Company {
 	catalog.addAppliance(new KitchenRange(nextApplianceId++, brandName, modelType, price));
 	System.out.println("KitchenRange has been added.");
     }
+    
+    /**
+     * Creates and adds a DishWasher object to the Company's Catalog.
+     * 
+     * @param brandName
+     * @param modelType
+     * @param price
+     */
+    public void addDishWasher(String brandName, String modelType, double price) {
+	catalog.addAppliance(new DishWasher(nextApplianceId++, brandName, modelType, price));
+	System.out.println("DishWasher has been added.");
+    }
 
+    /**
+     * Creates and adds a Refrigerator object to the Company's Catalog. Refrigerator
+     * will have an extra capacity attribute associated with it.
+     * 
+     * @param brandName
+     * @param modelType
+     * @param price
+     * @param capacity
+     */
+    public void addRefrigerator(String brandName, String modelType, double price, double capacity) {
+	catalog.addAppliance(new Refrigerator(nextApplianceId++, brandName, modelType, price, capacity));
+	System.out.println("Refrigerator has been added.");
+    }
 
-	/**
-	 * Creates and adds a DishWasher object to the Company's Catalog.
-	 * 
-	 * @param brandName
-	 * @param modelType
-	 * @param price
-	 */
-	public void addDishWasher(String brandName, String modelType, double price) {
-		catalog.addAppliance(new DishWasher(nextApplianceId++, brandName, modelType, price));
-		System.out.println("DishWasher has been added.");
+    /**
+     * Creates and adds a Furnace object to the Company's Catalog. Furnace will have
+     * an extra BTU attribute associated with it.
+     * 
+     * @param brandName
+     * @param modelType
+     * @param price
+     * @param btu
+     */
+    public void addFurnace(String brandName, String modelType, double price, int btu) {
+	catalog.addAppliance(new Furnace(nextApplianceId++, brandName, modelType, price, btu));
+	System.out.println("Furnace has been added.");
+    }
+
+    /**
+     * Add an Appliance object to the Company's Catalog.
+     * 
+     * @param appliance - the Appliance Object to add
+     */
+    public void addAppliance(Appliance appliance) {
+	catalog.addAppliance(appliance);
+    }
+
+    /**
+     * Add a new customer to the customer list
+     * 
+     * @param String customerName - the name of the customer
+     * @param String customerAddress - the address of the customer
+     * @param String customerPhoneNumber - the phone number of the customer
+     */
+    public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
+	customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
+    }
+
+    /**
+     * Adds a Customer Object to the Company's CustomerList.
+     * 
+     * @param customer Customer Object to add
+     */
+    public void addCustomer(Customer customer) {
+	this.customerList.addCustomer(customer);
+    }
+
+    /**
+     * Given an appliance id and a quanity the method finds the associated appliance
+     * within Catalog and adds an inventory amount to an appliance.
+     * 
+     * @param applianceID Id used to search for the associated Appliance object
+     * @param quantity    the inventory amount to be added to the associated
+     *                    Appliance object
+     */
+    public void addToInventory(long applianceID, int quantity) {
+	Appliance appliance = catalog.search(applianceID);
+	if (appliance == null) {
+	    System.out.println("Cannot add stock.");
+	} else {
+	    appliance.addStock(quantity);
 	}
+    }
 
-	/**
-	 * Creates and adds a Refrigerator object to the Company's Catalog. Refrigerator
-	 * will have an extra capacity attribute associated with it.
-	 * 
-	 * @param brandName
-	 * @param modelType
-	 * @param price
-	 * @param capacity
-	 */
-	public void addRefrigerator(String brandName, String modelType, double price, double capacity) {
-		catalog.addAppliance(new Refrigerator(nextApplianceId++, brandName, modelType, price, capacity));
-		System.out.println("Refrigerator has been added.");
+    /**
+     * Given a customer id, appliance id and quantity. The method purchases the
+     * associated amount and adds inputs it to the customer's inventory.
+     * 
+     * @param customerID  Id used to find the associated Customer Object
+     * @param applianceID Id used to find the associated Appliance Object
+     * @param quantity    the amount of of stock to purchase for the customer of the
+     *                    appliance
+     */
+    public void purchaseAppliances(long customerID, long applianceID, int quantity) {
+	Customer customer = customerList.search(customerID);
+	Appliance appliance = catalog.search(applianceID);
+	if (customer != null && appliance != null && appliance.canBackOrder()) {
+	    if (appliance.removeStock(quantity)) {
+		this.addSalesRevenue(appliance.getPrice() * quantity);
+		customer.addAppliance(appliance);
+		customer.addTotalRevenueSpent(appliance.getPrice());
+		System.out.println("Purchase completed.");
+	    } else {
+		this.addSalesRevenue(appliance.getPrice() * quantity);
+		System.out.println(appliance.getStock() + " appliances delivered.");
+		System.out.println(quantity - appliance.getStock() + " appliances have been backordered.");
+		System.out.println("BackOrder created.\nID = " + nextBackOrderId);
+		backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity - appliance.getStock());
+		customer.addAppliance(appliance);
+		appliance.removeStock(appliance.getStock());
+	    }
+	} else if (customer != null && appliance != null && appliance.canBackOrder() == false) {
+	    this.addSalesRevenue(appliance.getPrice() * appliance.getStock());
+	    customer.addAppliance(appliance);
+	    appliance.removeStock(appliance.getStock());
+	    System.out.println("This appliance cannot be backordered. Remaining stock sold to customer.");
+	} else {
+	    System.out.println("Invalid customer or appliance id.");
 	}
+    }
 
-	/**
-	 * Creates and adds a Furnace object to the Company's Catalog. Furnace will have
-	 * an extra BTU attribute associated with it.
-	 * 
-	 * @param brandName
-	 * @param modelType
-	 * @param price
-	 * @param btu
-	 */
-	public void addFurnace(String brandName, String modelType, double price, int btu) {
-		catalog.addAppliance(new Furnace(nextApplianceId++, brandName, modelType, price, btu));
-		System.out.println("Furnace has been added.");
+    /**
+     * 
+     * @param backOrderID
+     */
+    public void fulfillBackOrder(long backOrderID) {
+	backOrdersList.fulfillBackOrder(backOrderID);
+    }
+
+    // Process 6
+    /**
+     * Enroll a customer in a repair plan for a single appliance. The user id and
+     * the eligible appliance id are input.
+     * 
+     * @param customerId  - the id of the customer to add the repair plan to
+     * @param applianceId - the id of the appliance with a repair plan
+     * 
+     * @throws IllegalArgumentException if an appliance with the passed applianceId
+     *                                  is not found
+     * @throws IllegalArgumentException if a customer with the passed customerId is
+     *                                  not found
+     * @throws IllegalArgumentException if the found appliance does not have a
+     *                                  repair plan
+     */
+    public void enrollCustomerInRepairPlan(long customerId, long applianceId) throws IllegalArgumentException {
+	Appliance appliance = getApplianceById(applianceId);
+	Customer customer = customerList.search(customerId);
+	if (appliance == null) {
+	    throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
+	} else if (customer == null) {
+	    throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
+	} else if (!appliance.hasRepairPlan()) { // changed - Chatchai
+	    throw new IllegalArgumentException(
+		    String.format("Appliance with the id %s does not have a repair plan.", applianceId));
+	} else {
+	    RepairPlan repairPlan = new RepairPlan(nextRepairPlanId++, customer, appliance, appliance.getRepairCost());
+	    customerList.addCustomerRepairPlan(customer, repairPlan);
 	}
+    }
 
-	/**
-	 * Add an Appliance object to the Company's Catalog.
-	 * 
-	 * @param appliance - the Appliance Object to add
-	 */
-	public void addAppliance(Appliance appliance) {
-		catalog.addAppliance(appliance);
+    /**
+     * Given an appliance id, company will search its Catalog and return the
+     * appliance if found.
+     * 
+     * @param applianceId the id used to search for the corresponding Appliance
+     *                    Object in Catalog
+     * @return the Appliance object if found.
+     */
+    public Appliance getApplianceById(long applianceId) {
+	for (Appliance appliance : catalog.getApplianceList()) {
+	    if (appliance.getApplianceID() == applianceId) {
+		return appliance;
+	    }
 	}
+	return null;
+    }
 
-	/**
-	 * Add a new customer to the customer list
-	 * 
-	 * @param String customerName - the name of the customer
-	 * @param String customerAddress - the address of the customer
-	 * @param String customerPhoneNumber - the phone number of the customer
-	 */
-	public void addCustomer(String customerName, String customerAddress, String customerPhoneNumber) {
-		customerList.addCustomer(nextCustomerId++, customerName, customerAddress, customerPhoneNumber);
+    /**
+     * Given a customer id and appliance id. Company searches for the customer and
+     * removes the customer from the repair plan with the corresponding appliance
+     * id.
+     * 
+     * @param customerId  the Id used to find the customer
+     * @param applianceId the id used to find the appliance.
+     */
+    public void withdrawRepairPlan(long customerId, long applianceId) {
+	Customer customer = customerList.search(customerId);
+	List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
+	RepairPlan toBeRemovedPlan = null;
+
+	for (RepairPlan repairPlan : customerRepairPlans) {
+	    long repairPlanCustomerId = repairPlan.getCustomer().getCustomerID();
+	    long repairPlanApplianceId = repairPlan.getAppliance().getApplianceID();
+	    if (repairPlanCustomerId == customerId && repairPlanApplianceId == applianceId) {
+		toBeRemovedPlan = repairPlan;
+		break;
+	    }
 	}
-
-	/**
-	 * Adds a Customer Object to the Company's CustomerList.
-	 * 
-	 * @param customer Customer Object to add
-	 */
-	public void addCustomer(Customer customer) {
-		this.customerList.addCustomer(customer);
-	}
-
-	/**
-	 * Given an appliance id and a quanity the method finds the associated appliance
-	 * within Catalog and adds an inventory amount to an appliance.
-	 * 
-	 * @param applianceID Id used to search for the associated Appliance object
-	 * @param quantity    the inventory amount to be added to the associated
-	 *                    Appliance object
-	 */
-	public void addToInventory(long applianceID, int quantity) {
-		Appliance appliance = catalog.search(applianceID);
-		if (appliance == null) {
-			System.out.println("Cannot add stock.");
-		} else {
-			appliance.addStock(quantity);
-		}
-	}
-
-	/**
-	 * Given a customer id, appliance id and quantity. The method purchases the
-	 * associated amount and adds inputs it to the customer's inventory.
-	 * 
-	 * @param customerID  Id used to find the associated Customer Object
-	 * @param applianceID Id used to find the associated Appliance Object
-	 * @param quantity    the amount of of stock to purchase for the customer of the
-	 *                    appliance
-	 */
-	public void purchaseAppliances(long customerID, long applianceID, int quantity) {
-		Customer customer = customerList.getByCustomerId(customerID);
-		Appliance appliance = catalog.search(applianceID);
-		if (customer != null && appliance != null && appliance.canBackOrder()) {
-			if (appliance.removeStock(quantity)) {
-				this.addSalesRevenue(appliance.getPrice() * quantity);
-				customer.addAppliance(appliance);
-				System.out.println("Purchase completed.");
-			} else {
-				this.addSalesRevenue(appliance.getPrice() * quantity);
-				System.out.println(appliance.getStock() + " appliances delivered.");
-				System.out.println(quantity - appliance.getStock() + " appliances have been backordered.");
-				System.out.println("BackOrder created.\nID = " + nextBackOrderId);
-				backOrdersList.addBackOrder(nextBackOrderId++, customer, appliance, quantity - appliance.getStock());
-				customer.addAppliance(appliance);
-				appliance.removeStock(appliance.getStock());
-			}
-		} else if (customer != null && appliance != null && appliance.canBackOrder() == false) {
-			this.addSalesRevenue(appliance.getPrice() * appliance.getStock());
-			customer.addAppliance(appliance);
-			appliance.removeStock(appliance.getStock());
-			System.out.println("This appliance cannot be backordered. Remaining stock sold to customer.");
-		} else {
-			System.out.println("Invalid customer or appliance id.");
-		}
-	}
-
-	/**
-	 * 
-	 * @param backOrderID
-	 */
-	public void fulfillBackOrder(long backOrderID) {
-		backOrdersList.fulfillBackOrder(backOrderID);
-	}
-
-	// Process 6
-	/**
-	 * Enroll a customer in a repair plan for a single appliance. The user id and
-	 * the eligible appliance id are input.
-	 * 
-	 * @param customerId  - the id of the customer to add the repair plan to
-	 * @param applianceId - the id of the appliance with a repair plan
-	 * 
-	 * @throws IllegalArgumentException if an appliance with the passed applianceId
-	 *                                  is not found
-	 * @throws IllegalArgumentException if a customer with the passed customerId is
-	 *                                  not found
-	 * @throws IllegalArgumentException if the found appliance does not have a
-	 *                                  repair plan
-	 */
-	public void enrollCustomerInRepairPlan(long customerId, long applianceId) throws IllegalArgumentException {
-		Appliance appliance = getApplianceById(applianceId);
-		Customer customer = customerList.getByCustomerId(customerId);
-		if (appliance == null) {
-			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
-		} else if (customer == null) {
-			throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
-		} else if (!appliance.hasRepairPlan()) { // changed - Chatchai
-			throw new IllegalArgumentException(
-					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
-		} else {
-			RepairPlan repairPlan = new RepairPlan(nextRepairPlanId++, customer, appliance, appliance.getRepairCost());
-			customerList.addCustomerRepairPlan(customer, repairPlan);
-		}
-	}
-
-	/**
-	 * Given an appliance id, company will search its Catalog and return the
-	 * appliance if found.
-	 * 
-	 * @param applianceId the id used to search for the corresponding Appliance
-	 *                    Object in Catalog
-	 * @return the Appliance object if found.
-	 */
-	public Appliance getApplianceById(long applianceId) {
-		for (Appliance appliance : catalog.getApplianceList()) {
-			if (appliance.getApplianceID() == applianceId) {
-				return appliance;
-			}
-		}
-		return null;
-	}
-
-	/**
-	 * Given a customer id and appliance id. Company searches for the customer and
-	 * removes the customer from the repair plan with the corresponding appliance
-	 * id.
-	 * 
-	 * @param customerId  the Id used to find the customer
-	 * @param applianceId the id used to find the appliance.
-	 */
-	public void withdrawRepairPlan(long customerId, long applianceId) {
-		Customer customer = customerList.getByCustomerId(customerId);
-		List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
-		RepairPlan toBeRemovedPlan = null;
-
-		for (RepairPlan repairPlan : customerRepairPlans) {
-			long repairPlanCustomerId = repairPlan.getCustomer().getCustomerID();
-			long repairPlanApplianceId = repairPlan.getAppliance().getApplianceID();
-			if (repairPlanCustomerId == customerId && repairPlanApplianceId == applianceId) {
-				toBeRemovedPlan = repairPlan;
-				break;
-			}
-		}
-		if (toBeRemovedPlan != null) {
-			System.out.println("The repair plan below has been removed. ");
-			customerList.withdrawCustomerRepairPlan(toBeRemovedPlan);
+	if (toBeRemovedPlan != null) {
+	    System.out.println("The repair plan below has been removed. ");
+	    customerList.withdrawCustomerRepairPlan(toBeRemovedPlan);
 //			customerRepairPlans.remove(toBeRemovedPlan);
 	} else {
 	    System.out.println("The system could not find an repair plan with the Customer and Appliance Id");
@@ -477,8 +477,9 @@ public class Company {
 	}
     }
 
-	public Customer getCustomerById(long customerId) {
-		return customerList.getByCustomerId(customerId);
+	public Customer getCustomerById(long l) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
