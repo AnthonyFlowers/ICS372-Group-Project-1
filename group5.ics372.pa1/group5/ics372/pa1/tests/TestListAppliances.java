@@ -1,9 +1,9 @@
 package group5.ics372.pa1.tests;
 
-import group5.ics372.pa1.Appliance;
-import group5.ics372.pa1.ClothDryer;
-import group5.ics372.pa1.ClothWasher;
 import group5.ics372.pa1.Company;
+import group5.ics372.pa1.appliances.Appliance;
+import group5.ics372.pa1.appliances.ClothDryer;
+import group5.ics372.pa1.appliances.ClothWasher;
 
 public class TestListAppliances {
 	private static Company company = Company.getCompany();

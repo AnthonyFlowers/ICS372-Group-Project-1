@@ -1,5 +1,7 @@
 package group5.ics372.pa1;
 
+import group5.ics372.pa1.appliances.Appliance;
+
 /**
  * This class represents a RepairPlan within the Company. An Appliance and
  * Customer object will be linked with the RepairPlan Class.

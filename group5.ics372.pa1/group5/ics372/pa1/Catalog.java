@@ -5,6 +5,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import group5.ics372.pa1.appliances.Appliance;
+
 /**
  * This class implements Serializable, which is a set. This class represents a
  * Catalog of Appliances. The catalog holds all of the appliances in the

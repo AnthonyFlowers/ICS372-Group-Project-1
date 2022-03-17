@@ -1,4 +1,4 @@
-package group5.ics372.pa1;
+package group5.ics372.pa1.appliances;
 
 public class DishWasher extends Appliance {
 

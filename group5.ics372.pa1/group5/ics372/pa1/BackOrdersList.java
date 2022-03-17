@@ -3,6 +3,8 @@ package group5.ics372.pa1;
 import java.util.ArrayList;
 import java.util.List;
 
+import group5.ics372.pa1.appliances.Appliance;
+
 /**
  * This class represents the List of BackOrders. The class will be held and
  * created within Company. The class has several methods to help manipulate

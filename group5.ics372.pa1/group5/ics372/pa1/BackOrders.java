@@ -1,5 +1,7 @@
 package group5.ics372.pa1;
 
+import group5.ics372.pa1.appliances.Appliance;
+
 /**
  * This class represents the BackOrder object. This class will be created and
  * held in a List within Company.

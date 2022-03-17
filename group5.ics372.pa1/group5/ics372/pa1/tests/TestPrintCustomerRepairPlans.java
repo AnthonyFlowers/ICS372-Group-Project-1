@@ -1,9 +1,9 @@
 package group5.ics372.pa1.tests;
 
-import group5.ics372.pa1.Appliance;
-import group5.ics372.pa1.ClothDryer;
 import group5.ics372.pa1.Company;
 import group5.ics372.pa1.Customer;
+import group5.ics372.pa1.appliances.Appliance;
+import group5.ics372.pa1.appliances.ClothDryer;
 
 public class TestPrintCustomerRepairPlans {
 

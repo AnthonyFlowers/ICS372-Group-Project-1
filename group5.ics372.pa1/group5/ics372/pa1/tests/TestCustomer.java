@@ -3,9 +3,9 @@ package group5.ics372.pa1.tests;
 import java.util.ArrayList;
 import java.util.List;
 
-import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.Customer;
 import group5.ics372.pa1.RepairPlan;
+import group5.ics372.pa1.appliances.Appliance;
 
 public class TestCustomer {
 	public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package group5.ics372.pa1;
+package group5.ics372.pa1.appliances;
 
 import java.io.Serializable;
 
@@ -117,7 +117,7 @@ public abstract class Appliance implements Serializable {
 	 * @return boolean - true if this appliance has a repair plan false otherwise
 	 */
 	public boolean getRepairPlanBoolean() {
-		return hasRepairPlan;
+		return hasRepairPlan();
 	}
 
 	/**
@@ -153,6 +153,15 @@ public abstract class Appliance implements Serializable {
 	 */
 	public boolean canBackOrder() {
 		return this.backOrder;
+	}
+
+	/**
+	 * Check if this Appliance has a repair plan
+	 * 
+	 * @return boolean - true if this Appliance has a repair plan false otherwise
+	 */
+	public boolean hasRepairPlan() {
+		return hasRepairPlan;
 	}
 
 	@Override

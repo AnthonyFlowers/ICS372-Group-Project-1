@@ -1,10 +1,10 @@
 package group5.ics372.pa1.tests;
 
-import group5.ics372.pa1.Appliance;
 import group5.ics372.pa1.Company;
 import group5.ics372.pa1.Customer;
-import group5.ics372.pa1.DishWasher;
 import group5.ics372.pa1.RepairPlan;
+import group5.ics372.pa1.appliances.Appliance;
+import group5.ics372.pa1.appliances.DishWasher;
 
 public class TestChargeAllRepairs {
 	private static Company company = Company.getCompany();

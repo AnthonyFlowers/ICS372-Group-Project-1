@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import group5.ics372.pa1.appliances.Appliance;
+
 /**
  * This class implements Serializable, which is a set. This class represents a
  * Customer within the Company. A Customer will hold personal data along with

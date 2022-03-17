@@ -9,6 +9,14 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.List;
 
+import group5.ics372.pa1.appliances.Appliance;
+import group5.ics372.pa1.appliances.ClothDryer;
+import group5.ics372.pa1.appliances.ClothWasher;
+import group5.ics372.pa1.appliances.DishWasher;
+import group5.ics372.pa1.appliances.Furnace;
+import group5.ics372.pa1.appliances.KitchenRange;
+import group5.ics372.pa1.appliances.Refrigerator;
+
 /**
  * This Class hold all of the business process for the Company. The interface
  * will interact through to Company to accomplish business tasks. The Company
@@ -247,7 +255,7 @@ public class Company {
 			throw new IllegalArgumentException(String.format("Appliance with the id %s does not exist.", applianceId));
 		} else if (customer == null) {
 			throw new IllegalArgumentException(String.format("Customer with the id %s does not exist.", customerId));
-		} else if (!appliance.hasRepairPlan) { // changed - Chatchai
+		} else if (!appliance.hasRepairPlan()) { // changed - Chatchai
 			throw new IllegalArgumentException(
 					String.format("Appliance with the id %s does not have a repair plan.", applianceId));
 		} else {
