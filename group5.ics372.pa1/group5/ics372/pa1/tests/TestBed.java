@@ -36,13 +36,13 @@ public class TestBed extends Interface {
 	private static void runTests() {
 		testAppliancesAddedCorrectly();
 		testCustomersAddedCorrectly();
-//		testAddInventory();
-//		testPurchaseModel();
+		testAddInventory();
+		testPurchaseModel();
 		testFulfillBackOrder();
-//		testEnrollCustomerRepairPlan();
-//		testWithdrawCustomerFromRepairPlan();
-//		testChargeAllRepairPlans();
-//		testPrintRevenue();
+		testEnrollCustomerRepairPlan();
+		testWithdrawCustomerFromRepairPlan();
+		testChargeAllRepairPlans();
+		testPrintRevenue();
 	}
 
 	// Process 9
@@ -79,7 +79,9 @@ public class TestBed extends Interface {
 
 	// Process 5
 	private static void testFulfillBackOrder() {
+		Customer customer = company.getCustomerById(2L);
 		company.addToInventory(3L, 1);
+//		assert(customer.get)
 		company.purchaseAppliances(2L, 3L, 2);
 		company.fulfillBackOrder(1L);
 	}
