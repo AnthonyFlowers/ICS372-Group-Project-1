@@ -31,10 +31,10 @@ public class CustomerList implements Serializable {
 	/**
 	 * Checks if customers ID exists in customerList
 	 * 
-	 * @param customerID - the id of the customer to find
-	 * @return Customer - the customer
+	 * @param customerID
+	 * @return
 	 */
-	public Customer getByCustomerId(long customerID) {
+	public Customer search(long customerID) {
 		for (Customer customer : customerList) {
 			if (customerID == customer.getCustomerID()) {
 				return customer;
