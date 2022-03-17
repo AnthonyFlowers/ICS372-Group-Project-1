@@ -101,7 +101,7 @@ public class Company {
 	catalog.addAppliance(new KitchenRange(nextApplianceId++, brandName, modelType, price));
 	System.out.println("KitchenRange has been added.");
     }
-    
+
     /**
      * Creates and adds a DishWasher object to the Company's Catalog.
      * 
@@ -409,7 +409,8 @@ public class Company {
     public void printSpecificAppliances(String className) {
 	System.out.println(className + " Appliances: ");
 	for (Appliance app : catalog.getApplianceList()) {
-	    String currentAppNameStr = app.getClass().toString().replaceFirst("class group5.ics372.pa1.", "");
+	    String currentAppNameStr = app.getClass().toString().replaceFirst("class group5.ics372.pa1.appliances.",
+		    "");
 	    if (currentAppNameStr.toUpperCase().equals(className.toUpperCase())) {
 		System.out.println(app.toString());
 	    }
@@ -480,19 +481,20 @@ public class Company {
 
     /**
      * Get a customer by their customerId
+     * 
      * @param customerId - the id of the customer to find
-     * @return Customer 
+     * @return Customer
      */
-	public Customer getCustomerById(long customerId) {
-		for(Customer customer : customerList.getCustomerList()) {
-			if(customer.getCustomerID() == customerId) {
-				return customer;
-			}
-		}
-		return null;
+    public Customer getCustomerById(long customerId) {
+	for (Customer customer : customerList.getCustomerList()) {
+	    if (customer.getCustomerID() == customerId) {
+		return customer;
+	    }
 	}
+	return null;
+    }
 
-	public double getRepairRevenue() {
-		return repairRevenue;
-	}
+    public double getRepairRevenue() {
+	return repairRevenue;
+    }
 }
