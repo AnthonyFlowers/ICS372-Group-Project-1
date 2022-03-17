@@ -47,13 +47,18 @@ public class TestBed extends Interface {
 
 	// Process 9
 	private static void testPrintRevenue() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	// Process 8
 	private static void testChargeAllRepairPlans() {
-
+		assert (company.getRepairRevenue() == 0.0);
+		company.enrollCustomerInRepairPlan(4L, 2L);
+		company.chargeAllRepairs();
+		assert (company.getRepairRevenue() == 10.0);
+		company.enrollCustomerInRepairPlan(1L, 2L);
+		company.chargeAllRepairs();
+		assert (company.getRepairRevenue() == 30.0);
 	}
 
 	// Process 7
@@ -73,6 +78,7 @@ public class TestBed extends Interface {
 		assert (customer.getRepairPlans().size() == 0);
 		company.enrollCustomerInRepairPlan(4L, 2L);
 		assert (customer.getRepairPlans().size() > 0);
+		company.withdrawRepairPlan(4L, 2L);
 
 	}
 

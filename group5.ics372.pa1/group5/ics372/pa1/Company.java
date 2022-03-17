@@ -318,7 +318,7 @@ public class Company {
      * revenue.
      */
     public void chargeAllRepairs() {
-	this.repairRevenue += customerList.chargeAllRepairs();
+	this.repairRevenue = customerList.chargeAllRepairs();
     }
 
     /**
@@ -490,5 +490,9 @@ public class Company {
 			}
 		}
 		return null;
+	}
+
+	public double getRepairRevenue() {
+		return repairRevenue;
 	}
 }
