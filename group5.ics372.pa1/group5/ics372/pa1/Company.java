@@ -30,11 +30,13 @@ public class Company {
 	private Catalog catalog;
 	private CustomerList customerList;
 	private BackOrdersList backOrdersList;
+	
+	private static Company company;
 
 	/**
 	 * Initialize a company with a new default Catalog and CustomerList
 	 */
-	public Company() {
+	private Company() {
 		this.nextApplianceId = 1;
 		this.nextCustomerId = 1;
 		this.nextBackOrderId = 1;
@@ -45,6 +47,14 @@ public class Company {
 		this.customerList = new CustomerList();
 		this.backOrdersList = new BackOrdersList();
 	}
+	
+	public static Company getCompany() {
+		if(company == null) {
+			company = new Company();
+		}
+		return company;
+	}
+
 
 	/**
 	 * Creates and adds a ClothWasher object to the Company's Catalog. ClothWashers
@@ -273,7 +283,7 @@ public class Company {
 	 * @param applianceId the id used to find the appliance.
 	 */
 	public void withdrawRepairPlan(long customerId, long applianceId) {
-		Customer customer = customerList.getCustomer(customerId);
+		Customer customer = customerList.search(customerId);
 		List<RepairPlan> customerRepairPlans = customer.getRepairPlans();
 		RepairPlan toBeRemovedPlan = null;
 

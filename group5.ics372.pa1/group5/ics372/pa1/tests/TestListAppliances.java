@@ -6,7 +6,7 @@ import group5.ics372.pa1.ClothWasher;
 import group5.ics372.pa1.Company;
 
 public class TestListAppliances {
-	private static Company company = new Company();
+	private static Company company = Company.getCompany();
 
 	public static void main(String[] args) {
 		testAll();

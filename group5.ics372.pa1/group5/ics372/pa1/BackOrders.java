@@ -4,7 +4,7 @@ package group5.ics372.pa1;
  * This class represents the BackOrder object. This class will be created and
  * held in a List within Company.
  * 
- * @author Chatchai Xiong, Vontha Chan, Anthoy Flowers
+ * @author Chatchai Xiong, Vontha Chan, Anthony Flowers
  *
  */
 public class BackOrders {
@@ -80,7 +80,7 @@ public class BackOrders {
     public String toString() {
 	return "BackOrder ID " + backorderID + "|\tBrand: " + appliance.getBrand() + "|\tModel:" + appliance.getType()
 		+ "|\tCustomer Name: " + customer.getName() + "|\tCustomer ID " + customer.getCustomerID()
-		+ "|\tQuantity " + quantity;
-    }
+			+ "|\tQuantity " + quantity;
+}
 
 }

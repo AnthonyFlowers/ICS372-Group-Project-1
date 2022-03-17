@@ -16,7 +16,7 @@ public class TestPrintCustomerRepairPlans {
 	}
 
 	private static void testPrintCustomerRepairPlans() {
-		Company company = new Company();
+		Company company = Company.getCompany();
 		Customer customer = new Customer(1, "Anthony", "Address", "Phone");
 		Appliance appliance = new ClothDryer(1, "Dryer Brand", "Dryer Model", 300.0, 15.0);
 		company.addCustomer(customer);

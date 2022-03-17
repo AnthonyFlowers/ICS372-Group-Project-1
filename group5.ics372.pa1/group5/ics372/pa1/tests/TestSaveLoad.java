@@ -30,7 +30,7 @@ public class TestSaveLoad {
 
 	// Save some test data to a test.dat file -Anthony
 	private static void testSaveData() {
-		Company company = new Company();
+		Company company = Company.getCompany();
 		company.addCustomer("Anthony", "Somewhere", "Number");
 		company.addCustomer("John", "Somewhere else", "Another number");
 		List<Customer> customerList = company.getCustomers();
@@ -48,7 +48,7 @@ public class TestSaveLoad {
 
 	// Load some data from the test.dat file -Anthony
 	private static void testLoadData() {
-		Company company = new Company();
+		Company company = Company.getCompany();
 		company.loadData("test.dat");
 		List<Customer> customerList = company.getCustomers();
 		try {

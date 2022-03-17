@@ -8,7 +8,7 @@ import group5.ics372.pa1.RepairPlan;
 
 public class TestWithdrawRepairPlan {
 
-	public Company company = new Company();
+	public Company company = Company.getCompany();
 
 	public static void main(String[] args) {
 		testAll();

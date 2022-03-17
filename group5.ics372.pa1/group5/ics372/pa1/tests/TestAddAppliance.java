@@ -15,7 +15,7 @@ public class TestAddAppliance {
 	}
 
 	private static void testAddAppliance() {
-		Company company = new Company();
+		Company company = Company.getCompany();
 		long customerID = 1;
 		String applianceName = "ClothWashers";
 		String brandName = "Samsung";

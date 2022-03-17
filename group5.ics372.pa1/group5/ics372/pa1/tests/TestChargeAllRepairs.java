@@ -7,7 +7,7 @@ import group5.ics372.pa1.DishWasher;
 import group5.ics372.pa1.RepairPlan;
 
 public class TestChargeAllRepairs {
-	private static Company company = new Company();
+	private static Company company = Company.getCompany();
 
 	public static void main(String[] args) {
 		testChargeRepair();

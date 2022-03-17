@@ -17,7 +17,7 @@ public class TestEnrollRepairPlan {
 	private static void testEnrollCustomerInRepairPlan() {
 		// Creates customer with id of 1
 		Customer customer = TestCustomer.getBasicCustomer();
-		Company company = new Company();
+		Company company = Company.getCompany();
 		company.addCustomer(customer.getName(), customer.getAddress(), customer.getPhoneNumber());
 		Appliance appliance = TestAppliance.getRepairableAppliance();
 		company.addAppliance(appliance);

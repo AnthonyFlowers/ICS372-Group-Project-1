@@ -11,7 +11,7 @@ public class TestPurchaseModels {
 	}
 
 	public static void testPurchaseAppliance() {
-		Company company = new Company();
+		Company company = Company.getCompany();
 		company.addCustomer("Vontha", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");
 		company.addCustomer("Vontha2", "Apple Valley", "6122275181");

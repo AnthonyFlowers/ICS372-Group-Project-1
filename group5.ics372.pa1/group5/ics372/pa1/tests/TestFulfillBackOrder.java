@@ -8,7 +8,7 @@ import group5.ics372.pa1.Customer;
 import group5.ics372.pa1.DishWasher;
 
 public class TestFulfillBackOrder {
-	public static Company company = new Company();
+	public static Company company = Company.getCompany();
 
 	public static void main(String[] args) {
 		testAll();
