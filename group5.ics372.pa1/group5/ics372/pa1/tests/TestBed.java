@@ -27,13 +27,12 @@ public class TestBed extends Interface {
 	private static Appliance[] testAppliances;
 
 	public static void main(String[] args) {
-		company = Company.getCompany();
 		loadTestBed();
 		runTests();
-//		Interface.main(args);
 	}
+	
 
-	private static void runTests() {
+	public static void runTests() {
 		testAppliancesAddedCorrectly();
 		testCustomersAddedCorrectly();
 		testAddInventory();
@@ -47,7 +46,7 @@ public class TestBed extends Interface {
 
 	// Process 9
 	private static void testPrintRevenue() {
-		
+		company.printRevenue();
 	}
 
 	// Process 8
@@ -124,7 +123,8 @@ public class TestBed extends Interface {
 		}
 	}
 
-	private static void loadTestBed() {
+	public static void loadTestBed() {
+		company = Company.getCompany();
 		testCustomers = getTestCustomers();
 		testAppliances = getTestAppliances();
 		for (Customer customer : testCustomers) {

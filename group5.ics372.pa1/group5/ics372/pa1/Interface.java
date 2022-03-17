@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
+import group5.ics372.pa1.tests.TestBed;
+
 /**
  * This class is the main interface for the actor to interact with the Company.
  * This class will allow multiple options for the actor to select in accordance
@@ -375,6 +377,13 @@ public class Interface {
 		if (answer.toLowerCase().equals("y")) {
 			company.loadData(DATA_FILE);
 			System.out.println("Loaded data from storage...");
+		} else {
+			System.out.print("Would you like to load the test bed [Y/N]? ");
+			answer = scanner.nextLine();
+			if(answer.equalsIgnoreCase("y")) {
+				TestBed.loadTestBed();
+				TestBed.runTests();
+			}
 		}
 	}
 
